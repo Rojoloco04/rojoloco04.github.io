@@ -1,5 +1,3 @@
-// script.js — Compiled from script.ts
-
 const state = {
   activeSection: null,
 };
@@ -81,3 +79,49 @@ function syncFromHash() {
 
 syncFromHash();
 window.addEventListener("hashchange", syncFromHash);
+
+// ── Contact form ───────────────────────────────────────────────────────────────
+const FORMSPREE_ENDPOINT = "hhttps://formspree.io/f/xqedgvzp";
+
+const contactForm = document.querySelector("#contact-form");
+const submitBtn = document.querySelector("#submit-btn");
+const formStatus = document.querySelector("#form-status");
+
+contactForm?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!submitBtn || !formStatus) return;
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML =
+    '<span class="material-symbols-outlined !text-[18px]">hourglass_empty</span> Sending...';
+
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      body: new FormData(contactForm),
+      headers: { Accept: "application/json" },
+    });
+
+    if (response.ok) {
+      formStatus.textContent = "Message sent! I'll get back to you soon.";
+      formStatus.className =
+        "text-center text-sm py-2.5 px-4 rounded-lg font-medium bg-green-900/40 border border-green-700/50 text-green-400";
+      contactForm.reset();
+    } else {
+      const data = await response.json().catch(() => ({}));
+      throw new Error(data?.errors?.[0]?.message ?? "Something went wrong.");
+    }
+  } catch (err) {
+    formStatus.textContent =
+      err instanceof Error
+        ? err.message
+        : "Failed to send. Please email me directly at parrackjack@gmail.com.";
+    formStatus.className =
+      "text-center text-sm py-2.5 px-4 rounded-lg font-medium bg-red-900/40 border border-red-700/50 text-red-400";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML =
+      '<span class="material-symbols-outlined !text-[18px]">send</span> Send Message';
+    formStatus.classList.remove("hidden");
+  }
+});

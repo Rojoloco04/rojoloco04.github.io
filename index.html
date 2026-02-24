@@ -90,7 +90,7 @@
           <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#education">Education</a>
           <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#skills">Skills</a>
         </div>
-        <a href="mailto:parrackjack@gmail.com"
+        <a href="#contact"
            class="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold h-10 px-6 tracking-[0.015em]">
           Contact
         </a>
@@ -111,7 +111,7 @@
         <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#activities">Activities</a>
         <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#education">Education</a>
         <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5" href="#skills">Skills</a>
-        <a href="mailto:parrackjack@gmail.com"
+        <a href="#contact"
            class="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold h-10 px-6 tracking-[0.015em] mt-4">
           Contact
         </a>
@@ -138,14 +138,6 @@
 
           <!-- Content -->
           <div class="relative z-10 flex flex-col gap-4 text-left max-w-2xl">
-            <div class="inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary backdrop-blur-sm">
-              <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              Graduating May 2026 · Open to Opportunities
-            </div>
-
             <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl md:leading-[1.1]">
               Hi, I'm Jack&nbsp;Parrack.
             </h1>
@@ -159,7 +151,7 @@
                  class="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-all text-white text-base font-bold h-12 px-8 tracking-[0.015em]">
                 View My Work
               </a>
-              <a href="mailto:parrackjack@gmail.com"
+              <a href="#contact"
                  class="flex items-center justify-center rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-surface-dark hover:border-text-secondary transition-all text-white text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
                 Contact Me
               </a>
@@ -677,6 +669,54 @@
         </div>
       </section>
 
+      <!-- ── Contact ────────────────────────────────────────────────────── -->
+      <section id="contact" class="py-10 border-t border-border-dark">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-symbols-outlined text-primary !text-[28px]">mail</span>
+          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Contact</h2>
+        </div>
+        <p class="text-text-secondary mb-8 ml-10">Have a question or want to work together? I'd love to hear from you.</p>
+
+        <div class="max-w-2xl">
+          <div class="bg-surface-dark rounded-xl border border-border-dark p-6 md:p-8">
+            <form id="contact-form" class="flex flex-col gap-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="flex flex-col gap-1.5">
+                  <label for="first-name" class="text-sm font-medium text-slate-300">First Name <span class="text-primary">*</span></label>
+                  <input type="text" id="first-name" name="first_name" required
+                    class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
+                    placeholder="Jack">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label for="last-name" class="text-sm font-medium text-slate-300">Last Name <span class="text-primary">*</span></label>
+                  <input type="text" id="last-name" name="last_name" required
+                    class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
+                    placeholder="Parrack">
+                </div>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label for="contact-email" class="text-sm font-medium text-slate-300">Email <span class="text-primary">*</span></label>
+                <input type="email" id="contact-email" name="email" required
+                  class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
+                  placeholder="you@example.com">
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label for="message" class="text-sm font-medium text-slate-300">Message <span class="text-primary">*</span></label>
+                <textarea id="message" name="message" required rows="5"
+                  class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors resize-none"
+                  placeholder="Tell me about your project or opportunity..."></textarea>
+              </div>
+              <button type="submit" id="submit-btn"
+                class="flex items-center justify-center gap-2 rounded-lg bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold h-11 px-6 tracking-[0.015em] disabled:opacity-60 disabled:cursor-not-allowed">
+                <span class="material-symbols-outlined !text-[18px]">send</span>
+                Send Message
+              </button>
+              <div id="form-status" class="hidden text-center text-sm py-2.5 px-4 rounded-lg font-medium"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
 
@@ -722,6 +762,7 @@
         <a class="hover:text-white transition-colors" href="#activities">Activities</a>
         <a class="hover:text-white transition-colors" href="#education">Education</a>
         <a class="hover:text-white transition-colors" href="#skills">Skills</a>
+        <a class="hover:text-white transition-colors" href="#contact">Contact</a>
       </div>
 
       <p class="text-text-secondary text-sm opacity-50">© 2026 Jack Parrack. All rights reserved.</p>
