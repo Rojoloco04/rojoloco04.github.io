@@ -1,134 +1,565 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>Home</title>
-    <link rel="icon" type="image/png" href="images/icon.png">
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jack Parrack | Portfolio</title>
+  <link rel="icon" type="image/png" href="images/icon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary":          "#135bec",
+            "primary-fore":     "#ffffff",
+            "background-light": "#f6f6f8",
+            "background-dark":  "#101622",
+            "surface-dark":     "#1a2332",
+            "border-dark":      "#232f48",
+            "text-secondary":   "#92a4c9",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg":      "0.5rem",
+            "xl":      "0.75rem",
+            "full":    "9999px",
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom component classes (processed by Tailwind CDN) -->
+  <style type="text/tailwindcss">
+    .skill-tag {
+      @apply px-3 py-1.5 rounded-lg bg-background-dark border border-border-dark text-sm font-medium text-slate-300 hover:border-primary/50 hover:text-primary transition-colors cursor-default;
+    }
+    .timeline-line {
+      @apply w-px bg-border-dark grow my-2;
+    }
+    .timeline-icon {
+      @apply flex items-center justify-center size-10 rounded-full bg-surface-dark border border-border-dark text-primary shadow-lg z-10;
+    }
+    .card {
+      @apply bg-surface-dark p-6 rounded-xl border border-border-dark hover:border-primary/50 transition-colors shadow-sm;
+    }
+    .date-badge {
+      @apply mt-2 md:mt-0 px-3 py-1 rounded-full bg-background-dark border border-border-dark w-fit;
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-    <nav>
-        <ul class="navList">
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#activities">Activities</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-        </ul>
-    </nav>
+<body class="bg-background-dark text-slate-100 font-display antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 
-    <section id="about">
-        <h1>Hi! I'm Jack</h1>
-        <h2>A software engineer</h2>
-        <p>I am a dedicated and detail-oriented Computer Engineering student with a wide range of experience in software development and hardware design.</p>
-    </section>
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="sticky top-0 z-50 w-full border-b border-border-dark bg-background-dark/80 backdrop-blur-md">
+    <div class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4 lg:px-10">
 
-    <section id="education">
-        <h2>Education</h2>
-            <div class="educationItem">
-                <p><strong>Saint Louis University</strong> | Aug. 2022 - May 2026</p>
-                <p>B.S., Computer Engineering | Minor, Computer Science</p>
-                <p>GPA: 3.92 / 4.0</p>
+      <!-- Logo -->
+      <a href="#about" class="flex items-center gap-3 text-white">
+        <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+          <span class="material-symbols-outlined">terminal</span>
+        </div>
+        <span class="text-lg font-bold leading-tight tracking-[-0.015em]">Jack Parrack</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex flex-1 justify-end gap-8 items-center">
+        <div class="flex items-center gap-6">
+          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#about">About</a>
+          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#projects">Projects</a>
+          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#experience">Experience</a>
+          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#activities">Activities</a>
+          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#education">Education</a>
+          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#skills">Skills</a>
+        </div>
+        <a href="mailto:parrackjack@gmail.com"
+           class="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold h-10 px-6 tracking-[0.015em]">
+          Contact
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-button" class="md:hidden text-white p-2" aria-label="Toggle menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile menu drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-border-dark bg-background-dark/95 backdrop-blur-md">
+      <nav class="flex flex-col px-6 py-4 gap-1">
+        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#about">About</a>
+        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#projects">Projects</a>
+        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#experience">Experience</a>
+        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#activities">Activities</a>
+        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#education">Education</a>
+        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5" href="#skills">Skills</a>
+        <a href="mailto:parrackjack@gmail.com"
+           class="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold h-10 px-6 tracking-[0.015em] mt-4">
+          Contact
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Main ───────────────────────────────────────────────────────────── -->
+  <main class="flex-1 flex flex-col items-center">
+    <div class="w-full max-w-[1200px] px-4 md:px-10">
+
+      <!-- ── Hero / About ───────────────────────────────────────────────── -->
+      <section id="about" class="py-12 md:py-20">
+        <div class="relative flex min-h-[520px] flex-col gap-6 overflow-hidden rounded-xl bg-surface-dark px-6 pb-12 pt-48 md:justify-end md:px-10 md:pt-10 shadow-2xl ring-1 ring-white/5 group">
+
+          <!-- Background: gradient + grid -->
+          <div class="absolute inset-0 z-0 bg-gradient-to-br from-primary/15 via-background-dark to-surface-dark"></div>
+          <div class="absolute inset-0 z-0 opacity-[0.07]"
+               style="background-image: linear-gradient(#92a4c9 1px, transparent 1px), linear-gradient(90deg, #92a4c9 1px, transparent 1px); background-size: 48px 48px;"></div>
+
+          <!-- Ambient glow blobs -->
+          <div class="absolute top-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+          <div class="absolute bottom-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
+
+          <!-- Content -->
+          <div class="relative z-10 flex flex-col gap-4 text-left max-w-2xl">
+            <div class="inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary backdrop-blur-sm">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Graduating May 2026 · Open to Opportunities
             </div>
-            <div class="educationItem">
-                <p><strong>Sogang University</strong> | Seoul, South Korea | Spring 2024</p>
-                <p>Exchange Program</p>
-            </div>
-    </section>
 
-    <section id="activities">
-        <h2>Activities</h2>
-            <div class="experienceItem">
-                <h3>School of Science and Engineering First-Year Mentor</h3>
-                <p><strong>Saint Louis University</strong> | Aug. 2024 - Present</p>
-            </div>
-            <div class="experienceItem">
-                <h3>Institute of Electrical and Electronics Engineers (IEEE)</h3>
-                <p><strong>Vice President</strong> | Aug. 2025 - Present</p>
-                <p>Member since Aug. 2022</p>
-                <ul>
-                    <li>Assisted with chapter leadership in events, finance, and member recruitment and retention.</li>
-                </ul>
-            </div>
-            <div class="experienceItem">
-                <h3>SLU Esports</h3>
-                <p><strong>President and Teams Coordinator</strong> | Aug. 2024 - Present</p>
-                <p>Member since Aug. 2022</p>
-                <ul>
-                    <li>Oversaw board operations and scheduling for more than 10 club teams.</li>
-                    <li>Increased membership to over 900 by improving leadership and engagement.</li>
-                </ul>
-            </div>
-    </section>
+            <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl md:leading-[1.1]">
+              Hi, I'm Jack&nbsp;Parrack.
+            </h1>
 
-    <section id="experience">
-        <h2>Experience</h2>
-            <div class="experienceItem">
-                <h3>DevOps Intern</h3>
-                <p><strong>DataServ</strong> | May 2025 - Aug. 2025</p>
-                <ul>
-                    <li>Leveraged custom Python automation scripts to migrate 3,000+ SQL stored procedures across 71 client environments into Git.</li>
-                    <li>Redesigned and implemented 17 post-import SQL configurations across 7 clients.</li>
-                    <li>Optimized large-scale data ingestion processes, including a lookup redesign for 21 clients.</li>
-                    <li>Delivered project demonstrations to leadership.</li>
-                </ul>
+            <p class="text-slate-300 text-lg md:text-xl font-normal leading-relaxed max-w-lg">
+              Computer Engineering student at Saint Louis University with experience in
+              software development, DevOps, and hardware design.
+            </p>
+
+            <div class="flex flex-wrap gap-4 pt-4">
+              <a href="#projects"
+                 class="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-all text-white text-base font-bold h-12 px-8 tracking-[0.015em]">
+                View My Work
+              </a>
+              <a href="mailto:parrackjack@gmail.com"
+                 class="flex items-center justify-center rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-surface-dark hover:border-text-secondary transition-all text-white text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
+                Contact Me
+              </a>
             </div>
-    </section>
+          </div>
+        </div>
+      </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-            <div class="projectItem">
-                <h3>Rapid Photonic Innovation Device (RAPID)</h3>
-                <h4>Capstone Project | Aug. 2025 - Present</h4>
-                <p><strong>Technologies:</strong> VHDL, C, FPGA, PWM, UART/USB</p>
-                <ul>
-                    <li>Reverse-engineered laser diode assemblies, spindle and stepper motors, and photodiode feedback using oscilloscopes and multimeters, and implemented motor and laser control logic in VHDL and C using an FPGA.</li>
-                    <li>Developed testing procedures and system integration plans involving PWM motor control, UART/USB communication, and vectorized user input interpretation, resulting in a functional prototype.</li>
-                </ul>
+      <!-- ── Projects ───────────────────────────────────────────────────── -->
+      <section id="projects" class="py-10 border-t border-border-dark">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-primary !text-[28px]">rocket_launch</span>
+          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Projects</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- RAPID -->
+          <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
+            <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
+              <div class="absolute inset-0 bg-gradient-to-br from-violet-900/50 via-background-dark to-indigo-900/30 group-hover:scale-105 transition-transform duration-500"></div>
+              <div class="absolute inset-0 flex items-center justify-center opacity-[0.15]">
+                <span class="material-symbols-outlined text-white" style="font-size:100px;">precision_manufacturing</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 p-6">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <h3 class="text-white text-xl font-bold leading-tight">RAPID</h3>
+                  <p class="text-text-secondary text-xs font-medium mt-0.5">Capstone Project · Aug. 2025 – Present</p>
+                </div>
+                <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
+              </div>
+              <p class="text-text-secondary text-sm leading-relaxed">
+                Rapid Photonic Innovation Device — reverse-engineered laser diode assemblies,
+                spindle and stepper motors, and photodiode feedback using oscilloscopes and
+                multimeters. Implemented motor and laser control logic in VHDL and C on an FPGA,
+                with PWM motor control and UART/USB communication pipelines.
+              </p>
+              <div class="flex gap-2 mt-3 flex-wrap">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">VHDL</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">C</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">FPGA</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">PWM</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">UART/USB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vigilane -->
+          <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
+            <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
+              <div class="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-background-dark to-cyan-900/30 group-hover:scale-105 transition-transform duration-500"></div>
+              <div class="absolute inset-0 flex items-center justify-center opacity-[0.15]">
+                <span class="material-symbols-outlined text-white" style="font-size:100px;">location_on</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 p-6">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <h3 class="text-white text-xl font-bold leading-tight">Vigilane</h3>
+                  <p class="text-text-secondary text-xs font-medium mt-0.5">HackSLU · Feb. 2026</p>
+                </div>
+                <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
+              </div>
+              <p class="text-text-secondary text-sm leading-relaxed">
+                Cross-platform mobile app for live road hazard reporting built with React Native
+                (Expo) and TypeScript. Includes real-time data integration and a Flask REST API
+                backed by Firebase Authentication and Firestore for report and session management.
+              </p>
+              <div class="flex gap-2 mt-3 flex-wrap">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">React Native</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">TypeScript</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Expo</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Flask</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Firebase</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Firestore</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Experience ─────────────────────────────────────────────────── -->
+      <section id="experience" class="py-10 border-t border-border-dark">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-primary !text-[28px]">work_history</span>
+          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Experience</h2>
+        </div>
+
+        <div class="grid grid-cols-[40px_1fr] gap-x-4 md:gap-x-8 px-2">
+
+          <!-- DataServ -->
+          <div class="flex flex-col items-center gap-1 pt-1">
+            <div class="timeline-icon">
+              <span class="material-symbols-outlined !text-[20px]">verified</span>
+            </div>
+          </div>
+          <div class="flex flex-1 flex-col py-1 pb-8">
+            <div class="card">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                <div>
+                  <h3 class="text-white text-lg font-semibold leading-normal">DevOps Intern</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">DataServ</p>
+                </div>
+                <div class="date-badge">
+                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">May 2025 – Aug. 2025</p>
+                </div>
+              </div>
+              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1.5">
+                <li>Leveraged custom Python automation scripts to migrate 3,000+ SQL stored procedures across 71 client environments into Git.</li>
+                <li>Redesigned and implemented 17 post-import SQL configurations across 7 clients.</li>
+                <li>Optimized large-scale data ingestion processes, including a lookup redesign for 21 clients.</li>
+                <li>Delivered project demonstrations to leadership.</li>
+              </ul>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2 py-1 rounded bg-background-dark text-text-secondary text-xs font-medium border border-border-dark">Python</span>
+                <span class="px-2 py-1 rounded bg-background-dark text-text-secondary text-xs font-medium border border-border-dark">SQL</span>
+                <span class="px-2 py-1 rounded bg-background-dark text-text-secondary text-xs font-medium border border-border-dark">Git</span>
+                <span class="px-2 py-1 rounded bg-background-dark text-text-secondary text-xs font-medium border border-border-dark">DevOps</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Activities ─────────────────────────────────────────────────── -->
+      <section id="activities" class="py-10 border-t border-border-dark">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-primary !text-[28px]">groups</span>
+          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Activities</h2>
+        </div>
+
+        <div class="grid grid-cols-[40px_1fr] gap-x-4 md:gap-x-8 px-2">
+
+          <!-- SSE Mentor -->
+          <div class="flex flex-col items-center gap-1 pt-1">
+            <div class="timeline-icon">
+              <span class="material-symbols-outlined !text-[20px]">school</span>
+            </div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="flex flex-1 flex-col py-1 pb-10">
+            <div class="card">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                <div>
+                  <h3 class="text-white text-lg font-semibold leading-normal">First-Year Mentor</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">School of Science and Engineering · Saint Louis University</p>
+                </div>
+                <div class="date-badge">
+                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IEEE -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="timeline-icon">
+              <span class="material-symbols-outlined !text-[20px]">electric_bolt</span>
+            </div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="flex flex-1 flex-col py-1 pb-10">
+            <div class="card">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                <div>
+                  <h3 class="text-white text-lg font-semibold leading-normal">Vice President</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">Institute of Electrical and Electronics Engineers (IEEE) · Saint Louis University</p>
+                  <p class="text-text-secondary text-xs mt-1">Member since Aug. 2022</p>
+                </div>
+                <div class="date-badge">
+                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2025 – Present</p>
+                </div>
+              </div>
+              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
+                <li>Assisted with chapter leadership in events, finance, and member recruitment and retention.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- SLU Esports -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="timeline-icon">
+              <span class="material-symbols-outlined !text-[20px]">sports_esports</span>
+            </div>
+            <!-- No line after last item -->
+          </div>
+          <div class="flex flex-1 flex-col py-1 pb-4">
+            <div class="card">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                <div>
+                  <h3 class="text-white text-lg font-semibold leading-normal">President & Teams Coordinator</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">SLU Esports · Saint Louis University</p>
+                  <p class="text-text-secondary text-xs mt-1">Member since Aug. 2022</p>
+                </div>
+                <div class="date-badge">
+                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
+                </div>
+              </div>
+              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
+                <li>Oversaw board operations and scheduling for more than 10 club teams.</li>
+                <li>Increased membership to over 900 by improving leadership and engagement.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Education ──────────────────────────────────────────────────── -->
+      <section id="education" class="py-10 border-t border-border-dark">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-primary !text-[28px]">school</span>
+          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Education</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <!-- SLU -->
+          <div class="group relative overflow-hidden bg-surface-dark p-6 rounded-xl border border-border-dark hover:border-primary/50 transition-all">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
+              <span class="material-symbols-outlined text-primary" style="font-size:72px;">school</span>
+            </div>
+            <div class="relative z-10">
+              <p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Bachelor's Degree</p>
+              <h3 class="text-white text-lg font-bold mb-1">B.S. Computer Engineering</h3>
+              <p class="text-text-secondary text-sm mb-0.5">Saint Louis University</p>
+              <p class="text-text-secondary text-sm mb-4">Minor: Computer Science &nbsp;·&nbsp; GPA: 3.92 / 4.0</p>
+              <div class="flex items-center gap-2 text-xs text-text-secondary">
+                <span class="material-symbols-outlined !text-[16px]">calendar_month</span>
+                <span>Aug. 2022 – May 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sogang -->
+          <div class="group relative overflow-hidden bg-surface-dark p-6 rounded-xl border border-border-dark hover:border-primary/50 transition-all">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
+              <span class="material-symbols-outlined text-slate-400" style="font-size:72px;">travel_explore</span>
+            </div>
+            <div class="relative z-10">
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Exchange Program</p>
+              <h3 class="text-white text-lg font-bold mb-1">Sogang University</h3>
+              <p class="text-text-secondary text-sm mb-4">Seoul, South Korea</p>
+              <div class="flex items-center gap-2 text-xs text-text-secondary">
+                <span class="material-symbols-outlined !text-[16px]">calendar_month</span>
+                <span>Spring 2024</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Skills ─────────────────────────────────────────────────────── -->
+      <section id="skills" class="py-10 border-t border-border-dark">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-primary !text-[28px]">handyman</span>
+          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Skills</h2>
+        </div>
+
+        <div class="bg-surface-dark rounded-xl border border-border-dark p-6 md:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+
+            <!-- Programming Languages -->
+            <div>
+              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-text-secondary !text-[20px]">code</span>
+                Programming Languages
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-tag">C</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Assembly</span>
+                <span class="skill-tag">HTML/CSS</span>
+              </div>
             </div>
 
-            <div class="projectItem">
-                <h3>Vigilane</h3>
-                <h4>HackSLU | Feb. 2026</h4>
-                <p><strong>Technologies:</strong> React Native, Expo, TypeScript, Flask, Firebase, Firestore</p>
-                <ul>
-                    <li>Developed a cross-platform mobile app using React Native (Expo) and TypeScript for live road hazard reporting.</li>
-                    <li>Implemented user submission workflows and real-time data integration between frontend and backend services.</li>
-                    <li>Built a Flask REST API with Firebase Authentication and Firestore to manage reports, sessions, and data access.</li>
-                </ul>
+            <!-- Mobile -->
+            <div>
+              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-text-secondary !text-[20px]">smartphone</span>
+                Mobile
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-tag">React Native</span>
+                <span class="skill-tag">Expo</span>
+                <span class="skill-tag">Android</span>
+                <span class="skill-tag">iOS</span>
+              </div>
             </div>
-    </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Programming Languages: C, C++, Python, TypeScript, JavaScript, SQL, Assembly, HTML/CSS</li>
-            <li>Mobile: Android, iOS</li>
-            <li>Cloud/DevOps: AWS, Git, Linux</li>
-            <li>Hardware: VHDL, FPGA, ARM & AVR Microcontrollers, Arduino, Raspberry Pi</li>
-            <li>Languages: Spanish (Advanced), Korean (Intermediate), Chinese (Beginner)</li>
-        </ul>
-    </section>
+            <!-- Cloud & DevOps -->
+            <div>
+              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-text-secondary !text-[20px]">cloud</span>
+                Cloud & DevOps
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Linux</span>
+              </div>
+            </div>
 
-    <footer>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:parrackjack@gmail.com">parrackjack@gmail.com</a></p>
-        <p><i class="fab fa-github"></i> <a href="https://github.com/Rojoloco04/">Rojoloco04</a></p>
-        <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/jackson-parrack/">Jackson Parrack</a></p>
-        <p>© 2025 Jack's Portfolio</p>
-    </footer>
+            <!-- Hardware -->
+            <div>
+              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-text-secondary !text-[20px]">memory</span>
+                Hardware
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-tag">VHDL</span>
+                <span class="skill-tag">FPGA</span>
+                <span class="skill-tag">ARM Microcontrollers</span>
+                <span class="skill-tag">AVR Microcontrollers</span>
+                <span class="skill-tag">Arduino</span>
+                <span class="skill-tag">Raspberry Pi</span>
+              </div>
+            </div>
 
+            <!-- Human Languages -->
+            <div class="md:col-span-2">
+              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-text-secondary !text-[20px]">language</span>
+                Human Languages
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-tag">English (Native)</span>
+                <span class="skill-tag">Spanish (Advanced)</span>
+                <span class="skill-tag">Korean (Intermediate)</span>
+                <span class="skill-tag">Chinese (Beginner)</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer class="mt-auto border-t border-border-dark bg-surface-dark/50 px-5 py-12">
+    <div class="mx-auto max-w-[1200px] flex flex-col gap-5 items-center">
+
+      <div class="flex items-center gap-2 text-white">
+        <div class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+          <span class="material-symbols-outlined text-[20px]">terminal</span>
+        </div>
+        <span class="font-bold text-lg">Jack Parrack</span>
+      </div>
+
+      <!-- Contact links -->
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="mailto:parrackjack@gmail.com"
+           class="flex items-center gap-2 px-4 py-2 rounded-full bg-background-dark border border-border-dark text-text-secondary hover:bg-primary hover:border-primary hover:text-white transition-all text-sm font-medium">
+          <span class="material-symbols-outlined text-[18px]">mail</span>
+          parrackjack@gmail.com
+        </a>
+        <a href="https://github.com/Rojoloco04/" target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-2 px-4 py-2 rounded-full bg-background-dark border border-border-dark text-text-secondary hover:bg-primary hover:border-primary hover:text-white transition-all text-sm font-medium">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+          Rojoloco04
+        </a>
+        <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-2 px-4 py-2 rounded-full bg-background-dark border border-border-dark text-text-secondary hover:bg-primary hover:border-primary hover:text-white transition-all text-sm font-medium">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+          </svg>
+          Jackson Parrack
+        </a>
+      </div>
+
+      <!-- Quick nav -->
+      <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-text-secondary">
+        <a class="hover:text-white transition-colors" href="#about">About</a>
+        <a class="hover:text-white transition-colors" href="#projects">Projects</a>
+        <a class="hover:text-white transition-colors" href="#experience">Experience</a>
+        <a class="hover:text-white transition-colors" href="#activities">Activities</a>
+        <a class="hover:text-white transition-colors" href="#education">Education</a>
+        <a class="hover:text-white transition-colors" href="#skills">Skills</a>
+      </div>
+
+      <p class="text-text-secondary text-sm opacity-50">© 2026 Jack Parrack. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
 </body>
-
 </html>

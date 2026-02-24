@@ -1,92 +1,40 @@
+/* style.css — Global styles to complement Tailwind CSS */
 
-:root {
-    --accent: #7AB8CC;
-    --text: #2C3A3F;
-    --bg: #F6F1E8;
-    --accent-bg: #7ab8cc1a;
-    --shadow: #2c3a3f1a;
-}
-
-* {
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
+/* Smooth scrolling with offset for the sticky header */
 html {
     scroll-behavior: smooth;
 }
 
-body {
-    margin-top: 80px;
-    background-color: var(--bg);
-    color: var(--text);
-}
-
-nav { 
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--bg);
-    box-shadow: 0 2px 5px var(--shadow);
-    z-index: 1000;
-    padding: 1rem 0;
-}
-
-.navList {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 2rem;
-}
-
-.navList li a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.navList li a:hover {
-    background-color: var(--accent);
-    color: var(--bg);
-}
-
 section {
     scroll-margin-top: 80px;
-    margin-bottom: 3rem;
-    padding: 0 2rem;
 }
 
-h1, h2, h3 {
-    color: var(--text);
+/* Custom scrollbar — webkit browsers */
+::-webkit-scrollbar {
+    width: 6px;
 }
 
-.educationItem, .experienceItem, .projectItem {
-    background-color: var(--accent-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--accent);
+::-webkit-scrollbar-track {
+    background: #101622;
 }
 
-footer {
-    padding: 2rem 0;
-    background-color: var(--accent-bg);
-    box-shadow: 0 -2px 5px var(--shadow);
+::-webkit-scrollbar-thumb {
+    background: #232f48;
+    border-radius: 3px;
+    transition: background 0.2s ease;
 }
 
-footer p {
-    color: var(--text);
-    margin-left: 2rem;
+::-webkit-scrollbar-thumb:hover {
+    background: #135bec;
 }
 
-footer p a {
-    color: var(--text);
+/* Prevent layout shift when scrollbar appears/disappears */
+body {
+    scrollbar-gutter: stable;
+}
+
+/* Material Symbols vertical alignment fix */
+.material-symbols-outlined {
+    vertical-align: middle;
+    line-height: 1;
 }
