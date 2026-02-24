@@ -195,19 +195,23 @@
                 <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
               </div>
               <p class="text-text-secondary text-sm leading-relaxed">
-                Rapid Photonic Innovation Device — reverse-engineered laser diode assemblies,
-                spindle and stepper motors, and photodiode feedback using oscilloscopes and
-                multimeters. Implemented motor and laser control logic in VHDL and C on an FPGA,
-                with PWM motor control and UART/USB communication pipelines.
+                Streams GDS2 lithography patterns from a PC to a Zynq FPGA over UART, converting
+                XY coordinates to polar form for motor-driven stage control. Implements a
+                stop-and-wait protocol with binary packet framing and CRC8 validation, paired with
+                a Python (PySide6) GUI for real-time visualization of acknowledged points.
               </p>
               <div class="flex gap-2 mt-3 flex-wrap">
                 <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">VHDL</span>
                 <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">C</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Python</span>
                 <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">FPGA</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">PWM</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">UART/USB</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">UART</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">PySide6</span>
               </div>
             </div>
+            <a href="https://github.com/Rojoloco04/RAPID" target="_blank" rel="noopener noreferrer"
+               class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
+               aria-label="View RAPID on GitHub"></a>
           </div>
 
           <!-- Vigilane -->
@@ -223,23 +227,100 @@
                 <div>
                   <h3 class="text-white text-xl font-bold leading-tight">Vigilane</h3>
                   <p class="text-text-secondary text-xs font-medium mt-0.5">HackSLU · Feb. 2026</p>
+                  <div class="flex items-center gap-1.5 mt-1.5">
+                    <span class="material-symbols-outlined text-yellow-400 !text-[14px]">emoji_events</span>
+                    <span class="text-yellow-400 text-xs font-semibold">Honorable Mention</span>
+                  </div>
                 </div>
                 <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
               </div>
-              <p class="text-text-secondary text-sm leading-relaxed">
-                Cross-platform mobile app for live road hazard reporting built with React Native
-                (Expo) and TypeScript. Includes real-time data integration and a Flask REST API
-                backed by Firebase Authentication and Firestore for report and session management.
-              </p>
+              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1.5">
+                <li>AI-powered road hazard detection system using YOLOv8 to identify potholes and road damage in real time from video feeds, with optional voice confirmation.</li>
+                <li>React Native (Expo) app for viewing alerts and submitting city reports, backed by a Flask REST API with Firebase Firestore and on-device TFLite inference.</li>
+              </ul>
               <div class="flex gap-2 mt-3 flex-wrap">
                 <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">React Native</span>
                 <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">TypeScript</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Expo</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">YOLOv8</span>
                 <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Flask</span>
                 <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Firebase</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Firestore</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Python</span>
               </div>
             </div>
+            <a href="https://github.com/1Bananas1/Vigilane" target="_blank" rel="noopener noreferrer"
+               class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
+               aria-label="View Vigilane on GitHub"></a>
+          </div>
+
+          <!-- FlavorAI -->
+          <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
+            <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
+              <div class="absolute inset-0 bg-gradient-to-br from-orange-900/50 via-background-dark to-amber-900/30 group-hover:scale-105 transition-transform duration-500"></div>
+              <div class="absolute inset-0 flex items-center justify-center opacity-[0.15]">
+                <span class="material-symbols-outlined text-white" style="font-size:100px;">restaurant</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 p-6">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <h3 class="text-white text-xl font-bold leading-tight">FlavorAI</h3>
+                  <p class="text-text-secondary text-xs font-medium mt-0.5">DevFest WashU 2025</p>
+                  <div class="flex items-center gap-1.5 mt-1.5">
+                    <span class="material-symbols-outlined text-yellow-400 !text-[14px]">emoji_events</span>
+                    <span class="text-yellow-400 text-xs font-semibold">Top 10 / 42 Teams</span>
+                  </div>
+                </div>
+                <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
+              </div>
+              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1.5">
+                <li>Developed a full-stack app to recommend restaurants based on a user's taste profile, leveraging the Gemini API and Google Maps API.</li>
+                <li>Gained experience with React.js, CSS, and Python through rapid prototyping and team collaboration.</li>
+              </ul>
+              <div class="flex gap-2 mt-3 flex-wrap">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">React.js</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Flask</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Python</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Gemini API</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Google Maps API</span>
+              </div>
+            </div>
+            <a href="https://github.com/1Bananas1/Flavor-AI" target="_blank" rel="noopener noreferrer"
+               class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
+               aria-label="View FlavorAI on GitHub"></a>
+          </div>
+
+          <!-- Billiken Balance -->
+          <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
+            <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
+              <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/50 via-background-dark to-teal-900/30 group-hover:scale-105 transition-transform duration-500"></div>
+              <div class="absolute inset-0 flex items-center justify-center opacity-[0.15]">
+                <span class="material-symbols-outlined text-white" style="font-size:100px;">videogame_asset</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 p-6">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <h3 class="text-white text-xl font-bold leading-tight">Billiken Balance</h3>
+                  <p class="text-text-secondary text-xs font-medium mt-0.5">HackSLU 2025</p>
+                  <div class="flex items-center gap-1.5 mt-1.5">
+                    <span class="material-symbols-outlined text-yellow-400 !text-[14px]">emoji_events</span>
+                    <span class="text-yellow-400 text-xs font-semibold">Best Social Impact · 1 of 4 Winning Teams (17 total)</span>
+                  </div>
+                </div>
+                <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
+              </div>
+              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1.5">
+                <li>Developed a mental wellbeing application in Lua that motivates users to complete daily tasks.</li>
+                <li>Rapidly acquired proficiency in Lua within 24 hours to successfully deliver a functional prototype.</li>
+              </ul>
+              <div class="flex gap-2 mt-3 flex-wrap">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Lua</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Love2D</span>
+              </div>
+            </div>
+            <a href="https://github.com/Rojoloco04/hackSLU" target="_blank" rel="noopener noreferrer"
+               class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
+               aria-label="View Billiken Balance on GitHub"></a>
           </div>
 
         </div>
@@ -298,28 +379,33 @@
 
         <div class="grid grid-cols-[40px_1fr] gap-x-4 md:gap-x-8 px-2">
 
-          <!-- SSE Mentor -->
+          <!-- 1. SLU Esports — President (highest role, present) -->
           <div class="flex flex-col items-center gap-1 pt-1">
             <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">school</span>
+              <span class="material-symbols-outlined !text-[20px]">sports_esports</span>
             </div>
             <div class="timeline-line"></div>
           </div>
           <div class="flex flex-1 flex-col py-1 pb-10">
             <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
                 <div>
-                  <h3 class="text-white text-lg font-semibold leading-normal">First-Year Mentor</h3>
-                  <p class="text-primary font-medium text-sm mt-0.5">School of Science and Engineering · Saint Louis University</p>
+                  <h3 class="text-white text-lg font-semibold leading-normal">President & Teams Coordinator</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">SLU Esports · Saint Louis University</p>
+                  <p class="text-text-secondary text-xs mt-1">Member since Aug. 2022</p>
                 </div>
                 <div class="date-badge">
                   <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
                 </div>
               </div>
+              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
+                <li>Oversaw board operations and scheduling for more than 10 club teams.</li>
+                <li>Increased membership to over 900 by improving leadership and engagement.</li>
+              </ul>
             </div>
           </div>
 
-          <!-- IEEE -->
+          <!-- 2. IEEE — Vice President (VP role, present) -->
           <div class="flex flex-col items-center gap-1">
             <div class="timeline-icon">
               <span class="material-symbols-outlined !text-[20px]">electric_bolt</span>
@@ -344,29 +430,114 @@
             </div>
           </div>
 
-          <!-- SLU Esports -->
+          <!-- 3. SSE First-Year Mentor (mentor role, present) -->
           <div class="flex flex-col items-center gap-1">
             <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">sports_esports</span>
+              <span class="material-symbols-outlined !text-[20px]">school</span>
             </div>
-            <!-- No line after last item -->
+            <div class="timeline-line"></div>
           </div>
-          <div class="flex flex-1 flex-col py-1 pb-4">
+          <div class="flex flex-1 flex-col py-1 pb-10">
             <div class="card">
               <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
                 <div>
-                  <h3 class="text-white text-lg font-semibold leading-normal">President & Teams Coordinator</h3>
-                  <p class="text-primary font-medium text-sm mt-0.5">SLU Esports · Saint Louis University</p>
-                  <p class="text-text-secondary text-xs mt-1">Member since Aug. 2022</p>
+                  <h3 class="text-white text-lg font-semibold leading-normal">First-Year Mentor</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">School of Science and Engineering · Saint Louis University</p>
                 </div>
                 <div class="date-badge">
                   <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
                 </div>
               </div>
               <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
-                <li>Oversaw board operations and scheduling for more than 10 club teams.</li>
-                <li>Increased membership to over 900 by improving leadership and engagement.</li>
+                <li>Mentored incoming SSE students, providing guidance on academic success, course selection, and professional development.</li>
               </ul>
+            </div>
+          </div>
+
+          <!-- 4. Study Abroad Peer Mentor (mentor role, present) -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="timeline-icon">
+              <span class="material-symbols-outlined !text-[20px]">flight_takeoff</span>
+            </div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="flex flex-1 flex-col py-1 pb-10">
+            <div class="card">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                <div>
+                  <h3 class="text-white text-lg font-semibold leading-normal">Study Abroad Peer Mentor</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">Saint Louis University</p>
+                </div>
+                <div class="date-badge">
+                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
+                </div>
+              </div>
+              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
+                <li>Mentored students considering or preparing for study abroad, sharing advice and personal experience from an exchange semester in South Korea.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 5. VSA (member, present) -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="timeline-icon">
+              <span class="material-symbols-outlined !text-[20px]">diversity_3</span>
+            </div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="flex flex-1 flex-col py-1 pb-10">
+            <div class="card">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                <div>
+                  <h3 class="text-white text-lg font-semibold leading-normal">Member</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">Vietnamese Student Association (VSA) · Saint Louis University</p>
+                </div>
+                <div class="date-badge">
+                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Jan. 2026 – Present</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. KSA (member, present) -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="timeline-icon">
+              <span class="material-symbols-outlined !text-[20px]">diversity_3</span>
+            </div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="flex flex-1 flex-col py-1 pb-10">
+            <div class="card">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                <div>
+                  <h3 class="text-white text-lg font-semibold leading-normal">Member</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">Korean Student Association (KSA) · Saint Louis University</p>
+                </div>
+                <div class="date-badge">
+                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. String Orchestra (past, chronologically last) -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="timeline-icon">
+              <span class="material-symbols-outlined !text-[20px]">music_note</span>
+            </div>
+            <!-- No line after last item -->
+          </div>
+          <div class="flex flex-1 flex-col py-1 pb-4">
+            <div class="card">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                <div>
+                  <h3 class="text-white text-lg font-semibold leading-normal">String Orchestra</h3>
+                  <p class="text-primary font-medium text-sm mt-0.5">Saint Louis University</p>
+                </div>
+                <div class="date-badge">
+                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Spring 2023</p>
+                </div>
+              </div>
             </div>
           </div>
 
