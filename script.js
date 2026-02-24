@@ -81,7 +81,7 @@ syncFromHash();
 window.addEventListener("hashchange", syncFromHash);
 
 // ── Contact form ───────────────────────────────────────────────────────────────
-const FORMSPREE_ENDPOINT = "hhttps://formspree.io/f/xqedgvzp";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqedgvzp";
 
 const contactForm = document.querySelector("#contact-form");
 const submitBtn = document.querySelector("#submit-btn");
