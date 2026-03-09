@@ -78,7 +78,9 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-section {
+/* Sections are visible by default. JS adds .will-reveal to hide
+   off-screen sections, then .revealed triggers the animation. */
+section.will-reveal {
   opacity: 0;
 }
 

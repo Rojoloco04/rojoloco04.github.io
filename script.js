@@ -103,22 +103,31 @@ syncFromHash();
 window.addEventListener("hashchange", syncFromHash);
 
 // ── Section reveal animation ──────────────────────────────────────────────────
-// Adds a `.revealed` class when a section scrolls into view, triggering the
-// CSS `fadeUp` keyframe animation defined in style.css.
+// Sections are visible by default. For sections NOT already in the viewport,
+// we add .will-reveal (opacity: 0) and then swap to .revealed when they scroll
+// in, triggering the CSS fadeUp animation.
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
+        entry.target.classList.remove("will-reveal");
         entry.target.classList.add("revealed");
-        revealObserver.unobserve(entry.target); // animate only once
+        revealObserver.unobserve(entry.target);
       }
     });
   },
   { threshold: 0.05 }
 );
 
-sections.forEach((section) => revealObserver.observe(section));
+// Only hide sections that are below the current viewport
+sections.forEach((section) => {
+  const rect = section.getBoundingClientRect();
+  if (rect.top > window.innerHeight) {
+    section.classList.add("will-reveal");
+  }
+  revealObserver.observe(section);
+});
 
 // ── Back-to-top button ───────────────────────────────────────────────────────
 // Shows after the user scrolls past the first viewport height.
