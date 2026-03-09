@@ -37,6 +37,7 @@ html {
 
 body {
   overflow-x: clip;
+  scrollbar-gutter: stable;
 }
 
 /* Offset anchors so they clear the sticky header */
@@ -62,11 +63,6 @@ section {
   background: rgb(var(--c-primary));
 }
 
-/* Reserve scrollbar space to avoid layout shift */
-body {
-  scrollbar-gutter: stable;
-}
-
 /* ── 4. Scroll-reveal animation ──────────────────────────────────── */
 @keyframes fadeUp {
   from {
@@ -87,7 +83,18 @@ body {
   animation: fadeUp 0.6s ease-out forwards;
 }
 
-/* ── 5. Material Symbols alignment ──────────────────────────────── */
+/* ── 5. Hero typewriter cursor ───────────────────────────────────── */
+.hero-cursor {
+  display: inline-block;
+  margin-left: 1px;
+  animation: blink-cursor 0.7s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  50% { opacity: 0; }
+}
+
+/* ── 6. Material Symbols alignment ──────────────────────────────── */
 .material-symbols-outlined {
   vertical-align: middle;
   line-height: 1;

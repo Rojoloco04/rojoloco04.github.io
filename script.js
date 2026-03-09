@@ -20,9 +20,6 @@ function syncThemeUI() {
 
   const mobileIcon = document.querySelector("#mobile-theme-icon");
   if (mobileIcon) mobileIcon.textContent = dark ? "light_mode" : "dark_mode";
-
-  const mobileLabel = document.querySelector("#mobile-theme-label");
-  if (mobileLabel) mobileLabel.textContent = dark ? "Light Mode" : "Dark Mode";
 }
 
 document.querySelector("#theme-toggle")?.addEventListener("click", () => setTheme(!isDark()));
@@ -140,6 +137,52 @@ if (backToTop) {
   backToTop.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+}
+
+// ── Hero typewriter ───────────────────────────────────────────────────────────
+// Cycles through phrases by typing and deleting them one character at a time.
+
+const HERO_PHRASES = [
+  "Jack Parrack.",
+  "a software engineer.",
+  "a hardware designer.",
+  "a leader.",
+  "a problem solver.",
+];
+
+const heroTyped = document.querySelector("#hero-typed");
+
+if (heroTyped) {
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeHero() {
+    const phrase = HERO_PHRASES[phraseIndex];
+
+    heroTyped.textContent = isDeleting
+      ? phrase.substring(0, charIndex - 1)
+      : phrase.substring(0, charIndex + 1);
+
+    isDeleting ? charIndex-- : charIndex++;
+
+    let delay = isDeleting ? 50 : 90;
+
+    if (!isDeleting && charIndex === phrase.length) {
+      // Pause at the end of a phrase before deleting
+      delay = phraseIndex === 0 ? 2500 : 1800;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % HERO_PHRASES.length;
+      delay = 350;
+    }
+
+    setTimeout(typeHero, delay);
+  }
+
+  // Short initial delay so the page can settle before typing starts
+  setTimeout(typeHero, 600);
 }
 
 // ── Contact form ──────────────────────────────────────────────────────────────

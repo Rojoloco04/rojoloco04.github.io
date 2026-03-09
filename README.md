@@ -41,8 +41,8 @@ The resume PDF (`JacksonParrack_Resume.pdf`) is hosted in the root of this repos
 ## Tech Stack
 
 - HTML5
-- [Tailwind CSS](https://tailwindcss.com/) (CDN with forms + container-queries plugins)
+- [Tailwind CSS](https://tailwindcss.com/) (CDN with forms plugin)
 - Vanilla JavaScript (ES2020+)
-- [Google Fonts — Inter](https://fonts.google.com/specimen/Inter)
+- [Google Fonts — Google Sans](https://fonts.google.com/specimen/Google+Sans)
 - [Google Material Symbols](https://fonts.google.com/icons)
 - [Formspree](https://formspree.io/) (contact form back-end)

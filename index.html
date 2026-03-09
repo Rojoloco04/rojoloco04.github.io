@@ -24,30 +24,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
           colors: {
-            "primary":          "rgb(var(--c-primary) / <alpha-value>)",
-            "primary-fore":     "#ffffff",
-            "foreground":       "rgb(var(--c-text-hi) / <alpha-value>)",
-            "background-light": "#f6f6f8",
-            "background-dark":  "rgb(var(--c-base-bg) / <alpha-value>)",
-            "surface-dark":     "rgb(var(--c-surface) / <alpha-value>)",
-            "border-dark":      "rgb(var(--c-border) / <alpha-value>)",
-            "text-secondary":   "rgb(var(--c-text-lo) / <alpha-value>)",
+            "primary":        "rgb(var(--c-primary) / <alpha-value>)",
+            "foreground":     "rgb(var(--c-text-hi) / <alpha-value>)",
+            "background-dark": "rgb(var(--c-base-bg) / <alpha-value>)",
+            "surface-dark":   "rgb(var(--c-surface) / <alpha-value>)",
+            "border-dark":    "rgb(var(--c-border) / <alpha-value>)",
+            "text-secondary": "rgb(var(--c-text-lo) / <alpha-value>)",
           },
           fontFamily: {
             "display": ["Google Sans", "sans-serif"],
-          },
-          borderRadius: {
-            "DEFAULT": "0.25rem",
-            "lg":      "0.5rem",
-            "xl":      "0.75rem",
-            "full":    "9999px",
           },
         },
       },
@@ -161,7 +153,7 @@
           <!-- Content -->
           <div class="relative z-10 flex flex-col gap-4 text-left max-w-2xl">
             <h1 class="text-foreground text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl md:leading-[1.1]">
-              Hi, I'm Jack&nbsp;Parrack.
+              Hi! I'm <span id="hero-typed"></span><span class="hero-cursor" aria-hidden="true">|</span>
             </h1>
 
             <p class="text-text-secondary text-lg md:text-xl font-normal leading-relaxed max-w-lg">
@@ -630,7 +622,7 @@
                 Programming Languages
               </h4>
               <div class="flex flex-wrap gap-2">
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/c/c-original.svg" class="h-4 w-4 flex-shrink-0" alt="">C</span>
+                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" class="h-4 w-4 flex-shrink-0" alt="">C</span>
                 <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" class="h-4 w-4 flex-shrink-0" alt="">C++</span>
                 <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Python</span>
                 <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" class="h-4 w-4 flex-shrink-0" alt="">TypeScript</span>
