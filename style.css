@@ -5,7 +5,8 @@
  *   1. Theme CSS custom properties (light + dark)
  *   2. Base / reset helpers
  *   3. Custom scrollbar
- *   4. Material Symbols alignment fix
+ *   4. Scroll-reveal animation
+ *   5. Material Symbols alignment fix
  */
 
 /* ── 1. Theme CSS variables ──────────────────────────────────────── */
@@ -62,7 +63,27 @@ body {
   scrollbar-gutter: stable;
 }
 
-/* ── 4. Material Symbols alignment ───────────────────────────────── */
+/* ── 4. Scroll-reveal animation ──────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.visible {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+/* ── 5. Material Symbols alignment ──────────────────────────────── */
 .material-symbols-outlined {
   vertical-align: middle;
   line-height: 1;

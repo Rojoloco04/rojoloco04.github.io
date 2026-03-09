@@ -102,6 +102,26 @@ function syncFromHash() {
 syncFromHash();
 window.addEventListener("hashchange", syncFromHash);
 
+// ── Scroll-reveal ─────────────────────────────────────────────────────────────
+// Sections with the `.reveal` class fade up into view when they enter the
+// viewport, powered by a separate IntersectionObserver.
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+
+revealElements.forEach((el) => revealObserver.observe(el));
+
 // ── Back-to-top button ───────────────────────────────────────────────────────
 // Shows after the user scrolls past the first viewport height.
 

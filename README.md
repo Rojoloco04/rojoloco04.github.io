@@ -20,15 +20,15 @@ Personal portfolio website for Jackson Parrack, built with **HTML**, **Tailwind 
 
 ```
 index.html      — Page markup and Tailwind config
-style.css       — CSS custom properties, scrollbar, reveal animation, light-mode overrides
-script.js       — Theme toggle, mobile menu, nav highlighting, section reveal, contact form
+style.css       — CSS custom properties (light + dark themes), scrollbar, scroll-reveal animation
+script.js       — Theme toggle, mobile menu, nav highlighting, scroll-reveal, back-to-top, contact form
 images/         — Hero image, favicons, and organisation logos
 ```
 
 ## Features
 
 - **Dark / light theme** — persisted to `localStorage`; an inline `<script>` in `<head>` prevents the wrong-theme flash on load.
-- **Scroll-reveal animations** — sections fade in as they enter the viewport (CSS `@keyframes fadeUp` + `IntersectionObserver`).
+- **Scroll-reveal animations** — sections fade up into view as they enter the viewport (CSS `@keyframes fadeUp` + `IntersectionObserver`).
 - **Active nav highlighting** — the header link for the currently visible section is highlighted via `IntersectionObserver`.
 - **Responsive mobile menu** — hamburger drawer with auto-close on link tap.
 - **Back-to-top button** — appears after scrolling past the first viewport height.
