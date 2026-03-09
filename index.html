@@ -33,6 +33,7 @@
           colors: {
             "primary":          "rgb(var(--c-primary) / <alpha-value>)",
             "primary-fore":     "#ffffff",
+            "foreground":       "rgb(var(--c-text-hi) / <alpha-value>)",
             "background-light": "#f6f6f8",
             "background-dark":  "rgb(var(--c-base-bg) / <alpha-value>)",
             "surface-dark":     "rgb(var(--c-surface) / <alpha-value>)",
@@ -56,7 +57,10 @@
   <!-- Custom component classes (processed by Tailwind CDN) -->
   <style type="text/tailwindcss">
     .skill-tag {
-      @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background-dark border border-border-dark text-sm font-medium text-slate-300 hover:border-primary/50 hover:text-primary transition-colors cursor-default;
+      @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background-dark border border-border-dark text-sm font-medium text-text-secondary hover:border-primary/50 hover:text-primary transition-colors cursor-default;
+    }
+    .tech-tag {
+      @apply px-2.5 py-1 rounded-md bg-primary/10 text-xs font-medium text-text-secondary border border-border-dark;
     }
     .timeline-line {
       @apply w-px bg-border-dark grow my-2;
@@ -75,7 +79,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="bg-background-dark text-slate-100 font-display antialiased">
+<body class="bg-background-dark text-foreground font-display antialiased">
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 
   <!-- ── Header ─────────────────────────────────────────────────────────── -->
@@ -83,7 +87,7 @@
     <div class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4 lg:px-10">
 
       <!-- Logo -->
-      <a href="#about" class="flex items-center gap-3 text-white">
+      <a href="#about" class="flex items-center gap-3 text-foreground">
         <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
           <span class="material-symbols-outlined">terminal</span>
         </div>
@@ -93,12 +97,12 @@
       <!-- Desktop nav -->
       <nav class="hidden md:flex flex-1 justify-end gap-8 items-center">
         <div class="flex items-center gap-6">
-          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#about">About</a>
-          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#projects">Projects</a>
-          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#experience">Experience</a>
-          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#activities">Activities</a>
-          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#education">Education</a>
-          <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#skills">Skills</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#about">About</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#projects">Projects</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#experience">Experience</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#activities">Activities</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#education">Education</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#skills">Skills</a>
         </div>
         <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
            class="flex items-center justify-center rounded-lg border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-primary text-sm font-medium h-10 px-5 tracking-[0.015em]">
@@ -115,7 +119,7 @@
       </nav>
 
       <!-- Mobile menu button -->
-      <button id="mobile-menu-button" class="md:hidden text-white p-2" aria-label="Toggle menu">
+      <button id="mobile-menu-button" class="md:hidden text-foreground p-2" aria-label="Toggle menu">
         <span class="material-symbols-outlined">menu</span>
       </button>
     </div>
@@ -123,12 +127,12 @@
     <!-- Mobile menu drawer -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-border-dark bg-background-dark/95 backdrop-blur-md">
       <nav class="flex flex-col px-6 py-4 gap-1">
-        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#about">About</a>
-        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#projects">Projects</a>
-        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#experience">Experience</a>
-        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#activities">Activities</a>
-        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#education">Education</a>
-        <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#skills">Skills</a>
+        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#about">About</a>
+        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#projects">Projects</a>
+        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#experience">Experience</a>
+        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#activities">Activities</a>
+        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#education">Education</a>
+        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#skills">Skills</a>
         <button id="mobile-theme-toggle"
            class="flex items-center gap-2 text-text-secondary hover:text-primary transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50 text-left w-full">
           <span id="mobile-theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
@@ -160,11 +164,11 @@
 
           <!-- Content -->
           <div class="relative z-10 flex flex-col gap-4 text-left max-w-2xl">
-            <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl md:leading-[1.1]">
+            <h1 class="text-foreground text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl md:leading-[1.1]">
               Hi, I'm Jack&nbsp;Parrack.
             </h1>
 
-            <p class="text-slate-300 text-lg md:text-xl font-normal leading-relaxed max-w-lg">
+            <p class="text-text-secondary text-lg md:text-xl font-normal leading-relaxed max-w-lg">
               Dedicated and detail-oriented Computer Engineering student with hands-on experience in software development, hardware design, and embedded systems.
             </p>
 
@@ -174,11 +178,11 @@
                 View My Work
               </a>
               <a href="#contact"
-                 class="flex items-center justify-center rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-surface-dark hover:border-text-secondary transition-all text-white text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
+                 class="flex items-center justify-center rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-surface-dark hover:border-text-secondary transition-all text-foreground text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
                 Contact Me
               </a>
               <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center justify-center gap-2 rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-surface-dark hover:border-text-secondary transition-all text-text-secondary hover:text-white text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
+                 class="flex items-center justify-center gap-2 rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-surface-dark hover:border-text-secondary transition-all text-text-secondary hover:text-foreground text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
                 <span class="material-symbols-outlined text-[18px]">download</span>
                 Resume
               </a>
@@ -187,14 +191,14 @@
             <!-- Social links -->
             <div class="flex items-center gap-3 pt-1">
               <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center justify-center size-10 rounded-full border border-border-dark bg-surface-dark/50 text-text-secondary hover:text-white hover:border-primary/50 transition-all backdrop-blur-sm"
+                 class="flex items-center justify-center size-10 rounded-full border border-border-dark bg-surface-dark/50 text-text-secondary hover:text-foreground hover:border-primary/50 transition-all backdrop-blur-sm"
                  aria-label="LinkedIn">
                 <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
                 </svg>
               </a>
               <a href="https://github.com/rojoloco04" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center justify-center size-10 rounded-full border border-border-dark bg-surface-dark/50 text-text-secondary hover:text-white hover:border-primary/50 transition-all backdrop-blur-sm"
+                 class="flex items-center justify-center size-10 rounded-full border border-border-dark bg-surface-dark/50 text-text-secondary hover:text-foreground hover:border-primary/50 transition-all backdrop-blur-sm"
                  aria-label="GitHub">
                 <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
@@ -209,7 +213,7 @@
       <section id="projects" class="py-10 border-t border-border-dark">
         <div class="flex items-center gap-3 mb-8">
           <span class="material-symbols-outlined text-primary !text-[28px]">rocket_launch</span>
-          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Projects</h2>
+          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Projects</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -225,7 +229,7 @@
             <div class="flex flex-col gap-2 p-6">
               <div class="flex items-start justify-between gap-2">
                 <div>
-                  <h3 class="text-white text-xl font-bold leading-tight">RAPID</h3>
+                  <h3 class="text-foreground text-xl font-bold leading-tight">RAPID</h3>
                   <p class="text-text-secondary text-xs font-medium mt-0.5">Capstone Project</p>
                 </div>
                 <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
@@ -237,12 +241,12 @@
                 with PWM motor control and UART/USB communication pipelines.
               </p>
               <div class="flex gap-2 mt-3 flex-wrap">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">VHDL</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">C</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Python</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">FPGA</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">UART</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">PySide6</span>
+                <span class="tech-tag">VHDL</span>
+                <span class="tech-tag">C</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">FPGA</span>
+                <span class="tech-tag">UART</span>
+                <span class="tech-tag">PySide6</span>
               </div>
             </div>
             <a href="https://github.com/Rojoloco04/RAPID" target="_blank" rel="noopener noreferrer"
@@ -261,7 +265,7 @@
             <div class="flex flex-col gap-2 p-6">
               <div class="flex items-start justify-between gap-2">
                 <div>
-                  <h3 class="text-white text-xl font-bold leading-tight">Vigilane</h3>
+                  <h3 class="text-foreground text-xl font-bold leading-tight">Vigilane</h3>
                   <p class="text-text-secondary text-xs font-medium mt-0.5">HackSLU 2026</p>
                   <div class="flex items-center gap-1.5 mt-1.5">
                     <span class="material-symbols-outlined text-yellow-400 !text-[14px]">emoji_events</span>
@@ -275,12 +279,12 @@
                 <li>React Native (Expo) app for viewing alerts and submitting city reports, backed by a Flask REST API with Firebase Firestore and on-device TFLite inference.</li>
               </ul>
               <div class="flex gap-2 mt-3 flex-wrap">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">React Native</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">TypeScript</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">YOLOv8</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Flask</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Firebase</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Python</span>
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">YOLOv8</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Python</span>
               </div>
             </div>
             <a href="https://github.com/1Bananas1/Vigilane" target="_blank" rel="noopener noreferrer"
@@ -299,7 +303,7 @@
             <div class="flex flex-col gap-2 p-6">
               <div class="flex items-start justify-between gap-2">
                 <div>
-                  <h3 class="text-white text-xl font-bold leading-tight">FlavorAI</h3>
+                  <h3 class="text-foreground text-xl font-bold leading-tight">FlavorAI</h3>
                   <p class="text-text-secondary text-xs font-medium mt-0.5">DevFest WashU 2025</p>
                   <div class="flex items-center gap-1.5 mt-1.5">
                     <span class="material-symbols-outlined text-yellow-400 !text-[14px]">emoji_events</span>
@@ -313,11 +317,11 @@
                 <li>Gained experience with React.js, CSS, and Python through rapid prototyping and team collaboration.</li>
               </ul>
               <div class="flex gap-2 mt-3 flex-wrap">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">React.js</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Flask</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Python</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Gemini API</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Google Maps API</span>
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Gemini API</span>
+                <span class="tech-tag">Google Maps API</span>
               </div>
             </div>
             <a href="https://github.com/1Bananas1/Flavor-AI" target="_blank" rel="noopener noreferrer"
@@ -336,7 +340,7 @@
             <div class="flex flex-col gap-2 p-6">
               <div class="flex items-start justify-between gap-2">
                 <div>
-                  <h3 class="text-white text-xl font-bold leading-tight">Billiken Balance</h3>
+                  <h3 class="text-foreground text-xl font-bold leading-tight">Billiken Balance</h3>
                   <p class="text-text-secondary text-xs font-medium mt-0.5">HackSLU 2025</p>
                   <div class="flex items-center gap-1.5 mt-1.5">
                     <span class="material-symbols-outlined text-yellow-400 !text-[14px]">emoji_events</span>
@@ -350,8 +354,8 @@
                 <li>Rapidly acquired proficiency in Lua within 24 hours to successfully deliver a functional prototype.</li>
               </ul>
               <div class="flex gap-2 mt-3 flex-wrap">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Lua</span>
-                <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-medium text-slate-300 border border-white/10">Love2D</span>
+                <span class="tech-tag">Lua</span>
+                <span class="tech-tag">Love2D</span>
               </div>
             </div>
             <a href="https://github.com/Rojoloco04/hackSLU" target="_blank" rel="noopener noreferrer"
@@ -366,7 +370,7 @@
       <section id="experience" class="py-10 border-t border-border-dark">
         <div class="flex items-center gap-3 mb-8">
           <span class="material-symbols-outlined text-primary !text-[28px]">work_history</span>
-          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Experience</h2>
+          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Experience</h2>
         </div>
 
         <div class="grid grid-cols-[40px_1fr] gap-x-4 md:gap-x-8 px-2">
@@ -383,7 +387,7 @@
                 <div class="flex items-start gap-3">
                   <img src="images/dataserv.png" class="h-10 w-10 rounded-lg object-contain bg-white p-1 border border-border-dark flex-shrink-0 mt-0.5" alt="DataServ">
                   <div>
-                    <h3 class="text-white text-lg font-semibold leading-normal">DevOps Intern</h3>
+                    <h3 class="text-foreground text-lg font-semibold leading-normal">DevOps Intern</h3>
                     <p class="text-primary font-medium text-sm mt-0.5">DataServ</p>
                   </div>
                 </div>
@@ -413,7 +417,7 @@
       <section id="activities" class="py-10 border-t border-border-dark">
         <div class="flex items-center gap-3 mb-8">
           <span class="material-symbols-outlined text-primary !text-[28px]">groups</span>
-          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Activities</h2>
+          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Activities</h2>
         </div>
 
         <div class="grid grid-cols-[40px_1fr] gap-x-4 md:gap-x-8 px-2">
@@ -431,7 +435,7 @@
                 <div class="flex items-start gap-3">
                   <img src="images/slu-esports.png" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="SLU Esports">
                   <div>
-                    <h3 class="text-white text-lg font-semibold leading-normal">President &amp; Teams Coordinator</h3>
+                    <h3 class="text-foreground text-lg font-semibold leading-normal">President &amp; Teams Coordinator</h3>
                     <p class="text-primary font-medium text-sm mt-0.5">SLU Esports · Saint Louis University</p>
                     <p class="text-text-secondary text-xs mt-1">Member since Aug. 2022</p>
                   </div>
@@ -460,7 +464,7 @@
                 <div class="flex items-start gap-3">
                   <img src="images/ieee.png" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="IEEE">
                   <div>
-                    <h3 class="text-white text-lg font-semibold leading-normal">Vice President</h3>
+                    <h3 class="text-foreground text-lg font-semibold leading-normal">Vice President</h3>
                     <p class="text-primary font-medium text-sm mt-0.5">Institute of Electrical and Electronics Engineers (IEEE) · Saint Louis University</p>
                     <p class="text-text-secondary text-xs mt-1">Member since Aug. 2022</p>
                   </div>
@@ -488,7 +492,7 @@
                 <div class="flex items-start gap-3">
                   <img src="images/slu-sse.png" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="SLU SSE">
                   <div>
-                    <h3 class="text-white text-lg font-semibold leading-normal">First-Year Mentor</h3>
+                    <h3 class="text-foreground text-lg font-semibold leading-normal">First-Year Mentor</h3>
                     <p class="text-primary font-medium text-sm mt-0.5">School of Science and Engineering · Saint Louis University</p>
                   </div>
                 </div>
@@ -513,7 +517,7 @@
             <div class="card">
               <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
                 <div>
-                  <h3 class="text-white text-lg font-semibold leading-normal">Study Abroad Peer Mentor</h3>
+                  <h3 class="text-foreground text-lg font-semibold leading-normal">Study Abroad Peer Mentor</h3>
                   <p class="text-primary font-medium text-sm mt-0.5">Saint Louis University</p>
                 </div>
                 <div class="date-badge">
@@ -539,7 +543,7 @@
                 <div class="flex items-start gap-3">
                   <img src="images/slu-vsa.jpg" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="VSA">
                   <div>
-                    <h3 class="text-white text-lg font-semibold leading-normal">Member</h3>
+                    <h3 class="text-foreground text-lg font-semibold leading-normal">Member</h3>
                     <p class="text-primary font-medium text-sm mt-0.5">Vietnamese Student Association (VSA) · Saint Louis University</p>
                   </div>
                 </div>
@@ -563,7 +567,7 @@
                 <div class="flex items-start gap-3">
                   <img src="images/slu-ksa.jpg" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="KSA">
                   <div>
-                    <h3 class="text-white text-lg font-semibold leading-normal">Member</h3>
+                    <h3 class="text-foreground text-lg font-semibold leading-normal">Member</h3>
                     <p class="text-primary font-medium text-sm mt-0.5">Korean Student Association (KSA) · Saint Louis University</p>
                   </div>
                 </div>
@@ -585,7 +589,7 @@
             <div class="card">
               <div class="flex flex-col md:flex-row md:justify-between md:items-start">
                 <div>
-                  <h3 class="text-white text-lg font-semibold leading-normal">String Orchestra</h3>
+                  <h3 class="text-foreground text-lg font-semibold leading-normal">String Orchestra</h3>
                   <p class="text-primary font-medium text-sm mt-0.5">Saint Louis University</p>
                 </div>
                 <div class="date-badge">
@@ -602,7 +606,7 @@
       <section id="education" class="py-10 border-t border-border-dark">
         <div class="flex items-center gap-3 mb-8">
           <span class="material-symbols-outlined text-primary !text-[28px]">school</span>
-          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Education</h2>
+          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Education</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -614,7 +618,7 @@
             </div>
             <div class="relative z-10">
               <p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Bachelor's Degree</p>
-              <h3 class="text-white text-lg font-bold mb-1">B.S. Computer Engineering</h3>
+              <h3 class="text-foreground text-lg font-bold mb-1">B.S. Computer Engineering</h3>
               <p class="text-text-secondary text-sm mb-0.5">Saint Louis University</p>
               <p class="text-text-secondary text-sm mb-4">Minor: Computer Science &nbsp;·&nbsp; GPA: 3.92 / 4.0</p>
               <div class="flex items-center gap-2 text-xs text-text-secondary">
@@ -630,8 +634,8 @@
               <img src="images/sogang.png" class="h-16 w-auto object-contain" alt="Sogang University">
             </div>
             <div class="relative z-10">
-              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Exchange Program</p>
-              <h3 class="text-white text-lg font-bold mb-1">Sogang University</h3>
+              <p class="text-xs font-bold text-text-secondary uppercase tracking-wider mb-2">Exchange Program</p>
+              <h3 class="text-foreground text-lg font-bold mb-1">Sogang University</h3>
               <p class="text-text-secondary text-sm mb-4">Seoul, South Korea</p>
               <div class="flex items-center gap-2 text-xs text-text-secondary">
                 <span class="material-symbols-outlined !text-[16px]">calendar_month</span>
@@ -647,7 +651,7 @@
       <section id="skills" class="py-10 border-t border-border-dark">
         <div class="flex items-center gap-3 mb-8">
           <span class="material-symbols-outlined text-primary !text-[28px]">handyman</span>
-          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Skills</h2>
+          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Skills</h2>
         </div>
 
         <div class="bg-surface-dark rounded-xl border border-border-dark p-6 md:p-8">
@@ -655,7 +659,7 @@
 
             <!-- Programming Languages -->
             <div>
-              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
                 <span class="material-symbols-outlined text-text-secondary !text-[20px]">code</span>
                 Programming Languages
               </h4>
@@ -673,7 +677,7 @@
 
             <!-- Mobile -->
             <div>
-              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
                 <span class="material-symbols-outlined text-text-secondary !text-[20px]">smartphone</span>
                 Mobile
               </h4>
@@ -687,7 +691,7 @@
 
             <!-- Cloud & DevOps -->
             <div>
-              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
                 <span class="material-symbols-outlined text-text-secondary !text-[20px]">cloud</span>
                 Cloud & DevOps
               </h4>
@@ -700,7 +704,7 @@
 
             <!-- Hardware -->
             <div>
-              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
                 <span class="material-symbols-outlined text-text-secondary !text-[20px]">memory</span>
                 Hardware
               </h4>
@@ -716,7 +720,7 @@
 
             <!-- Human Languages -->
             <div class="md:col-span-2">
-              <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
                 <span class="material-symbols-outlined text-text-secondary !text-[20px]">language</span>
                 Human Languages
               </h4>
@@ -736,7 +740,7 @@
       <section id="contact" class="py-10 border-t border-border-dark">
         <div class="flex items-center gap-3 mb-2">
           <span class="material-symbols-outlined text-primary !text-[28px]">mail</span>
-          <h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Contact</h2>
+          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Contact</h2>
         </div>
         <p class="text-text-secondary mb-8 ml-10">Have a question or want to work together? I'd love to hear from you.</p>
 
@@ -744,28 +748,28 @@
             <form id="contact-form" class="flex flex-col gap-5">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div class="flex flex-col gap-1.5">
-                  <label for="first-name" class="text-sm font-medium text-slate-300">First Name <span class="text-primary">*</span></label>
+                  <label for="first-name" class="text-sm font-medium text-text-secondary">First Name <span class="text-primary">*</span></label>
                   <input type="text" id="first-name" name="first_name" required
-                    class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
+                    class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
                     placeholder="Jack">
                 </div>
                 <div class="flex flex-col gap-1.5">
-                  <label for="last-name" class="text-sm font-medium text-slate-300">Last Name <span class="text-primary">*</span></label>
+                  <label for="last-name" class="text-sm font-medium text-text-secondary">Last Name <span class="text-primary">*</span></label>
                   <input type="text" id="last-name" name="last_name" required
-                    class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
+                    class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
                     placeholder="Parrack">
                 </div>
               </div>
               <div class="flex flex-col gap-1.5">
-                <label for="contact-email" class="text-sm font-medium text-slate-300">Email <span class="text-primary">*</span></label>
+                <label for="contact-email" class="text-sm font-medium text-text-secondary">Email <span class="text-primary">*</span></label>
                 <input type="email" id="contact-email" name="email" required
-                  class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
+                  class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
                   placeholder="you@example.com">
               </div>
               <div class="flex flex-col gap-1.5">
-                <label for="message" class="text-sm font-medium text-slate-300">Message <span class="text-primary">*</span></label>
+                <label for="message" class="text-sm font-medium text-text-secondary">Message <span class="text-primary">*</span></label>
                 <textarea id="message" name="message" required rows="5"
-                  class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors resize-none"
+                  class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors resize-none"
                   placeholder="Tell me about your project or opportunity..."></textarea>
               </div>
               <button type="submit" id="submit-btn"
@@ -785,7 +789,7 @@
   <footer class="mt-auto border-t border-border-dark bg-surface-dark/50 px-5 py-12">
     <div class="mx-auto max-w-[1200px] flex flex-col gap-5 items-center">
 
-      <div class="flex items-center gap-2 text-white">
+      <div class="flex items-center gap-2 text-foreground">
         <div class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
           <span class="material-symbols-outlined text-[20px]">terminal</span>
         </div>
@@ -817,13 +821,13 @@
 
       <!-- Quick nav -->
       <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-text-secondary">
-        <a class="hover:text-white transition-colors" href="#about">About</a>
-        <a class="hover:text-white transition-colors" href="#projects">Projects</a>
-        <a class="hover:text-white transition-colors" href="#experience">Experience</a>
-        <a class="hover:text-white transition-colors" href="#activities">Activities</a>
-        <a class="hover:text-white transition-colors" href="#education">Education</a>
-        <a class="hover:text-white transition-colors" href="#skills">Skills</a>
-        <a class="hover:text-white transition-colors" href="#contact">Contact</a>
+        <a class="hover:text-foreground transition-colors" href="#about">About</a>
+        <a class="hover:text-foreground transition-colors" href="#projects">Projects</a>
+        <a class="hover:text-foreground transition-colors" href="#experience">Experience</a>
+        <a class="hover:text-foreground transition-colors" href="#activities">Activities</a>
+        <a class="hover:text-foreground transition-colors" href="#education">Education</a>
+        <a class="hover:text-foreground transition-colors" href="#skills">Skills</a>
+        <a class="hover:text-foreground transition-colors" href="#contact">Contact</a>
       </div>
 
       <p class="text-text-secondary text-sm opacity-50">© 2026 Jack Parrack. All rights reserved.</p>
