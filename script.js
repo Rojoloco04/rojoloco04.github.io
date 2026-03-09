@@ -1,6 +1,34 @@
-const state = {
-  activeSection: null,
-};
+// ── Theme ─────────────────────────────────────────────────────────────────────
+// Reads/writes the `dark` class on <html> and persists the choice to
+// localStorage so the inline script in <head> can restore it before paint.
+
+function isDark() {
+  return document.documentElement.classList.contains("dark");
+}
+
+function setTheme(dark) {
+  document.documentElement.classList.toggle("dark", dark);
+  localStorage.setItem("theme", dark ? "dark" : "light");
+  syncThemeUI();
+}
+
+/** Keep every theme-toggle icon / label in sync with the current mode. */
+function syncThemeUI() {
+  const dark = isDark();
+  const icon = document.querySelector("#theme-icon");
+  if (icon) icon.textContent = dark ? "light_mode" : "dark_mode";
+
+  const mobileIcon = document.querySelector("#mobile-theme-icon");
+  if (mobileIcon) mobileIcon.textContent = dark ? "light_mode" : "dark_mode";
+
+  const mobileLabel = document.querySelector("#mobile-theme-label");
+  if (mobileLabel) mobileLabel.textContent = dark ? "Light Mode" : "Dark Mode";
+}
+
+document.querySelector("#theme-toggle")?.addEventListener("click", () => setTheme(!isDark()));
+document.querySelector("#mobile-theme-toggle")?.addEventListener("click", () => setTheme(!isDark()));
+
+syncThemeUI();
 
 // ── Mobile menu ───────────────────────────────────────────────────────────────
 
@@ -19,17 +47,17 @@ function closeMobileMenu() {
 }
 
 mobileMenuButton?.addEventListener("click", () => {
-  const isHidden = mobileMenu?.classList.contains("hidden") ?? true;
-  isHidden ? openMobileMenu() : closeMobileMenu();
+  mobileMenu?.classList.contains("hidden") ? openMobileMenu() : closeMobileMenu();
 });
 
-// Close drawer when any mobile nav link is tapped
-const mobileNavLinks = mobileMenu?.querySelectorAll("a");
-mobileNavLinks?.forEach((link) => {
+// Close the drawer when any mobile nav link is tapped
+mobileMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
 });
 
-// ── Active nav highlighting via IntersectionObserver ─────────────────────────
+// ── Active nav highlighting ───────────────────────────────────────────────────
+// Uses IntersectionObserver so the header nav underlines the section currently
+// visible in the viewport.
 
 const allNavLinks = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll("section[id]");
@@ -42,45 +70,79 @@ function setActiveLink(sectionId) {
   });
 }
 
-const observerOptions = {
-  // Subtract the sticky header height (~72px) from the top so links activate
-  // when the section title is just below the header.
-  rootMargin: "-72px 0px -40% 0px",
-  threshold: 0,
-};
-
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const id = entry.target.getAttribute("id");
-      if (id) {
-        state.activeSection = id;
-        setActiveLink(id);
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        if (id) setActiveLink(id);
       }
-    }
-  });
-}, observerOptions);
+    });
+  },
+  {
+    // Offset by the sticky header height (~72 px) and ignore the bottom 40 %
+    // so that the link activates when the section title is just below the header.
+    rootMargin: "-72px 0px -40% 0px",
+    threshold: 0,
+  }
+);
 
-sections.forEach((section) => {
-  sectionObserver.observe(section);
-});
+sections.forEach((section) => sectionObserver.observe(section));
 
-// ── Initial active link (page load at top) ───────────────────────────────────
-
+// Set initial active link based on the URL hash (or default to the first section)
 function syncFromHash() {
   const hash = window.location.hash.slice(1);
   if (hash) {
     setActiveLink(hash);
-  } else if (sections.length > 0) {
-    const firstId = sections[0].getAttribute("id");
-    if (firstId) setActiveLink(firstId);
+  } else if (sections.length) {
+    setActiveLink(sections[0].getAttribute("id") ?? "");
   }
 }
 
 syncFromHash();
 window.addEventListener("hashchange", syncFromHash);
 
-// ── Contact form ───────────────────────────────────────────────────────────────
+// ── Section reveal animation ──────────────────────────────────────────────────
+// Adds a `.revealed` class when a section scrolls into view, triggering the
+// CSS `fadeUp` keyframe animation defined in style.css.
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        revealObserver.unobserve(entry.target); // animate only once
+      }
+    });
+  },
+  { threshold: 0.05 }
+);
+
+sections.forEach((section) => revealObserver.observe(section));
+
+// ── Back-to-top button ───────────────────────────────────────────────────────
+// Shows after the user scrolls past the first viewport height.
+
+const backToTop = document.querySelector("#back-to-top");
+
+if (backToTop) {
+  window.addEventListener(
+    "scroll",
+    () => {
+      backToTop.classList.toggle("hidden", window.scrollY < window.innerHeight);
+      backToTop.classList.toggle("flex", window.scrollY >= window.innerHeight);
+    },
+    { passive: true }
+  );
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// ── Contact form ──────────────────────────────────────────────────────────────
+// Submits the form data to Formspree and shows success / error feedback.
+
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqedgvzp";
 
 const contactForm = document.querySelector("#contact-form");
@@ -91,9 +153,10 @@ contactForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!submitBtn || !formStatus) return;
 
+  // Disable the button and show a loading state
   submitBtn.disabled = true;
   submitBtn.innerHTML =
-    '<span class="material-symbols-outlined !text-[18px]">hourglass_empty</span> Sending...';
+    '<span class="material-symbols-outlined !text-[18px]">hourglass_empty</span> Sending\u2026';
 
   try {
     const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -103,7 +166,7 @@ contactForm?.addEventListener("submit", async (e) => {
     });
 
     if (response.ok) {
-      formStatus.textContent = "Message sent! I'll get back to you soon.";
+      formStatus.textContent = "Message sent! I\u2019ll get back to you soon.";
       formStatus.className =
         "text-center text-sm py-2.5 px-4 rounded-lg font-medium bg-green-900/40 border border-green-700/50 text-green-400";
       contactForm.reset();

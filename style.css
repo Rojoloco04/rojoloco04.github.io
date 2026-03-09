@@ -1,40 +1,133 @@
-/* style.css — Global styles to complement Tailwind CSS */
+/*
+ * style.css — Custom styles complementing Tailwind CSS
+ *
+ * Layout:
+ *   1. Theme CSS custom properties (light + dark)
+ *   2. Base / reset helpers
+ *   3. Custom scrollbar
+ *   4. Material Symbols alignment fix
+ *   5. Section reveal animation
+ *   6. Light-mode colour overrides (needed because Tailwind utility
+ *      classes like `text-white` are static — we remap them via
+ *      !important so they adapt to the active colour scheme)
+ */
 
-/* Smooth scrolling with offset for the sticky header */
+/* ── 1. Theme CSS variables ──────────────────────────────────────── */
+:root {
+  /* Light-mode palette (baby blue) */
+  --c-base-bg: 219 234 254;  /* #dbeafe  blue-100  */
+  --c-surface:  255 255 255; /* #ffffff  white     */
+  --c-border:   191 219 254; /* #bfdbfe  blue-200  */
+  --c-text-hi:  15 23 42;    /* #0f172a  slate-900 */
+  --c-text-lo:  71 85 105;   /* #475569  slate-600 */
+  --c-primary:  37 99 235;   /* #2563eb  blue-600  */
+}
+
+html.dark {
+  /* Dark-mode palette */
+  --c-base-bg: 16 22 34;     /* #101622 */
+  --c-surface:  26 35 50;    /* #1a2332 */
+  --c-border:   35 47 72;    /* #232f48 */
+  --c-text-hi:  255 255 255; /* white   */
+  --c-text-lo:  146 164 201; /* #92a4c9 */
+  --c-primary:  19 91 236;   /* #135bec */
+}
+
+/* ── 2. Base ─────────────────────────────────────────────────────── */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
+/* Offset anchors so they clear the sticky header */
 section {
-    scroll-margin-top: 80px;
+  scroll-margin-top: 80px;
 }
 
-/* Custom scrollbar — webkit browsers */
+/* ── 3. Custom scrollbar (Webkit) ────────────────────────────────── */
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #101622;
+  background: rgb(var(--c-base-bg));
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #232f48;
-    border-radius: 3px;
-    transition: background 0.2s ease;
+  background: rgb(var(--c-border));
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #135bec;
+  background: rgb(var(--c-primary));
 }
 
-/* Prevent layout shift when scrollbar appears/disappears */
+/* Reserve scrollbar space to avoid layout shift */
 body {
-    scrollbar-gutter: stable;
+  scrollbar-gutter: stable;
 }
 
-/* Material Symbols vertical alignment fix */
+/* ── 4. Material Symbols alignment ───────────────────────────────── */
 .material-symbols-outlined {
-    vertical-align: middle;
-    line-height: 1;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* ── 5. Section reveal animation ─────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  opacity: 0;
+}
+
+section.revealed {
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+/* ── 6. Light-mode colour overrides ──────────────────────────────── */
+/*
+ * Tailwind's utility classes (text-white, text-slate-*) are hardcoded.
+ * These overrides remap them to our CSS-variable palette so the same
+ * markup works in both light and dark mode without duplicating classes.
+ */
+
+/* Headings: text-white → dark heading colour */
+html:not(.dark) .text-white {
+  color: rgb(var(--c-text-hi)) !important;
+}
+
+/* Keep white text on primary-bg buttons */
+html:not(.dark) .bg-primary.text-white {
+  color: white !important;
+}
+
+/* Keep white text when hovering onto primary bg (footer chips) */
+html:not(.dark) .hover\:bg-primary:hover {
+  color: white !important;
+}
+
+/* Active / hovered nav links → primary instead of white */
+html:not(.dark) .nav-link.text-white,
+html:not(.dark) .nav-link:hover {
+  color: rgb(var(--c-primary)) !important;
+}
+
+/* Remap Tailwind slate utilities to theme variables */
+html:not(.dark) .text-slate-100 { color: rgb(var(--c-text-hi)) !important; }
+html:not(.dark) .text-slate-300 { color: rgb(var(--c-text-lo)) !important; }
+
+/* Project-card tech-tag badges */
+html:not(.dark) .bg-white\/5 {
+  background-color: rgba(37, 99, 235, 0.08) !important;
+}
+html:not(.dark) .border-white\/10 {
+  border-color: rgb(var(--c-border)) !important;
+}
+
+/* Light-mode form inputs — stronger text contrast */
+html:not(.dark) input,
+html:not(.dark) textarea {
+  color: rgb(var(--c-text-hi)) !important;
 }

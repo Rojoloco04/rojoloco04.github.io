@@ -4,8 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jack Parrack — Computer Engineering student with experience in software development, hardware design, and embedded systems." />
   <title>Jack Parrack | Portfolio</title>
   <link rel="icon" type="image/png" href="images/icon.png" />
+
+  <!-- Prevent flash of wrong colour scheme -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t === 'light') document.documentElement.classList.remove('dark');
+      else document.documentElement.classList.add('dark');
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,13 +31,13 @@
       theme: {
         extend: {
           colors: {
-            "primary":          "#135bec",
+            "primary":          "rgb(var(--c-primary) / <alpha-value>)",
             "primary-fore":     "#ffffff",
             "background-light": "#f6f6f8",
-            "background-dark":  "#101622",
-            "surface-dark":     "#1a2332",
-            "border-dark":      "#232f48",
-            "text-secondary":   "#92a4c9",
+            "background-dark":  "rgb(var(--c-base-bg) / <alpha-value>)",
+            "surface-dark":     "rgb(var(--c-surface) / <alpha-value>)",
+            "border-dark":      "rgb(var(--c-border) / <alpha-value>)",
+            "text-secondary":   "rgb(var(--c-text-lo) / <alpha-value>)",
           },
           fontFamily: {
             "display": ["Inter", "sans-serif"],
@@ -91,9 +101,13 @@
           <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#skills">Skills</a>
         </div>
         <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
-           class="flex items-center justify-center rounded-lg border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-white text-sm font-medium h-10 px-5 tracking-[0.015em]">
+           class="flex items-center justify-center rounded-lg border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-primary text-sm font-medium h-10 px-5 tracking-[0.015em]">
           Resume
         </a>
+        <button id="theme-toggle" aria-label="Toggle theme"
+           class="flex items-center justify-center size-10 rounded-lg border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-primary">
+          <span id="theme-icon" class="material-symbols-outlined !text-[20px]">light_mode</span>
+        </button>
         <a href="#contact"
            class="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold h-10 px-6 tracking-[0.015em]">
           Contact
@@ -115,8 +129,13 @@
         <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#activities">Activities</a>
         <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#education">Education</a>
         <a class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#skills">Skills</a>
+        <button id="mobile-theme-toggle"
+           class="flex items-center gap-2 text-text-secondary hover:text-primary transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50 text-left w-full">
+          <span id="mobile-theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
+          <span id="mobile-theme-label">Light Mode</span>
+        </button>
         <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
-           class="nav-link text-text-secondary hover:text-white transition-colors text-sm font-medium py-2.5">
+           class="nav-link text-text-secondary hover:text-primary transition-colors text-sm font-medium py-2.5">
           Resume
         </a>
         <a href="#contact"
@@ -137,7 +156,7 @@
 
           <!-- Background: hero image + dark overlay -->
           <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/hero.jpg');"></div>
-          <div class="absolute inset-0 z-0 bg-gradient-to-t from-background-dark via-background-dark/75 to-background-dark/40"></div>
+          <div class="absolute inset-0 z-0 bg-gradient-to-t from-background-dark via-background-dark/90 to-background-dark/60"></div>
 
           <!-- Content -->
           <div class="relative z-10 flex flex-col gap-4 text-left max-w-2xl">
@@ -200,7 +219,7 @@
             <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
               <div class="absolute inset-0 bg-gradient-to-br from-violet-900/50 via-background-dark to-indigo-900/30 group-hover:scale-105 transition-transform duration-500"></div>
               <div class="absolute inset-0 flex items-center justify-center opacity-[0.15]">
-                <span class="material-symbols-outlined text-white" style="font-size:100px;">precision_manufacturing</span>
+                <span class="material-symbols-outlined text-white !text-[100px]">precision_manufacturing</span>
               </div>
             </div>
             <div class="flex flex-col gap-2 p-6">
@@ -236,7 +255,7 @@
             <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
               <div class="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-background-dark to-cyan-900/30 group-hover:scale-105 transition-transform duration-500"></div>
               <div class="absolute inset-0 flex items-center justify-center opacity-[0.15]">
-                <span class="material-symbols-outlined text-white" style="font-size:100px;">location_on</span>
+                <span class="material-symbols-outlined text-white !text-[100px]">location_on</span>
               </div>
             </div>
             <div class="flex flex-col gap-2 p-6">
@@ -274,7 +293,7 @@
             <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
               <div class="absolute inset-0 bg-gradient-to-br from-orange-900/50 via-background-dark to-amber-900/30 group-hover:scale-105 transition-transform duration-500"></div>
               <div class="absolute inset-0 flex items-center justify-center opacity-[0.15]">
-                <span class="material-symbols-outlined text-white" style="font-size:100px;">restaurant</span>
+                <span class="material-symbols-outlined text-white !text-[100px]">restaurant</span>
               </div>
             </div>
             <div class="flex flex-col gap-2 p-6">
@@ -311,7 +330,7 @@
             <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
               <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/50 via-background-dark to-teal-900/30 group-hover:scale-105 transition-transform duration-500"></div>
               <div class="absolute inset-0 flex items-center justify-center opacity-[0.15]">
-                <span class="material-symbols-outlined text-white" style="font-size:100px;">videogame_asset</span>
+                <span class="material-symbols-outlined text-white !text-[100px]">videogame_asset</span>
               </div>
             </div>
             <div class="flex flex-col gap-2 p-6">
@@ -518,11 +537,11 @@
             <div class="card">
               <div class="flex flex-col md:flex-row md:justify-between md:items-start">
                 <div class="flex items-start gap-3">
-                    <img src="images/slu-vsa.jpg" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="VSA">
-                    <div>
-                      <h3 class="text-white text-lg font-semibold leading-normal">Member</h3>
-                      <p class="text-primary font-medium text-sm mt-0.5">Vietnamese Student Association (VSA) · Saint Louis University</p>
-                    </div>
+                  <img src="images/slu-vsa.jpg" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="VSA">
+                  <div>
+                    <h3 class="text-white text-lg font-semibold leading-normal">Member</h3>
+                    <p class="text-primary font-medium text-sm mt-0.5">Vietnamese Student Association (VSA) · Saint Louis University</p>
+                  </div>
                 </div>
                 <div class="date-badge">
                   <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Jan. 2026 – Present</p>
@@ -542,11 +561,11 @@
             <div class="card">
               <div class="flex flex-col md:flex-row md:justify-between md:items-start">
                 <div class="flex items-start gap-3">
-                    <img src="images/slu-ksa.jpg" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="KSA">
-                    <div>
-                      <h3 class="text-white text-lg font-semibold leading-normal">Member</h3>
-                      <p class="text-primary font-medium text-sm mt-0.5">Korean Student Association (KSA) · Saint Louis University</p>
-                    </div>
+                  <img src="images/slu-ksa.jpg" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="KSA">
+                  <div>
+                    <h3 class="text-white text-lg font-semibold leading-normal">Member</h3>
+                    <p class="text-primary font-medium text-sm mt-0.5">Korean Student Association (KSA) · Saint Louis University</p>
+                  </div>
                 </div>
                 <div class="date-badge">
                   <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
@@ -673,7 +692,7 @@
                 Cloud & DevOps
               </h4>
               <div class="flex flex-wrap gap-2">
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/amazonaws/FF9900" class="h-4 w-4 flex-shrink-0" alt="">AWS</span>
+                <span class="skill-tag"><img src="https://api.iconify.design/logos/aws.svg" class="h-4 w-4 flex-shrink-0" alt="">AWS</span>
                 <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Git</span>
                 <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Linux</span>
               </div>
@@ -810,7 +829,11 @@
       <p class="text-text-secondary text-sm opacity-50">© 2026 Jack Parrack. All rights reserved.</p>
     </div>
   </footer>
-
+  <!-- Back-to-top button -->
+  <button id="back-to-top" aria-label="Back to top"
+    class="fixed bottom-6 right-6 z-50 hidden items-center justify-center size-10 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-all">
+    <span class="material-symbols-outlined !text-[20px]">arrow_upward</span>
+  </button>
 </div>
 
 <script src="script.js"></script>
