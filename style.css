@@ -63,18 +63,7 @@ body {
   scrollbar-gutter: stable;
 }
 
-/* ── 4. Hero responsive background ──────────────────────────────── */
-.hero-bg {
-  background-image: url('images/hero-mobile.jpg');
-}
-
-@media (min-width: 768px) {
-  .hero-bg {
-    background-image: url('images/hero.jpg');
-  }
-}
-
-/* ── 5. Scroll-reveal animation ──────────────────────────────────── */
+/* ── 4. Scroll-reveal animation ──────────────────────────────────── */
 @keyframes fadeUp {
   from {
     opacity: 0;
