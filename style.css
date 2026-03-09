@@ -35,6 +35,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow-x: clip;
+}
+
 /* Offset anchors so they clear the sticky header */
 section {
   scroll-margin-top: 80px;
