@@ -135,14 +135,9 @@
       <section id="about" class="py-12 md:py-20">
         <div class="relative flex min-h-[520px] flex-col gap-6 overflow-hidden rounded-xl bg-surface-dark px-6 pb-12 pt-48 md:justify-end md:px-10 md:pt-10 shadow-2xl ring-1 ring-white/5 group">
 
-          <!-- Background: gradient + grid -->
-          <div class="absolute inset-0 z-0 bg-gradient-to-br from-primary/15 via-background-dark to-surface-dark"></div>
-          <div class="absolute inset-0 z-0 opacity-[0.07]"
-               style="background-image: linear-gradient(#92a4c9 1px, transparent 1px), linear-gradient(90deg, #92a4c9 1px, transparent 1px); background-size: 48px 48px;"></div>
-
-          <!-- Ambient glow blobs -->
-          <div class="absolute top-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-          <div class="absolute bottom-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
+          <!-- Background: hero image + dark overlay -->
+          <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/hero.jpg');"></div>
+          <div class="absolute inset-0 z-0 bg-gradient-to-t from-background-dark via-background-dark/75 to-background-dark/40"></div>
 
           <!-- Content -->
           <div class="relative z-10 flex flex-col gap-4 text-left max-w-2xl">
@@ -167,6 +162,24 @@
                  class="flex items-center justify-center gap-2 rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-surface-dark hover:border-text-secondary transition-all text-text-secondary hover:text-white text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
                 <span class="material-symbols-outlined text-[18px]">download</span>
                 Resume
+              </a>
+            </div>
+
+            <!-- Social links -->
+            <div class="flex items-center gap-3 pt-1">
+              <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center justify-center size-10 rounded-full border border-border-dark bg-surface-dark/50 text-text-secondary hover:text-white hover:border-primary/50 transition-all backdrop-blur-sm"
+                 aria-label="LinkedIn">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              <a href="https://github.com/rojoloco04" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center justify-center size-10 rounded-full border border-border-dark bg-surface-dark/50 text-text-secondary hover:text-white hover:border-primary/50 transition-all backdrop-blur-sm"
+                 aria-label="GitHub">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                </svg>
               </a>
             </div>
           </div>
