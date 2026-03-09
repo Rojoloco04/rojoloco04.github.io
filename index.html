@@ -57,7 +57,7 @@
   <!-- Custom component classes (processed by Tailwind CDN) -->
   <style type="text/tailwindcss">
     .skill-tag {
-      @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background-dark border border-border-dark text-sm font-medium text-text-secondary hover:border-primary/50 hover:text-primary transition-colors cursor-default;
+      @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background-dark border border-border-dark text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors cursor-default;
     }
     .tech-tag {
       @apply px-2.5 py-1 rounded-md bg-primary/10 text-xs font-medium text-text-secondary border border-border-dark;
@@ -160,7 +160,7 @@
 
           <!-- Background: hero image + dark overlay -->
           <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/hero.jpg');"></div>
-          <div class="absolute inset-0 z-0 bg-gradient-to-t from-background-dark via-background-dark/90 to-background-dark/60"></div>
+          <div class="absolute inset-0 z-0 bg-gradient-to-t from-background-dark/90 via-background-dark/60 to-background-dark/30"></div>
 
           <!-- Content -->
           <div class="relative z-10 flex flex-col gap-4 text-left max-w-2xl">
@@ -182,7 +182,7 @@
                 Contact Me
               </a>
               <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center justify-center gap-2 rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-surface-dark hover:border-text-secondary transition-all text-text-secondary hover:text-foreground text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
+                 class="flex items-center justify-center gap-2 rounded-lg border border-border-dark bg-surface-dark/50 hover:bg-white/20 hover:border-text-secondary transition-all text-text-secondary hover:text-foreground text-base font-bold h-12 px-8 tracking-[0.015em] backdrop-blur-sm">
                 <span class="material-symbols-outlined text-[18px]">download</span>
                 Resume
               </a>
