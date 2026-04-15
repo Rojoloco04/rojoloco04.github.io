@@ -6,7 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Jack Parrack — Software Engineer with hands-on experience in software development, hardware/circuit design, and embedded systems." />
   <title>Jack Parrack | Portfolio</title>
+  <link rel="canonical" href="https://rojoloco04.github.io/" />
   <link rel="icon" type="image/png" href="images/icon.png" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rojoloco04.github.io/" />
+  <meta property="og:title" content="Jack Parrack | Portfolio" />
+  <meta property="og:description" content="Software Engineer with hands-on experience in software development, hardware/circuit design, and embedded systems." />
+  <meta property="og:image" content="https://rojoloco04.github.io/images/headshot.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jack Parrack | Portfolio" />
+  <meta name="twitter:description" content="Software Engineer with hands-on experience in software development, hardware/circuit design, and embedded systems." />
+  <meta name="twitter:image" content="https://rojoloco04.github.io/images/headshot.jpg" />
 
   <!-- Prevent flash of wrong colour scheme -->
   <script>
@@ -66,6 +78,16 @@
     .date-badge {
       @apply mt-2 md:mt-0 px-3 py-1 rounded-full bg-background-dark border border-border-dark w-fit;
     }
+    .skill-item {
+      @apply flex items-center gap-2 text-text-secondary text-sm;
+    }
+    .skill-item > .material-symbols-outlined {
+      @apply text-primary !text-[14px] shrink-0;
+    }
+    .sr-only {
+      @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+      clip: rect(0, 0, 0, 0);
+    }
   </style>
 
   <link rel="stylesheet" href="style.css" />
@@ -80,8 +102,8 @@
       <div class="flex items-center justify-between px-4 py-3 md:px-5 relative">
 
         <!-- Logo -->
-        <a href="#about" class="flex items-center gap-2.5 text-foreground shrink-0">
-          <img src="images/icon.png" alt="Jack Parrack" class="h-7 w-7 rounded-lg">
+        <a href="#about" class="flex items-center gap-2.5 text-foreground shrink-0" aria-label="Jack Parrack — home">
+          <img src="images/icon.png" alt="" class="h-7 w-7 rounded-lg">
           <span class="text-sm font-bold leading-tight tracking-[-0.015em]">Jack Parrack</span>
         </a>
 
@@ -113,7 +135,8 @@
              class="flex items-center justify-center size-8 rounded-lg text-text-secondary hover:text-foreground transition-colors">
             <span id="mobile-theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
           </button>
-          <button id="mobile-menu-button" class="text-foreground p-1.5" aria-label="Toggle menu">
+          <button id="mobile-menu-button" class="text-foreground p-1.5" aria-label="Toggle menu"
+            aria-expanded="false" aria-controls="mobile-menu">
             <span class="material-symbols-outlined !text-[20px]">menu</span>
           </button>
         </div>
@@ -123,10 +146,10 @@
   </header>
 
   <!-- Mobile backdrop -->
-  <div id="mobile-backdrop" class="md:hidden fixed inset-0 z-40 bg-black/50"></div>
+  <div id="mobile-backdrop" class="md:hidden fixed inset-0 z-40 bg-black/50" aria-hidden="true"></div>
 
   <!-- Mobile menu drawer -->
-  <div id="mobile-menu" class="md:hidden fixed left-4 right-4 z-50 rounded-3xl bg-surface-dark/95 backdrop-blur-md border border-border-dark/50 overflow-hidden">
+  <div id="mobile-menu" inert class="md:hidden fixed left-4 right-4 z-50 rounded-3xl bg-surface-dark/95 backdrop-blur-md border border-border-dark/50 overflow-hidden">
     <nav class="flex flex-col px-5 py-3 gap-0.5">
       <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="#about">About</a>
       <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="#projects">Projects</a>
@@ -202,7 +225,8 @@
     </section>
 
     <!-- ── Projects ───────────────────────────────────────────────────── -->
-    <section id="projects" class="reveal px-3 md:px-4 py-3">
+    <section id="projects" class="reveal px-3 md:px-4 py-3" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="sr-only">Projects</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
 
         <!-- RAPID — full-width top tile -->
@@ -298,7 +322,7 @@
             <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
               <div class="flex items-start justify-between gap-2">
                 <div>
-                  <h3 class="text-white text-base font-bold leading-tight">declare &#123; Life &#125;</h3>
+                  <h3 class="text-white text-base font-bold leading-tight">declare { Life }</h3>
                   <div class="flex items-center gap-1.5 mt-0.5">
                     <span class="material-symbols-outlined text-yellow-400 !text-[12px]">emoji_events</span>
                     <span class="text-yellow-400 text-xs font-semibold">DevFest WashU 2026 · 2nd Place, Best Use of Featherless</span>
@@ -315,7 +339,7 @@
           <div class="flex md:hidden absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 px-4 pb-4 flex-col justify-end">
             <div class="flex items-center justify-between gap-2">
               <div>
-                <h3 class="text-white text-base font-bold leading-tight">declare &#123; Life &#125;</h3>
+                <h3 class="text-white text-base font-bold leading-tight">declare { Life }</h3>
                 <div class="flex items-center gap-1.5 mt-0.5">
                   <span class="material-symbols-outlined text-yellow-400 !text-[12px]">emoji_events</span>
                   <span class="text-yellow-400 text-xs font-semibold">2nd Place · Best Use of Featherless</span>
@@ -405,9 +429,9 @@
     </section>
 
     <!-- ── Experience ─────────────────────────────────────────────────── -->
-    <section id="experience" class="reveal bg-surface-dark">
+    <section id="experience" class="reveal bg-surface-dark" aria-labelledby="experience-heading">
       <div class="mx-auto max-w-[1200px] px-4 md:px-10 py-10">
-        <p class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-6">Experience</p>
+        <h2 id="experience-heading" class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-6">Experience</h2>
 
         <div class="flex flex-col border-l border-border-dark">
 
@@ -494,9 +518,9 @@
     </section>
 
     <!-- ── Education & Activities ───────────────────────────────────── -->
-    <section id="education" class="reveal">
+    <section id="education" class="reveal" aria-labelledby="education-heading">
       <div class="mx-auto max-w-[1200px] px-4 md:px-10 py-10">
-        <p class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-6">Education & Activities</p>
+        <h2 id="education-heading" class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-6">Education & Activities</h2>
 
         <div class="flex flex-col border-l border-border-dark">
 
@@ -535,31 +559,31 @@
               <p class="text-[10px] font-medium uppercase tracking-widest text-text-secondary/50 mb-2.5">Activities</p>
               <ul class="flex flex-col gap-2">
                 <li class="flex items-start justify-between gap-2">
-                  <span class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">sports_esports</span>President &amp; Teams Coordinator · SLU Esports</span>
+                  <span class="skill-item"><span class="material-symbols-outlined">sports_esports</span>President &amp; Teams Coordinator · SLU Esports</span>
                   <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
-                  <span class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">electrical_services</span>Vice President · IEEE</span>
+                  <span class="skill-item"><span class="material-symbols-outlined">electrical_services</span>Vice President · IEEE</span>
                   <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2025 – Present</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
-                  <span class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">school</span>First-Year Mentor · School of Science &amp; Engineering</span>
+                  <span class="skill-item"><span class="material-symbols-outlined">school</span>First-Year Mentor · School of Science &amp; Engineering</span>
                   <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
-                  <span class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">flight</span>Study Abroad Peer Mentor</span>
+                  <span class="skill-item"><span class="material-symbols-outlined">flight</span>Study Abroad Peer Mentor</span>
                   <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
-                  <span class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">groups</span>Member · Vietnamese Student Association</span>
+                  <span class="skill-item"><span class="material-symbols-outlined">groups</span>Member · Vietnamese Student Association</span>
                   <span class="text-text-secondary/50 text-xs whitespace-nowrap">Jan. 2026 – Present</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
-                  <span class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">groups</span>Member · Korean Student Association</span>
+                  <span class="skill-item"><span class="material-symbols-outlined">groups</span>Member · Korean Student Association</span>
                   <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
-                  <span class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">music_note</span>String Orchestra</span>
+                  <span class="skill-item"><span class="material-symbols-outlined">music_note</span>String Orchestra</span>
                   <span class="text-text-secondary/50 text-xs whitespace-nowrap">Spring 2023</span>
                 </li>
               </ul>
@@ -604,17 +628,17 @@
               <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
                 <span class="material-symbols-outlined text-text-secondary !text-[18px]">code</span>
               </div>
-              <h4 class="text-foreground font-bold text-sm mb-2">Languages</h4>
+              <h3 class="text-foreground font-bold text-sm mb-2">Languages</h3>
               <ul class="space-y-1.5">
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">terminal</span>C</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">terminal</span>C++</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">coffee</span>Java</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">code_blocks</span>Python</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">javascript</span>TypeScript</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">javascript</span>JavaScript</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">storage</span>SQL</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">memory</span>Assembly</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">html</span>HTML/CSS</li>
+                <li class="skill-item"><span class="material-symbols-outlined">terminal</span>C</li>
+                <li class="skill-item"><span class="material-symbols-outlined">terminal</span>C++</li>
+                <li class="skill-item"><span class="material-symbols-outlined">coffee</span>Java</li>
+                <li class="skill-item"><span class="material-symbols-outlined">code_blocks</span>Python</li>
+                <li class="skill-item"><span class="material-symbols-outlined">javascript</span>TypeScript</li>
+                <li class="skill-item"><span class="material-symbols-outlined">javascript</span>JavaScript</li>
+                <li class="skill-item"><span class="material-symbols-outlined">storage</span>SQL</li>
+                <li class="skill-item"><span class="material-symbols-outlined">memory</span>Assembly</li>
+                <li class="skill-item"><span class="material-symbols-outlined">html</span>HTML/CSS</li>
               </ul>
             </div>
 
@@ -623,15 +647,15 @@
               <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
                 <span class="material-symbols-outlined text-text-secondary !text-[18px]">layers</span>
               </div>
-              <h4 class="text-foreground font-bold text-sm mb-2">Frameworks & Tools</h4>
+              <h3 class="text-foreground font-bold text-sm mb-2">Frameworks & Tools</h3>
               <ul class="space-y-1.5">
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">bolt</span>Spring Boot</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">change_history</span>Angular</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">phone_android</span>React Native</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">rocket_launch</span>Expo</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">api</span>REST API</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">database</span>Hibernate</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">database</span>Spring JPA</li>
+                <li class="skill-item"><span class="material-symbols-outlined">bolt</span>Spring Boot</li>
+                <li class="skill-item"><span class="material-symbols-outlined">change_history</span>Angular</li>
+                <li class="skill-item"><span class="material-symbols-outlined">phone_android</span>React Native</li>
+                <li class="skill-item"><span class="material-symbols-outlined">rocket_launch</span>Expo</li>
+                <li class="skill-item"><span class="material-symbols-outlined">api</span>REST API</li>
+                <li class="skill-item"><span class="material-symbols-outlined">database</span>Hibernate</li>
+                <li class="skill-item"><span class="material-symbols-outlined">database</span>Spring JPA</li>
               </ul>
             </div>
 
@@ -640,13 +664,13 @@
               <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
                 <span class="material-symbols-outlined text-text-secondary !text-[18px]">cloud</span>
               </div>
-              <h4 class="text-foreground font-bold text-sm mb-2">Cloud & DevOps</h4>
+              <h3 class="text-foreground font-bold text-sm mb-2">Cloud & DevOps</h3>
               <ul class="space-y-1.5">
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">cloud</span>Azure</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">cloud_upload</span>AWS</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">table_rows</span>PostgreSQL</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">merge</span>Git</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">terminal</span>Linux</li>
+                <li class="skill-item"><span class="material-symbols-outlined">cloud</span>Azure</li>
+                <li class="skill-item"><span class="material-symbols-outlined">cloud_upload</span>AWS</li>
+                <li class="skill-item"><span class="material-symbols-outlined">table_rows</span>PostgreSQL</li>
+                <li class="skill-item"><span class="material-symbols-outlined">merge</span>Git</li>
+                <li class="skill-item"><span class="material-symbols-outlined">terminal</span>Linux</li>
               </ul>
             </div>
 
@@ -655,13 +679,13 @@
               <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
                 <span class="material-symbols-outlined text-text-secondary !text-[18px]">memory</span>
               </div>
-              <h4 class="text-foreground font-bold text-sm mb-2">Hardware</h4>
+              <h3 class="text-foreground font-bold text-sm mb-2">Hardware</h3>
               <ul class="space-y-1.5">
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">memory</span>VHDL</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">developer_board</span>FPGA</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">memory</span>ARM &amp; AVR Microcontrollers</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">electrical_services</span>Arduino</li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">devices</span>Raspberry Pi</li>
+                <li class="skill-item"><span class="material-symbols-outlined">memory</span>VHDL</li>
+                <li class="skill-item"><span class="material-symbols-outlined">developer_board</span>FPGA</li>
+                <li class="skill-item"><span class="material-symbols-outlined">memory</span>ARM &amp; AVR Microcontrollers</li>
+                <li class="skill-item"><span class="material-symbols-outlined">electrical_services</span>Arduino</li>
+                <li class="skill-item"><span class="material-symbols-outlined">devices</span>Raspberry Pi</li>
               </ul>
             </div>
 
@@ -670,12 +694,12 @@
               <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
                 <span class="material-symbols-outlined text-text-secondary !text-[18px]">language</span>
               </div>
-              <h4 class="text-foreground font-bold text-sm mb-2">Human Languages</h4>
+              <h3 class="text-foreground font-bold text-sm mb-2">Human Languages</h3>
               <ul class="space-y-1.5">
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">flag</span>English <span class="text-xs text-text-secondary/60 ml-1">Native</span></li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">flag</span>Spanish <span class="text-xs text-text-secondary/60 ml-1">Advanced</span></li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">flag</span>Korean <span class="text-xs text-text-secondary/60 ml-1">Intermediate</span></li>
-                <li class="flex items-center gap-2 text-text-secondary text-sm"><span class="material-symbols-outlined text-primary !text-[14px] shrink-0">flag</span>Chinese <span class="text-xs text-text-secondary/60 ml-1">Beginner</span></li>
+                <li class="skill-item"><span class="material-symbols-outlined">flag</span>English <span class="text-xs text-text-secondary/60 ml-1">Native</span></li>
+                <li class="skill-item"><span class="material-symbols-outlined">flag</span>Spanish <span class="text-xs text-text-secondary/60 ml-1">Advanced</span></li>
+                <li class="skill-item"><span class="material-symbols-outlined">flag</span>Korean <span class="text-xs text-text-secondary/60 ml-1">Intermediate</span></li>
+                <li class="skill-item"><span class="material-symbols-outlined">flag</span>Chinese <span class="text-xs text-text-secondary/60 ml-1">Beginner</span></li>
               </ul>
             </div>
 
@@ -739,13 +763,8 @@
 
     </div>
   </footer>
-  <!-- Back-to-top button -->
-  <button id="back-to-top" aria-label="Back to top"
-    class="fixed bottom-6 right-6 z-50 hidden items-center justify-center size-10 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-all">
-    <span class="material-symbols-outlined !text-[20px]">arrow_upward</span>
-  </button>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>

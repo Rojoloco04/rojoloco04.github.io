@@ -36,6 +36,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   overflow-x: clip;
   scrollbar-gutter: stable;
 }
@@ -117,18 +118,18 @@ html:not(.dark) #site-header {
 }
 
 #site-header.nav-over-light .nav-link,
-#site-header.nav-over-light a:not([href="#contact"]),
+#site-header.nav-over-light a:not([href="contact.html"]),
 #site-header.nav-over-light button {
   color: rgb(71 85 105); /* slate-600 */
 }
 
 #site-header.nav-over-light .nav-link:hover,
-#site-header.nav-over-light a:not([href="#contact"]):hover,
+#site-header.nav-over-light a:not([href="contact.html"]):hover,
 #site-header.nav-over-light button:hover {
   color: rgb(15 23 42); /* slate-900 */
 }
 
-#site-header.nav-over-light a[href="#contact"] {
+#site-header.nav-over-light a[href="contact.html"] {
   background-color: rgb(15 23 42);
   border-color: rgb(15 23 42);
   color: #fff;

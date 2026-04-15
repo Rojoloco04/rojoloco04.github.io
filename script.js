@@ -39,6 +39,8 @@ function openMobileMenu() {
   mobileMenu?.classList.add("menu-open");
   mobileBackdrop?.classList.add("menu-open");
   siteHeader?.classList.add("menu-open");
+  mobileMenu?.removeAttribute("inert");
+  mobileMenuButton?.setAttribute("aria-expanded", "true");
   if (menuIcon) menuIcon.textContent = "close";
 }
 
@@ -46,6 +48,8 @@ function closeMobileMenu() {
   mobileMenu?.classList.remove("menu-open");
   mobileBackdrop?.classList.remove("menu-open");
   siteHeader?.classList.remove("menu-open");
+  mobileMenu?.setAttribute("inert", "");
+  mobileMenuButton?.setAttribute("aria-expanded", "false");
   if (menuIcon) menuIcon.textContent = "menu";
 }
 
@@ -95,7 +99,12 @@ sections.forEach((section) => sectionObserver.observe(section));
 
 // Set initial active link based on the URL hash (or default to the first section)
 function syncFromHash() {
-  const hash = window.location.hash.slice(1);
+  let hash = "";
+  try {
+    hash = decodeURIComponent(window.location.hash.slice(1));
+  } catch {
+    hash = window.location.hash.slice(1);
+  }
   if (hash) {
     setActiveLink(hash);
   } else if (sections.length) {
@@ -126,26 +135,6 @@ const revealObserver = new IntersectionObserver(
 
 revealElements.forEach((el) => revealObserver.observe(el));
 
-// ── Back-to-top button ───────────────────────────────────────────────────────
-// Shows after the user scrolls past the first viewport height.
-
-const backToTop = document.querySelector("#back-to-top");
-
-if (backToTop) {
-  window.addEventListener(
-    "scroll",
-    () => {
-      backToTop.classList.toggle("hidden", window.scrollY < window.innerHeight);
-      backToTop.classList.toggle("flex", window.scrollY >= window.innerHeight);
-    },
-    { passive: true }
-  );
-
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
 // ── Hero typewriter ───────────────────────────────────────────────────────────
 // Cycles through phrases by typing and deleting them one character at a time.
 
@@ -165,13 +154,20 @@ if (heroTyped) {
   let isDeleting = false;
 
   function typeHero() {
+    // Pause when the tab is hidden to save battery
+    if (document.hidden) {
+      setTimeout(typeHero, 500);
+      return;
+    }
+
     const phrase = HERO_PHRASES[phraseIndex];
 
     heroTyped.textContent = isDeleting
       ? phrase.substring(0, charIndex - 1)
       : phrase.substring(0, charIndex + 1);
 
-    isDeleting ? charIndex-- : charIndex++;
+    if (isDeleting) charIndex--;
+    else charIndex++;
 
     let delay = isDeleting ? 50 : 90;
 
@@ -206,6 +202,7 @@ if (siteHeader && lightBgSections.length) {
       entries.forEach((entry) => {
         lightCount += entry.isIntersecting ? 1 : -1;
       });
+      lightCount = Math.max(0, lightCount);
       siteHeader.classList.toggle("nav-over-light", lightCount > 0);
     },
     { rootMargin: "-64px 0px 0px 0px", threshold: 0 }
@@ -226,6 +223,10 @@ const formStatus = document.querySelector("#form-status");
 contactForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!submitBtn || !formStatus) return;
+
+  // Clear any stale status from a previous submit
+  formStatus.textContent = "";
+  formStatus.className = "hidden text-center text-sm py-2.5 px-4 rounded-lg font-medium";
 
   // Disable the button and show a loading state
   submitBtn.disabled = true;

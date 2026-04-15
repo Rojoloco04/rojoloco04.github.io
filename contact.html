@@ -6,7 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Get in touch with Jack Parrack." />
   <title>Contact · Jack Parrack</title>
+  <link rel="canonical" href="https://rojoloco04.github.io/contact.html" />
   <link rel="icon" type="image/png" href="images/icon.png" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rojoloco04.github.io/contact.html" />
+  <meta property="og:title" content="Contact · Jack Parrack" />
+  <meta property="og:description" content="Get in touch with Jack Parrack." />
+  <meta property="og:image" content="https://rojoloco04.github.io/images/headshot.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact · Jack Parrack" />
+  <meta name="twitter:description" content="Get in touch with Jack Parrack." />
+  <meta name="twitter:image" content="https://rojoloco04.github.io/images/headshot.jpg" />
 
   <script>
     (function () {
@@ -54,17 +66,17 @@
     <div id="site-header" class="mx-auto max-w-[900px] bg-surface-dark/90 backdrop-blur-md transition-colors duration-300">
       <div class="flex items-center justify-between px-4 py-3 md:px-5 relative">
 
-        <a href="index.html" class="flex items-center gap-2.5 text-foreground shrink-0">
-          <img src="images/icon.png" alt="Jack Parrack" class="h-7 w-7 rounded-lg">
+        <a href="index.html" class="flex items-center gap-2.5 text-foreground shrink-0" aria-label="Jack Parrack — home">
+          <img src="images/icon.png" alt="" class="h-7 w-7 rounded-lg">
           <span class="text-sm font-bold leading-tight tracking-[-0.015em]">Jack Parrack</span>
         </a>
 
         <nav class="hidden md:flex items-center gap-5 absolute left-1/2 -translate-x-1/2">
-          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#about">About</a>
-          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#projects">Projects</a>
-          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#experience">Experience</a>
-          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#education">Education</a>
-          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#skills">Skills</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#about">About</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#projects">Projects</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#experience">Experience</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#education">Education</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#skills">Skills</a>
         </nav>
 
         <div class="hidden md:flex items-center gap-3 shrink-0">
@@ -84,7 +96,8 @@
              class="flex items-center justify-center size-8 rounded-lg text-text-secondary hover:text-foreground transition-colors">
             <span id="mobile-theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
           </button>
-          <button id="mobile-menu-button" class="text-foreground p-1.5" aria-label="Toggle menu">
+          <button id="mobile-menu-button" class="text-foreground p-1.5" aria-label="Toggle menu"
+            aria-expanded="false" aria-controls="mobile-menu">
             <span class="material-symbols-outlined !text-[20px]">menu</span>
           </button>
         </div>
@@ -93,10 +106,10 @@
   </header>
 
   <!-- Mobile backdrop -->
-  <div id="mobile-backdrop" class="md:hidden fixed inset-0 z-40 bg-black/50"></div>
+  <div id="mobile-backdrop" class="md:hidden fixed inset-0 z-40 bg-black/50" aria-hidden="true"></div>
 
   <!-- Mobile menu drawer -->
-  <div id="mobile-menu" class="md:hidden fixed left-4 right-4 z-50 rounded-3xl bg-surface-dark/95 backdrop-blur-md border border-border-dark/50 overflow-hidden">
+  <div id="mobile-menu" inert class="md:hidden fixed left-4 right-4 z-50 rounded-3xl bg-surface-dark/95 backdrop-blur-md border border-border-dark/50 overflow-hidden">
     <nav class="flex flex-col px-5 py-3 gap-0.5">
       <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="index.html#about">About</a>
       <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="index.html#projects">Projects</a>
@@ -140,26 +153,26 @@
           <form id="contact-form" class="flex flex-col gap-8">
 
             <div class="flex flex-col gap-2">
-              <label class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Your Name <span class="text-primary">*</span></label>
-              <input type="text" name="name" required placeholder="Jack Parrack"
+              <label for="contact-name" class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Your Name <span aria-hidden="true" class="text-primary">*</span></label>
+              <input id="contact-name" type="text" name="name" required aria-required="true" autocomplete="name" placeholder="Jack Parrack"
                 class="bg-transparent border-0 border-b border-border-dark focus:border-foreground transition-colors text-foreground text-base py-2.5 px-0 placeholder:text-text-secondary/25 focus:outline-none w-full">
             </div>
 
             <div class="flex flex-col gap-2">
-              <label class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Email <span class="text-primary">*</span></label>
-              <input type="email" name="email" required placeholder="you@example.com"
+              <label for="contact-email" class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Email <span aria-hidden="true" class="text-primary">*</span></label>
+              <input id="contact-email" type="email" name="email" required aria-required="true" autocomplete="email" placeholder="you@example.com"
                 class="bg-transparent border-0 border-b border-border-dark focus:border-foreground transition-colors text-foreground text-base py-2.5 px-0 placeholder:text-text-secondary/25 focus:outline-none w-full">
             </div>
 
             <div class="flex flex-col gap-2">
-              <label class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Subject</label>
-              <input type="text" name="subject" placeholder="Job opportunity, collaboration, etc."
+              <label for="contact-subject" class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Subject</label>
+              <input id="contact-subject" type="text" name="subject" autocomplete="off" placeholder="Job opportunity, collaboration, etc."
                 class="bg-transparent border-0 border-b border-border-dark focus:border-foreground transition-colors text-foreground text-base py-2.5 px-0 placeholder:text-text-secondary/25 focus:outline-none w-full">
             </div>
 
             <div class="flex flex-col gap-2">
-              <label class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Message <span class="text-primary">*</span></label>
-              <textarea name="message" required rows="4"
+              <label for="contact-message" class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Message <span aria-hidden="true" class="text-primary">*</span></label>
+              <textarea id="contact-message" name="message" required aria-required="true" rows="4"
                 placeholder="e.g. I came across your portfolio and would love to connect about an opening on our team."
                 class="bg-transparent border-0 border-b border-border-dark focus:border-foreground transition-colors text-foreground text-base py-2.5 px-0 placeholder:text-text-secondary/25 focus:outline-none resize-none w-full"></textarea>
             </div>
@@ -169,7 +182,7 @@
               Send message
             </button>
 
-            <div id="form-status" class="hidden text-center text-sm py-2.5 px-4 rounded-lg font-medium"></div>
+            <div id="form-status" role="status" aria-live="polite" class="hidden text-center text-sm py-2.5 px-4 rounded-lg font-medium"></div>
           </form>
         </div>
 
@@ -212,6 +225,6 @@
 
 </div>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>
