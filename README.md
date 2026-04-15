@@ -8,21 +8,31 @@ Personal portfolio website for Jackson Parrack, built with **HTML**, **Tailwind 
 
 | Section | Description |
 |---|---|
-| **About** | Hero intro and overview |
+| **About** | Hero intro with headshot and social links |
 | **Projects** | Featured software / hardware projects |
 | **Experience** | Work and internship history |
-| **Activities** | Clubs, organisations, and extracurriculars |
 | **Education** | Academic background |
 | **Skills** | Languages, frameworks, and tools |
-| **Contact** | Contact form (Formspree) and social links |
+| **Contact** | Separate page (`contact.html`) with contact form and social links |
+
+## Projects
+
+| Project | Description |
+|---|---|
+| **RAPID** | Capstone — FPGA-based laser/motor control system in VHDL and C |
+| **Vigilane** | Collaborative project |
+| **declare { Life }** | Life management / productivity app |
+| **Studium** | Study tool |
+| **Rojo's Mod** | Game modification project |
 
 ## File Structure
 
 ```
-index.html      — Page markup and Tailwind config
+index.html      — Main page markup and Tailwind config
+contact.html    — Contact page with form (Formspree) and social links
 style.css       — CSS custom properties (light + dark themes), scrollbar, scroll-reveal animation
 script.js       — Theme toggle, mobile menu, nav highlighting, scroll-reveal, back-to-top, contact form
-images/         — Hero image, favicons, and organisation logos
+images/         — Headshot, project screenshots, favicons, and organisation logos
 ```
 
 ## Features
@@ -33,6 +43,7 @@ images/         — Hero image, favicons, and organisation logos
 - **Responsive mobile menu** — hamburger drawer with auto-close on link tap.
 - **Back-to-top button** — appears after scrolling past the first viewport height.
 - **Contact form** — submits via Formspree with loading state and success/error feedback.
+- **Project gallery** — hover-reveal overlays on desktop, always-visible captions on mobile.
 
 ## Resume
 
