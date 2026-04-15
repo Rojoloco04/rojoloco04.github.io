@@ -94,7 +94,44 @@ section {
   50% { opacity: 0; }
 }
 
-/* ── 6. Material Symbols alignment ──────────────────────────────── */
+/* ── 6. Nav floating shadow ──────────────────────────────────────── */
+#site-header {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+html:not(.dark) #site-header {
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ── 7. Nav adaptive colour (over light sections) ───────────────── */
+/* Applied by JS when the nav scrolls over a section with data-bg="light" */
+#site-header.nav-over-light {
+  background-color: rgba(255 255 255 / 0.75);
+}
+
+#site-header.nav-over-light .nav-link,
+#site-header.nav-over-light a:not([href="#contact"]),
+#site-header.nav-over-light button {
+  color: rgb(71 85 105); /* slate-600 */
+}
+
+#site-header.nav-over-light .nav-link:hover,
+#site-header.nav-over-light a:not([href="#contact"]):hover,
+#site-header.nav-over-light button:hover {
+  color: rgb(15 23 42); /* slate-900 */
+}
+
+#site-header.nav-over-light a[href="#contact"] {
+  background-color: rgb(15 23 42);
+  border-color: rgb(15 23 42);
+  color: #fff;
+}
+
+/* ── 7. Material Symbols alignment ──────────────────────────────── */
 .material-symbols-outlined {
   vertical-align: middle;
   line-height: 1;

@@ -185,6 +185,29 @@ if (heroTyped) {
   setTimeout(typeHero, 600);
 }
 
+// ── Nav adaptive colour ───────────────────────────────────────────────────────
+// Watches sections marked with data-bg="light". When one enters the viewport
+// the header gains .nav-over-light so links stay readable against a pale bg.
+
+const siteHeader = document.querySelector("#site-header");
+const lightBgSections = document.querySelectorAll("[data-bg='light']");
+
+if (siteHeader && lightBgSections.length) {
+  let lightCount = 0;
+
+  const navColorObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        lightCount += entry.isIntersecting ? 1 : -1;
+      });
+      siteHeader.classList.toggle("nav-over-light", lightCount > 0);
+    },
+    { rootMargin: "-64px 0px 0px 0px", threshold: 0 }
+  );
+
+  lightBgSections.forEach((s) => navColorObserver.observe(s));
+}
+
 // ── Contact form ──────────────────────────────────────────────────────────────
 // Submits the form data to Formspree and shows success / error feedback.
 

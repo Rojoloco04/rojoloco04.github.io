@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Get in touch with Jack Parrack." />
+  <title>Contact · Jack Parrack</title>
+  <link rel="icon" type="image/png" href="images/icon.png" />
+
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t === 'light') document.documentElement.classList.remove('dark');
+      else document.documentElement.classList.add('dark');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary":         "rgb(var(--c-primary) / <alpha-value>)",
+            "foreground":      "rgb(var(--c-text-hi) / <alpha-value>)",
+            "background-dark": "rgb(var(--c-base-bg) / <alpha-value>)",
+            "surface-dark":    "rgb(var(--c-surface) / <alpha-value>)",
+            "border-dark":     "rgb(var(--c-border) / <alpha-value>)",
+            "text-secondary":  "rgb(var(--c-text-lo) / <alpha-value>)",
+          },
+          fontFamily: {
+            "display": ["Google Sans", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-background-dark text-foreground font-display antialiased">
+<div class="relative flex min-h-screen w-full flex-col">
+
+  <!-- ── Header ──────────────────────────────────────────────────────── -->
+  <header class="sticky top-0 z-50 w-full pt-3 px-4 md:px-6 lg:px-10">
+    <div id="site-header" class="mx-auto max-w-[1200px] rounded-xl bg-background-dark/80 backdrop-blur-md transition-colors duration-300">
+      <div class="flex items-center justify-between px-4 py-3 md:px-5 relative">
+
+        <a href="index.html" class="flex items-center gap-2.5 text-foreground shrink-0">
+          <img src="images/icon.png" alt="Jack Parrack" class="h-7 w-7 rounded-lg">
+          <span class="text-sm font-bold leading-tight tracking-[-0.015em]">Jack Parrack</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-5 absolute left-1/2 -translate-x-1/2">
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#about">About</a>
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#projects">Projects</a>
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#experience">Experience</a>
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#education">Education</a>
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="index.html#skills">Skills</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3 shrink-0">
+          <button id="theme-toggle" aria-label="Toggle theme"
+             class="flex items-center justify-center size-8 rounded-full text-text-secondary hover:text-foreground transition-colors">
+            <span id="theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
+          </button>
+          <a href="contact.html"
+             class="flex items-center gap-2 rounded-full bg-surface-dark border border-border-dark text-foreground text-xs font-medium h-8 px-4">
+            <span class="size-1.5 rounded-full bg-primary inline-block"></span>
+            Contact
+          </a>
+        </div>
+
+        <div class="md:hidden flex items-center gap-1">
+          <button id="mobile-theme-toggle" aria-label="Toggle theme"
+             class="flex items-center justify-center size-8 rounded-lg text-text-secondary hover:text-foreground transition-colors">
+            <span id="mobile-theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
+          </button>
+          <button id="mobile-menu-button" class="text-foreground p-1.5" aria-label="Toggle menu">
+            <span class="material-symbols-outlined !text-[20px]">menu</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden border-t border-border-dark/50 rounded-b-xl overflow-hidden">
+        <nav class="flex flex-col px-5 py-3 gap-0.5">
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="index.html#about">About</a>
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="index.html#projects">Projects</a>
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="index.html#experience">Experience</a>
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="index.html#education">Education</a>
+          <a class="text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5" href="index.html#skills">Skills</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ────────────────────────────────────────────────────────── -->
+  <main class="flex-1 flex flex-col">
+    <div class="mx-auto w-full max-w-[1200px] px-4 md:px-10 py-16 md:py-24 flex-1 flex flex-col">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start flex-1">
+
+        <!-- Left -->
+        <div class="flex flex-col gap-6">
+          <h1 class="text-foreground text-6xl md:text-7xl lg:text-[6rem] font-black leading-[1.0] tracking-[-0.035em]">Let's<br>talk.</h1>
+          <p class="text-text-secondary text-base leading-relaxed max-w-sm">
+            Have an opportunity, project, or just want to connect? Fill out the form or reach me directly at
+            <a href="mailto:parrackjack@gmail.com" class="text-foreground underline hover:text-primary transition-colors">parrackjack@gmail.com</a>.
+          </p>
+
+          <div class="mt-6">
+            <p class="text-text-secondary text-[10px] font-medium uppercase tracking-widest mb-4">Where I've worked</p>
+            <div class="flex items-center gap-6 flex-wrap">
+              <img src="images/mastercard.png" class="h-6 object-contain opacity-40 hover:opacity-70 transition-opacity" alt="Mastercard">
+              <img src="images/tiu.png" class="h-6 object-contain opacity-40 hover:opacity-70 transition-opacity" alt="Tokyo International University">
+              <img src="images/dataserv.png" class="h-6 object-contain opacity-40 hover:opacity-70 transition-opacity" alt="DataServ">
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div>
+          <form id="contact-form" class="flex flex-col gap-8">
+
+            <div class="flex flex-col gap-2">
+              <label class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Your Name <span class="text-primary">*</span></label>
+              <input type="text" name="name" required placeholder="Jack Parrack"
+                class="bg-transparent border-0 border-b border-border-dark focus:border-foreground transition-colors text-foreground text-base py-2.5 px-0 placeholder:text-text-secondary/25 focus:outline-none w-full">
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Email <span class="text-primary">*</span></label>
+              <input type="email" name="email" required placeholder="you@example.com"
+                class="bg-transparent border-0 border-b border-border-dark focus:border-foreground transition-colors text-foreground text-base py-2.5 px-0 placeholder:text-text-secondary/25 focus:outline-none w-full">
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Subject</label>
+              <input type="text" name="subject" placeholder="Job opportunity, collaboration, etc."
+                class="bg-transparent border-0 border-b border-border-dark focus:border-foreground transition-colors text-foreground text-base py-2.5 px-0 placeholder:text-text-secondary/25 focus:outline-none w-full">
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Message <span class="text-primary">*</span></label>
+              <textarea name="message" required rows="4"
+                placeholder="e.g. I came across your portfolio and would love to connect about an opening on our team."
+                class="bg-transparent border-0 border-b border-border-dark focus:border-foreground transition-colors text-foreground text-base py-2.5 px-0 placeholder:text-text-secondary/25 focus:outline-none resize-none w-full"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn"
+              class="w-full rounded-full bg-foreground text-background-dark text-base font-semibold h-14 hover:opacity-85 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed">
+              Send message
+            </button>
+
+            <div id="form-status" class="hidden text-center text-sm py-2.5 px-4 rounded-lg font-medium"></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="border-t border-border-dark px-4 md:px-6 lg:px-10 py-12 mt-8">
+    <div class="mx-auto max-w-[1200px] grid grid-cols-2 md:grid-cols-4 gap-10">
+
+      <div class="col-span-2 md:col-span-1 flex flex-col gap-3">
+        <a href="index.html" class="flex items-center gap-2 text-foreground w-fit">
+          <img src="images/icon.png" class="h-7 w-7 rounded-lg" alt="">
+          <span class="font-bold text-sm">Jack Parrack</span>
+        </a>
+        <p class="text-text-secondary text-xs leading-relaxed">Software Engineer. Computer Engineering graduate.</p>
+        <p class="text-text-secondary text-xs mt-2">© 2026 Jack Parrack</p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <p class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Navigate</p>
+        <a href="index.html#about" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">About</a>
+        <a href="index.html#projects" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Projects</a>
+        <a href="index.html#experience" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Experience</a>
+        <a href="index.html#education" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Education</a>
+        <a href="index.html#skills" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Skills</a>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <p class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Connect</p>
+        <a href="mailto:parrackjack@gmail.com" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Email</a>
+        <a href="https://github.com/Rojoloco04/" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">LinkedIn</a>
+        <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Resume</a>
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

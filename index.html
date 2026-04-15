@@ -75,63 +75,65 @@
 <div class="relative flex min-h-screen w-full flex-col">
 
   <!-- ── Header ─────────────────────────────────────────────────────────── -->
-  <header class="sticky top-0 z-50 w-full border-b border-border-dark bg-background-dark/80 backdrop-blur-md">
-    <div class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4 lg:px-10">
+  <header class="sticky top-0 z-50 w-full pt-3 px-4 md:px-6 lg:px-10">
+    <div id="site-header" class="mx-auto max-w-[1200px] rounded-xl bg-background-dark/80 backdrop-blur-md transition-colors duration-300">
+      <div class="flex items-center justify-between px-4 py-3 md:px-5 relative">
 
-      <!-- Logo -->
-      <a href="#about" class="flex items-center gap-3 text-foreground">
-        <img src="images/icon.png" alt="Jack Parrack" class="h-10 w-10 rounded-lg">
-        <span class="text-lg font-bold leading-tight tracking-[-0.015em]">Jack Parrack</span>
-      </a>
+        <!-- Logo -->
+        <a href="#about" class="flex items-center gap-2.5 text-foreground shrink-0">
+          <img src="images/icon.png" alt="Jack Parrack" class="h-7 w-7 rounded-lg">
+          <span class="text-sm font-bold leading-tight tracking-[-0.015em]">Jack Parrack</span>
+        </a>
 
-      <!-- Desktop nav -->
-      <nav class="hidden md:flex flex-1 justify-end gap-6 items-center">
-        <div class="flex items-center gap-6">
+        <!-- Desktop nav — centered absolutely -->
+        <nav class="hidden md:flex items-center gap-5 absolute left-1/2 -translate-x-1/2">
           <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#about">About</a>
           <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#projects">Projects</a>
           <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#experience">Experience</a>
-          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#activities">Activities</a>
           <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#education">Education</a>
           <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#skills">Skills</a>
-          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#contact">Contact</a>
+        </nav>
+
+        <!-- Right actions -->
+        <div class="hidden md:flex items-center gap-3 shrink-0">
+          <button id="theme-toggle" aria-label="Toggle theme"
+             class="flex items-center justify-center size-8 rounded-full text-text-secondary hover:text-foreground transition-colors">
+            <span id="theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
+          </button>
+          <a href="contact.html"
+             class="flex items-center gap-2 rounded-full bg-surface-dark border border-border-dark hover:border-primary/50 transition-colors text-foreground text-xs font-medium h-8 px-4">
+            <span class="size-1.5 rounded-full bg-primary inline-block"></span>
+            Contact
+          </a>
         </div>
-        <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
-           class="flex items-center justify-center rounded-lg border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-primary text-sm font-medium h-10 px-5 tracking-[0.015em]">
-          Resume
-        </a>
-        <button id="theme-toggle" aria-label="Toggle theme"
-           class="flex items-center justify-center size-10 rounded-lg border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-primary">
-          <span id="theme-icon" class="material-symbols-outlined !text-[20px]">light_mode</span>
-        </button>
-      </nav>
 
-      <!-- Mobile actions (theme toggle + hamburger) -->
-      <div class="md:hidden flex items-center gap-1">
-        <button id="mobile-theme-toggle" aria-label="Toggle theme"
-           class="flex items-center justify-center size-10 rounded-lg border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-primary">
-          <span id="mobile-theme-icon" class="material-symbols-outlined !text-[20px]">light_mode</span>
-        </button>
-        <button id="mobile-menu-button" class="text-foreground p-2" aria-label="Toggle menu">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
+        <!-- Mobile actions -->
+        <div class="md:hidden flex items-center gap-1">
+          <button id="mobile-theme-toggle" aria-label="Toggle theme"
+             class="flex items-center justify-center size-8 rounded-lg text-text-secondary hover:text-foreground transition-colors">
+            <span id="mobile-theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
+          </button>
+          <button id="mobile-menu-button" class="text-foreground p-1.5" aria-label="Toggle menu">
+            <span class="material-symbols-outlined !text-[20px]">menu</span>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- Mobile menu drawer -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-border-dark bg-background-dark/95 backdrop-blur-md">
-      <nav class="flex flex-col px-6 py-4 gap-1">
-        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#about">About</a>
-        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#projects">Projects</a>
-        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#experience">Experience</a>
-        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#activities">Activities</a>
-        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#education">Education</a>
-        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#skills">Skills</a>
-        <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/50" href="#contact">Contact</a>
-        <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
-           class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5">
-          Resume
-        </a>
-      </nav>
+      <!-- Mobile menu drawer -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-border-dark/50 rounded-b-xl overflow-hidden">
+        <nav class="flex flex-col px-5 py-3 gap-0.5">
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="#about">About</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="#projects">Projects</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="#experience">Experience</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="#education">Education</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="#skills">Skills</a>
+          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5 border-b border-border-dark/30" href="contact.html">Contact</a>
+          <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
+             class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-2.5">
+            Resume
+          </a>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -140,463 +142,345 @@
     <div class="w-full max-w-[1200px] px-4 md:px-10">
 
       <!-- ── Hero / About ───────────────────────────────────────────────── -->
-      <section id="about" class="reveal py-12 md:py-20">
-        <div class="relative flex min-h-[520px] flex-col gap-6 overflow-hidden rounded-xl bg-surface-dark px-6 pb-12 pt-48 md:justify-end md:px-10 md:pt-10 shadow-2xl ring-1 ring-white/5 group">
+      <section id="about" class="reveal relative flex items-center min-h-[calc(100vh-64px)] py-12 md:py-0">
+        <div class="flex flex-col gap-6">
 
-          <!-- Background: hero image + dark overlay -->
-          <div class="md:hidden absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/hero-mobile.jpg');"></div>
-          <div class="hidden md:block absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/hero.jpg');"></div>
-          <div class="absolute inset-0 z-0 bg-gradient-to-t from-background-dark/90 via-background-dark/60 to-background-dark/30"></div>
+          <h1 class="text-foreground font-black leading-[1.08] tracking-[-0.035em]">
+            <span class="block text-3xl md:text-5xl lg:text-[5rem]">Hi! I'm</span>
+            <span class="block text-3xl md:text-5xl lg:text-[5rem] whitespace-nowrap"><span id="hero-typed"></span><span class="hero-cursor" aria-hidden="true">|</span></span>
+          </h1>
 
-          <!-- Content -->
-          <div class="relative z-10 flex flex-col gap-4 text-left max-w-2xl">
-            <h1 class="text-foreground text-3xl font-black leading-tight tracking-[-0.033em] min-h-[2.5em] md:text-4xl md:leading-[1.1] md:min-h-[1.2em]">
-              Hi! I'm <span id="hero-typed"></span><span class="hero-cursor" aria-hidden="true">|</span>
-            </h1>
+          <p class="text-text-secondary text-base md:text-lg font-normal leading-relaxed max-w-[420px]">
+            Software Engineer with hands-on experience in software development, hardware/circuit design, and embedded systems.
+          </p>
 
-            <p class="text-text-secondary text-lg md:text-xl font-normal leading-relaxed max-w-lg">
-              Dedicated and detail-oriented Computer Engineering student with hands-on experience in software development, hardware design, and embedded systems.
-            </p>
-
-            <!-- Social links -->
-            <div class="flex items-center gap-3 pt-1">
-              <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center justify-center size-10 rounded-full border border-border-dark bg-surface-dark/50 text-text-secondary hover:text-foreground hover:border-primary/50 transition-all backdrop-blur-sm"
-                 aria-label="LinkedIn">
-                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-                </svg>
-              </a>
-              <a href="https://github.com/rojoloco04" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center justify-center size-10 rounded-full border border-border-dark bg-surface-dark/50 text-text-secondary hover:text-foreground hover:border-primary/50 transition-all backdrop-blur-sm"
-                 aria-label="GitHub">
-                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-                </svg>
-              </a>
-            </div>
-
+          <!-- Social links + Resume -->
+          <div class="flex items-center gap-3 flex-wrap">
+            <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer"
+               class="flex items-center justify-center size-10 rounded-full border border-border-dark text-text-secondary hover:text-foreground hover:border-primary/50 transition-all"
+               aria-label="LinkedIn">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a href="https://github.com/rojoloco04" target="_blank" rel="noopener noreferrer"
+               class="flex items-center justify-center size-10 rounded-full border border-border-dark text-text-secondary hover:text-foreground hover:border-primary/50 transition-all"
+               aria-label="GitHub">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
+               class="flex items-center justify-center rounded-full border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-foreground text-sm font-medium h-10 px-5">
+              Resume
+            </a>
           </div>
+
         </div>
+
+        <!-- Scroll prompt — bottom center of hero viewport -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-text-secondary/40 pointer-events-none select-none">
+          <span class="text-[10px] font-medium tracking-[0.2em] uppercase">scroll</span>
+          <span class="material-symbols-outlined !text-[18px] animate-bounce">keyboard_arrow_down</span>
+        </div>
+
       </section>
 
       <!-- ── Projects ───────────────────────────────────────────────────── -->
-      <section id="projects" class="reveal py-10 border-t border-border-dark">
-        <div class="flex items-center gap-3 mb-8">
-          <span class="material-symbols-outlined text-primary !text-[28px]">rocket_launch</span>
-          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Projects</h2>
-        </div>
+      <section id="projects" class="reveal pt-10 pb-0 border-t border-border-dark">
+        <p class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-4">Projects</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5">
 
-          <!-- RAPID -->
-          <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
-            <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
-              <img src="images/rapid.png" alt="RAPID project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="flex flex-col gap-2 p-6">
-              <div class="flex items-start justify-between gap-2">
-                <div>
-                  <h3 class="text-foreground text-xl font-bold leading-tight">RAPID</h3>
-                  <p class="text-text-secondary text-xs font-medium mt-0.5">Capstone Project</p>
+          <!-- RAPID — featured wide tile -->
+          <a href="https://github.com/Rojoloco04/RAPID" target="_blank" rel="noopener noreferrer"
+             class="group relative overflow-hidden rounded-xl md:col-span-2 aspect-[16/7] block focus:outline-none focus:ring-2 focus:ring-primary"
+             aria-label="View RAPID on GitHub">
+            <img src="images/rapid.png" alt="RAPID" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex flex-col justify-end p-6 md:p-8">
+              <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h3 class="text-white text-xl md:text-2xl font-bold leading-tight">RAPID</h3>
+                    <p class="text-white/60 text-xs font-medium mt-0.5">Capstone Project</p>
+                  </div>
+                  <span class="material-symbols-outlined text-white !text-[22px] shrink-0">arrow_outward</span>
                 </div>
-                <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
-              </div>
-              <p class="text-text-secondary text-sm leading-relaxed">
-                Rapid Photonic Innovation Device — reverse-engineered laser diode assemblies,
-                spindle and stepper motors, and photodiode feedback using oscilloscopes and
-                multimeters. Implemented motor and laser control logic in VHDL and C on an FPGA,
-                with PWM motor control and UART/USB communication pipelines.
-              </p>
-              <div class="flex gap-2 mt-3 flex-wrap">
-                <span class="tech-tag">VHDL</span>
-                <span class="tech-tag">C</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">FPGA</span>
-                <span class="tech-tag">UART</span>
-                <span class="tech-tag">PySide6</span>
+                <p class="text-white/75 text-sm leading-relaxed max-w-2xl">
+                  Reverse-engineered laser diode assemblies, stepper motors, and photodiode feedback on an FPGA. Implemented motor and laser control in VHDL and C with PWM control and UART/USB pipelines.
+                </p>
+                <div class="flex gap-1.5 flex-wrap mt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">VHDL</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">C</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Python</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">FPGA</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">UART</span>
+                </div>
               </div>
             </div>
-            <a href="https://github.com/Rojoloco04/RAPID" target="_blank" rel="noopener noreferrer"
-               class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
-               aria-label="View RAPID on GitHub"></a>
-          </div>
+          </a>
 
           <!-- Vigilane -->
-          <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
-            <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
-              <img src="images/vigilane.jpg" alt="Vigilane project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="flex flex-col gap-2 p-6">
-              <div class="flex items-start justify-between gap-2">
-                <div>
-                  <h3 class="text-foreground text-xl font-bold leading-tight">Vigilane</h3>
-                  <p class="text-text-secondary text-xs font-medium mt-0.5">HackSLU 2026</p>
-                  <div class="flex items-center gap-1.5 mt-1.5">
-                    <span class="material-symbols-outlined text-yellow-400 !text-[14px]">emoji_events</span>
-                    <span class="text-yellow-400 text-xs font-semibold">Honorable Mention</span>
+          <a href="https://github.com/1Bananas1/Vigilane" target="_blank" rel="noopener noreferrer"
+             class="group relative overflow-hidden rounded-xl aspect-[4/3] block focus:outline-none focus:ring-2 focus:ring-primary"
+             aria-label="View Vigilane on GitHub">
+            <img src="images/vigilane.jpg" alt="Vigilane" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex flex-col justify-end p-5 md:p-6">
+              <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h3 class="text-white text-lg font-bold leading-tight">Vigilane</h3>
+                    <div class="flex items-center gap-1.5 mt-0.5">
+                      <span class="material-symbols-outlined text-yellow-400 !text-[12px]">emoji_events</span>
+                      <span class="text-yellow-400 text-xs font-semibold">HackSLU 2026 · Honorable Mention</span>
+                    </div>
                   </div>
+                  <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
                 </div>
-                <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
-              </div>
-              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1.5">
-                <li>AI-powered road hazard detection system using YOLOv8 to identify potholes and road damage in real time from video feeds, with optional voice confirmation.</li>
-                <li>React Native (Expo) app for viewing alerts and submitting city reports, backed by a Flask REST API with Firebase Firestore and on-device TFLite inference.</li>
-              </ul>
-              <div class="flex gap-2 mt-3 flex-wrap">
-                <span class="tech-tag">React Native</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">YOLOv8</span>
-                <span class="tech-tag">Flask</span>
-                <span class="tech-tag">Firebase</span>
-                <span class="tech-tag">Python</span>
+                <p class="text-white/75 text-sm leading-relaxed">
+                  AI-powered road hazard detection using YOLOv8 with a React Native app and Flask REST API backed by Firebase Firestore.
+                </p>
+                <div class="flex gap-1.5 flex-wrap mt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">React Native</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">YOLOv8</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Flask</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Firebase</span>
+                </div>
               </div>
             </div>
-            <a href="https://github.com/1Bananas1/Vigilane" target="_blank" rel="noopener noreferrer"
-               class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
-               aria-label="View Vigilane on GitHub"></a>
-          </div>
+          </a>
 
           <!-- FlavorAI -->
-          <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
-            <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
-              <img src="images/flavor-ai.png" alt="FlavorAI project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="flex flex-col gap-2 p-6">
-              <div class="flex items-start justify-between gap-2">
-                <div>
-                  <h3 class="text-foreground text-xl font-bold leading-tight">FlavorAI</h3>
-                  <p class="text-text-secondary text-xs font-medium mt-0.5">DevFest WashU 2025</p>
-                  <div class="flex items-center gap-1.5 mt-1.5">
-                    <span class="material-symbols-outlined text-yellow-400 !text-[14px]">emoji_events</span>
-                    <span class="text-yellow-400 text-xs font-semibold">Finalists · Top 10 of 42 Teams</span>
+          <a href="https://github.com/1Bananas1/Flavor-AI" target="_blank" rel="noopener noreferrer"
+             class="group relative overflow-hidden rounded-xl aspect-[4/3] block focus:outline-none focus:ring-2 focus:ring-primary"
+             aria-label="View FlavorAI on GitHub">
+            <img src="images/flavor-ai.png" alt="FlavorAI" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex flex-col justify-end p-5 md:p-6">
+              <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h3 class="text-white text-lg font-bold leading-tight">FlavorAI</h3>
+                    <div class="flex items-center gap-1.5 mt-0.5">
+                      <span class="material-symbols-outlined text-yellow-400 !text-[12px]">emoji_events</span>
+                      <span class="text-yellow-400 text-xs font-semibold">DevFest WashU 2025 · Top 10 of 42 Teams</span>
+                    </div>
                   </div>
+                  <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
                 </div>
-                <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
-              </div>
-              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1.5">
-                <li>Developed a full-stack app to recommend restaurants based on a user's taste profile, leveraging the Gemini API and Google Maps API.</li>
-                <li>Gained experience with React.js, CSS, and Python through rapid prototyping and team collaboration.</li>
-              </ul>
-              <div class="flex gap-2 mt-3 flex-wrap">
-                <span class="tech-tag">React.js</span>
-                <span class="tech-tag">Flask</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Gemini API</span>
-                <span class="tech-tag">Google Maps API</span>
+                <p class="text-white/75 text-sm leading-relaxed">
+                  Full-stack restaurant recommender using a user's taste profile, powered by the Gemini API and Google Maps API.
+                </p>
+                <div class="flex gap-1.5 flex-wrap mt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">React.js</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Flask</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Gemini API</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Maps API</span>
+                </div>
               </div>
             </div>
-            <a href="https://github.com/1Bananas1/Flavor-AI" target="_blank" rel="noopener noreferrer"
-               class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
-               aria-label="View FlavorAI on GitHub"></a>
-          </div>
+          </a>
 
-          <!-- Rojo's Mod -->
-          <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
-            <div class="aspect-video w-full overflow-hidden relative bg-background-dark">
-              <img src="images/rojosmod.png" alt="Rojo's Mod project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="flex flex-col gap-2 p-6">
-              <div class="flex items-start justify-between gap-2">
-                <div>
-                  <h3 class="text-foreground text-xl font-bold leading-tight">Rojo's Mod</h3>
-                  <p class="text-text-secondary text-xs font-medium mt-0.5">Minecraft NeoForge Mod</p>
+          <!-- Rojo's Mod — wide bottom tile -->
+          <a href="https://github.com/Rojoloco04/rojosmod" target="_blank" rel="noopener noreferrer"
+             class="group relative overflow-hidden rounded-xl md:col-span-2 aspect-[16/7] block focus:outline-none focus:ring-2 focus:ring-primary"
+             aria-label="View Rojo's Mod on GitHub">
+            <img src="images/rojosmod.png" alt="Rojo's Mod" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex flex-col justify-end p-6 md:p-8">
+              <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h3 class="text-white text-xl md:text-2xl font-bold leading-tight">Rojo's Mod</h3>
+                    <p class="text-white/60 text-xs font-medium mt-0.5">Minecraft NeoForge Mod</p>
+                  </div>
+                  <span class="material-symbols-outlined text-white !text-[22px] shrink-0">arrow_outward</span>
                 </div>
-                <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors flex-shrink-0">arrow_outward</span>
-              </div>
-              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1.5">
-                <li>Built a Minecraft mod adding a throwable Lightning Spear with custom entity behavior, 3D modeling, and 2D sprite art.</li>
-                <li>Utilized Java, NeoForge, and Gradle to create a finished and usable mod.</li>
-              </ul>
-              <div class="flex gap-2 mt-3 flex-wrap">
-                <span class="tech-tag">Java</span>
-                <span class="tech-tag">NeoForge</span>
-                <span class="tech-tag">Gradle</span>
+                <p class="text-white/75 text-sm leading-relaxed max-w-2xl">
+                  Minecraft mod adding a throwable Lightning Spear with custom entity behavior, 3D modeling, and 2D sprite art. Built with Java, NeoForge, and Gradle.
+                </p>
+                <div class="flex gap-1.5 flex-wrap mt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Java</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">NeoForge</span>
+                  <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Gradle</span>
+                </div>
               </div>
             </div>
-            <a href="https://github.com/Rojoloco04/rojosmod" target="_blank" rel="noopener noreferrer"
-               class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-xl"
-               aria-label="View Rojo's Mod on GitHub"></a>
-          </div>
+          </a>
 
         </div>
       </section>
 
       <!-- ── Experience ─────────────────────────────────────────────────── -->
       <section id="experience" class="reveal py-10 border-t border-border-dark">
-        <div class="flex items-center gap-3 mb-8">
-          <span class="material-symbols-outlined text-primary !text-[28px]">work_history</span>
-          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Experience</h2>
-        </div>
+        <p class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-6">Experience</p>
 
-        <div class="grid grid-cols-[40px_1fr] gap-x-4 md:gap-x-8 px-2">
+        <div class="flex flex-col border-l border-border-dark">
+
+          <!-- Mastercard -->
+          <div class="relative pl-6 py-6 last:border-b-0">
+            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
+              <div class="flex items-start gap-3">
+                <img src="images/mastercard.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Mastercard">
+                <div>
+                  <h3 class="text-foreground text-base font-bold leading-snug">Software Engineer I</h3>
+                  <p class="text-primary text-sm font-medium mt-0.5">Mastercard · Launch Program</p>
+                  <p class="text-text-secondary text-xs mt-0.5">O'Fallon, MO</p>
+                </div>
+              </div>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0">Aug. 2026 – Present</span>
+            </div>
+            <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
+              <li>Supported software development, testing, and deployment by following established procedures and seeking guidance and code reviews from senior engineers.</li>
+              <li>Built understanding of end-to-end system architecture within owned components, contributing feedback to improve code quality and maintainability.</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">Angular</span>
+              <span class="tech-tag">Android</span>
+              <span class="tech-tag">iOS</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Hibernate</span>
+              <span class="tech-tag">Azure</span>
+            </div>
+          </div>
+
+          <!-- Tokyo International University -->
+          <div class="relative pl-6 py-6 last:border-b-0">
+            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
+              <div class="flex items-start gap-3">
+                <img src="images/tiu.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Tokyo International University">
+                <div>
+                  <h3 class="text-foreground text-base font-bold leading-snug">Quantum Computing Research Assistant</h3>
+                  <p class="text-primary text-sm font-medium mt-0.5">Tokyo International University</p>
+                  <p class="text-text-secondary text-xs mt-0.5">Tokyo, Japan</p>
+                </div>
+              </div>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0">May 2026 – Aug. 2026</span>
+            </div>
+            <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
+              <li>Participated in research on quantum algorithms and machine learning, particularly in the context of software engineering and blockchain.</li>
+              <li>Collaborated on research with Dr. Ozaydin and a small cohort of graduate students.</li>
+            </ul>
+          </div>
 
           <!-- DataServ -->
-          <div class="flex flex-col items-center gap-1 pt-1">
-            <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">verified</span>
+          <div class="relative pl-6 py-6 last:border-b-0">
+            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
+              <div class="flex items-start gap-3">
+                <img src="images/dataserv.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="DataServ">
+                <div>
+                  <h3 class="text-foreground text-base font-bold leading-snug">DevOps Intern</h3>
+                  <p class="text-primary text-sm font-medium mt-0.5">DataServ</p>
+                </div>
+              </div>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0">May 2025 – Aug. 2025</span>
             </div>
-          </div>
-          <div class="flex flex-1 flex-col py-1 pb-8">
-            <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-                <div class="flex items-start gap-3">
-                  <img src="images/dataserv.png" class="h-10 w-10 rounded-lg object-contain bg-white p-1 border border-border-dark flex-shrink-0 mt-0.5" alt="DataServ">
-                  <div>
-                    <h3 class="text-foreground text-lg font-semibold leading-normal">DevOps Intern</h3>
-                    <p class="text-primary font-medium text-sm mt-0.5">DataServ</p>
-                  </div>
-                </div>
-                <div class="date-badge">
-                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">May 2025 – Aug. 2025</p>
-                </div>
-              </div>
-              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1.5">
-                <li>Leveraged custom Python automation scripts to migrate 3,000+ SQL stored procedures across 71 client environments into Git.</li>
-                <li>Redesigned and implemented 17 post-import SQL configurations across 7 clients.</li>
-                <li>Optimized large-scale data ingestion processes, including a lookup redesign for 21 clients.</li>
-                <li>Delivered project demonstrations to leadership.</li>
-              </ul>
-              <div class="flex flex-wrap gap-2 mt-4">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">SQL</span>
-                <span class="tech-tag">Git</span>
-                <span class="tech-tag">DevOps</span>
-              </div>
+            <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
+              <li>Migrated 3,000+ SQL stored procedures across 71 client environments into Git using custom Python automation.</li>
+              <li>Redesigned and implemented 17 post-import SQL configurations across 7 clients.</li>
+              <li>Optimized large-scale data ingestion processes, including a lookup redesign for 21 clients.</li>
+              <li>Delivered project demonstrations to leadership.</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Git</span>
+              <span class="tech-tag">DevOps</span>
             </div>
           </div>
 
         </div>
       </section>
 
-      <!-- ── Activities ─────────────────────────────────────────────────── -->
-      <section id="activities" class="reveal py-10 border-t border-border-dark">
-        <div class="flex items-center gap-3 mb-8">
-          <span class="material-symbols-outlined text-primary !text-[28px]">groups</span>
-          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Activities</h2>
-        </div>
-
-        <div class="grid grid-cols-[40px_1fr] gap-x-4 md:gap-x-8 px-2">
-
-          <!-- 1. SLU Esports — President (highest role, present) -->
-          <div class="flex flex-col items-center gap-1 pt-1">
-            <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">sports_esports</span>
-            </div>
-            <div class="timeline-line"></div>
-          </div>
-          <div class="flex flex-1 flex-col py-1 pb-10">
-            <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                <div class="flex items-start gap-3">
-                  <img src="images/slu-esports.png" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="SLU Esports">
-                  <div>
-                    <h3 class="text-foreground text-lg font-semibold leading-normal">President &amp; Teams Coordinator</h3>
-                    <p class="text-primary font-medium text-sm mt-0.5">SLU Esports · Saint Louis University</p>
-                    <p class="text-text-secondary text-xs mt-1">Member since Aug. 2022</p>
-                  </div>
-                </div>
-                <div class="date-badge">
-                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
-                </div>
-              </div>
-              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
-                <li>Oversaw board operations and scheduling for more than 10 club teams.</li>
-                <li>Increased membership to over 900 by improving leadership and engagement.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- 2. IEEE — Vice President (VP role, present) -->
-          <div class="flex flex-col items-center gap-1">
-            <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">electric_bolt</span>
-            </div>
-            <div class="timeline-line"></div>
-          </div>
-          <div class="flex flex-1 flex-col py-1 pb-10">
-            <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                <div class="flex items-start gap-3">
-                  <img src="images/ieee.png" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="IEEE">
-                  <div>
-                    <h3 class="text-foreground text-lg font-semibold leading-normal">Vice President</h3>
-                    <p class="text-primary font-medium text-sm mt-0.5">Institute of Electrical and Electronics Engineers (IEEE) · Saint Louis University</p>
-                    <p class="text-text-secondary text-xs mt-1">Member since Aug. 2022</p>
-                  </div>
-                </div>
-                <div class="date-badge">
-                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2025 – Present</p>
-                </div>
-              </div>
-              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
-                <li>Assisted with chapter leadership in events, finance, and member recruitment and retention.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- 3. SSE First-Year Mentor (mentor role, present) -->
-          <div class="flex flex-col items-center gap-1">
-            <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">school</span>
-            </div>
-            <div class="timeline-line"></div>
-          </div>
-          <div class="flex flex-1 flex-col py-1 pb-10">
-            <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                <div class="flex items-start gap-3">
-                  <img src="images/slu-sse.png" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="SLU SSE">
-                  <div>
-                    <h3 class="text-foreground text-lg font-semibold leading-normal">First-Year Mentor</h3>
-                    <p class="text-primary font-medium text-sm mt-0.5">School of Science and Engineering · Saint Louis University</p>
-                  </div>
-                </div>
-                <div class="date-badge">
-                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
-                </div>
-              </div>
-              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
-                <li>Mentored incoming SSE students, providing guidance on academic success, course selection, and professional development.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- 4. Study Abroad Peer Mentor (mentor role, present) -->
-          <div class="flex flex-col items-center gap-1">
-            <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">flight_takeoff</span>
-            </div>
-            <div class="timeline-line"></div>
-          </div>
-          <div class="flex flex-1 flex-col py-1 pb-10">
-            <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                <div>
-                  <h3 class="text-foreground text-lg font-semibold leading-normal">Study Abroad Peer Mentor</h3>
-                  <p class="text-primary font-medium text-sm mt-0.5">Saint Louis University</p>
-                </div>
-                <div class="date-badge">
-                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
-                </div>
-              </div>
-              <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed space-y-1 mt-3">
-                <li>Mentored students considering or preparing for study abroad, sharing advice and personal experience from an exchange semester in South Korea.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- 5. VSA (member, present) -->
-          <div class="flex flex-col items-center gap-1">
-            <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">diversity_3</span>
-            </div>
-            <div class="timeline-line"></div>
-          </div>
-          <div class="flex flex-1 flex-col py-1 pb-10">
-            <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start">
-                <div class="flex items-start gap-3">
-                  <img src="images/slu-vsa.jpg" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="VSA">
-                  <div>
-                    <h3 class="text-foreground text-lg font-semibold leading-normal">Member</h3>
-                    <p class="text-primary font-medium text-sm mt-0.5">Vietnamese Student Association (VSA) · Saint Louis University</p>
-                  </div>
-                </div>
-                <div class="date-badge">
-                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Jan. 2026 – Present</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6. KSA (member, present) -->
-          <div class="flex flex-col items-center gap-1">
-            <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">diversity_3</span>
-            </div>
-            <div class="timeline-line"></div>
-          </div>
-          <div class="flex flex-1 flex-col py-1 pb-10">
-            <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start">
-                <div class="flex items-start gap-3">
-                  <img src="images/slu-ksa.jpg" class="h-9 w-9 rounded-lg object-contain bg-white p-0.5 border border-border-dark flex-shrink-0 mt-0.5" alt="KSA">
-                  <div>
-                    <h3 class="text-foreground text-lg font-semibold leading-normal">Member</h3>
-                    <p class="text-primary font-medium text-sm mt-0.5">Korean Student Association (KSA) · Saint Louis University</p>
-                  </div>
-                </div>
-                <div class="date-badge">
-                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Aug. 2024 – Present</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 7. String Orchestra (past, chronologically last) -->
-          <div class="flex flex-col items-center gap-1">
-            <div class="timeline-icon">
-              <span class="material-symbols-outlined !text-[20px]">music_note</span>
-            </div>
-            <!-- No line after last item -->
-          </div>
-          <div class="flex flex-1 flex-col py-1 pb-4">
-            <div class="card">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start">
-                <div>
-                  <h3 class="text-foreground text-lg font-semibold leading-normal">String Orchestra</h3>
-                  <p class="text-primary font-medium text-sm mt-0.5">Saint Louis University</p>
-                </div>
-                <div class="date-badge">
-                  <p class="text-text-secondary text-xs font-medium whitespace-nowrap">Spring 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ── Education ──────────────────────────────────────────────────── -->
+      <!-- ── Education & Activities ───────────────────────────────────── -->
       <section id="education" class="reveal py-10 border-t border-border-dark">
-        <div class="flex items-center gap-3 mb-8">
-          <span class="material-symbols-outlined text-primary !text-[28px]">school</span>
-          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Education</h2>
-        </div>
+        <p class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-6">Education & Activities</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col border-l border-border-dark">
+
+          <!-- Georgia Tech -->
+          <div class="relative pl-6 py-6">
+            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-1">
+              <div class="flex items-start gap-3">
+                <img src="images/gatech.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Georgia Tech">
+                <div>
+                  <h3 class="text-foreground text-base font-bold leading-snug">M.S. Computer Science</h3>
+                  <p class="text-primary text-sm font-medium mt-0.5">Georgia Institute of Technology</p>
+                  <p class="text-text-secondary text-xs mt-0.5">Atlanta, GA</p>
+                </div>
+              </div>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0">Aug. 2026 – May 2029 (est.)</span>
+            </div>
+          </div>
 
           <!-- SLU -->
-          <div class="group relative overflow-hidden bg-surface-dark p-6 rounded-xl border border-border-dark hover:border-primary/50 transition-all">
-            <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none">
-              <img src="images/slu.png" class="h-16 w-auto object-contain" alt="Saint Louis University">
-            </div>
-            <div class="relative z-10">
-              <p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Bachelor's Degree</p>
-              <h3 class="text-foreground text-lg font-bold mb-1">B.S. Computer Engineering</h3>
-              <p class="text-text-secondary text-sm mb-0.5">Saint Louis University</p>
-              <p class="text-text-secondary text-sm mb-4">Minor: Computer Science &nbsp;·&nbsp; GPA: 3.92 / 4.0</p>
-              <div class="flex items-center gap-2 text-xs text-text-secondary">
-                <span class="material-symbols-outlined !text-[16px]">calendar_month</span>
-                <span>Aug. 2022 – May 2026</span>
+          <div class="relative pl-6 py-6">
+            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
+              <div class="flex items-start gap-3">
+                <img src="images/slu.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Saint Louis University">
+                <div>
+                  <h3 class="text-foreground text-base font-bold leading-snug">B.S. Computer Engineering</h3>
+                  <p class="text-primary text-sm font-medium mt-0.5">Saint Louis University</p>
+                  <p class="text-text-secondary text-xs mt-0.5">Minor: Computer Science · GPA: 3.92 / 4.0</p>
+                </div>
               </div>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0">Aug. 2022 – May 2026</span>
+            </div>
+            <!-- Activities -->
+            <div class="ml-12 mt-2 pt-3 border-t border-border-dark/40">
+              <p class="text-[10px] font-medium uppercase tracking-widest text-text-secondary/50 mb-2.5">Activities</p>
+              <ul class="flex flex-col gap-2">
+                <li class="flex items-baseline justify-between gap-4">
+                  <span class="text-text-secondary text-sm">President & Teams Coordinator · SLU Esports</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
+                </li>
+                <li class="flex items-baseline justify-between gap-4">
+                  <span class="text-text-secondary text-sm">Vice President · IEEE</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2025 – Present</span>
+                </li>
+                <li class="flex items-baseline justify-between gap-4">
+                  <span class="text-text-secondary text-sm">First-Year Mentor · School of Science & Engineering</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
+                </li>
+                <li class="flex items-baseline justify-between gap-4">
+                  <span class="text-text-secondary text-sm">Study Abroad Peer Mentor</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
+                </li>
+                <li class="flex items-baseline justify-between gap-4">
+                  <span class="text-text-secondary text-sm">Member · Vietnamese Student Association</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Jan. 2026 – Present</span>
+                </li>
+                <li class="flex items-baseline justify-between gap-4">
+                  <span class="text-text-secondary text-sm">Member · Korean Student Association</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
+                </li>
+                <li class="flex items-baseline justify-between gap-4">
+                  <span class="text-text-secondary text-sm">String Orchestra</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Spring 2023</span>
+                </li>
+              </ul>
             </div>
           </div>
 
           <!-- Sogang -->
-          <div class="group relative overflow-hidden bg-surface-dark p-6 rounded-xl border border-border-dark hover:border-primary/50 transition-all">
-            <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none">
-              <img src="images/sogang.png" class="h-16 w-auto object-contain" alt="Sogang University">
-            </div>
-            <div class="relative z-10">
-              <p class="text-xs font-bold text-text-secondary uppercase tracking-wider mb-2">Exchange Program</p>
-              <h3 class="text-foreground text-lg font-bold mb-1">Sogang University</h3>
-              <p class="text-text-secondary text-sm mb-4">Seoul, South Korea</p>
-              <div class="flex items-center gap-2 text-xs text-text-secondary">
-                <span class="material-symbols-outlined !text-[16px]">calendar_month</span>
-                <span>Spring 2024</span>
+          <div class="relative pl-6 py-6">
+            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1">
+              <div class="flex items-start gap-3">
+                <img src="images/sogang.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Sogang University">
+                <div>
+                  <h3 class="text-foreground text-base font-bold leading-snug">Exchange Program</h3>
+                  <p class="text-primary text-sm font-medium mt-0.5">Sogang University</p>
+                  <p class="text-text-secondary text-xs mt-0.5">Seoul, South Korea</p>
+                </div>
               </div>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0">Spring 2024</span>
             </div>
           </div>
 
@@ -605,136 +489,77 @@
 
       <!-- ── Skills ─────────────────────────────────────────────────────── -->
       <section id="skills" class="reveal py-10 border-t border-border-dark">
-        <div class="flex items-center gap-3 mb-8">
-          <span class="material-symbols-outlined text-primary !text-[28px]">handyman</span>
-          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Skills</h2>
-        </div>
+        <div class="flex flex-col md:flex-row gap-10 md:gap-16">
 
-        <div class="bg-surface-dark rounded-xl border border-border-dark p-6 md:p-8">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          <!-- Left: heading -->
+          <div class="md:w-56 lg:w-72 shrink-0">
+            <h2 class="text-foreground text-4xl md:text-5xl font-black leading-[1.05] tracking-[-0.03em]">What<br>I work<br>with.</h2>
+          </div>
 
-            <!-- Programming Languages -->
+          <!-- Right: category grid -->
+          <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-8">
+
+            <!-- Languages -->
             <div>
-              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
-                <span class="material-symbols-outlined text-text-secondary !text-[20px]">code</span>
-                Programming Languages
-              </h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" class="h-4 w-4 flex-shrink-0" alt="">C</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" class="h-4 w-4 flex-shrink-0" alt="">C++</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Python</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" class="h-4 w-4 flex-shrink-0" alt="">TypeScript</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="h-4 w-4 flex-shrink-0" alt="">JavaScript</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">Assembly</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" class="h-4 w-4 flex-shrink-0" alt="">HTML/CSS</span>
+              <div class="size-9 rounded-lg bg-surface-dark border border-border-dark flex items-center justify-center mb-3">
+                <span class="material-symbols-outlined text-text-secondary !text-[18px]">code</span>
               </div>
+              <h4 class="text-foreground font-bold text-sm mb-1.5">Languages</h4>
+              <p class="text-text-secondary text-sm leading-relaxed">C, C++, Java, Python, TypeScript, JavaScript, SQL, Assembly, HTML/CSS</p>
             </div>
 
-            <!-- Mobile -->
+            <!-- Frameworks & Tools -->
             <div>
-              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
-                <span class="material-symbols-outlined text-text-secondary !text-[20px]">smartphone</span>
-                Mobile
-              </h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" class="h-4 w-4 flex-shrink-0" alt="">React Native</span>
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/expo/ffffff" class="h-4 w-4 flex-shrink-0" alt="">Expo</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Android</span>
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/apple/aaaaaa" class="h-4 w-4 flex-shrink-0" alt="">iOS</span>
+              <div class="size-9 rounded-lg bg-surface-dark border border-border-dark flex items-center justify-center mb-3">
+                <span class="material-symbols-outlined text-text-secondary !text-[18px]">layers</span>
               </div>
+              <h4 class="text-foreground font-bold text-sm mb-1.5">Frameworks & Tools</h4>
+              <p class="text-text-secondary text-sm leading-relaxed">Spring Boot, Angular, React Native, Expo, REST API, Hibernate, Spring JPA</p>
             </div>
 
             <!-- Cloud & DevOps -->
             <div>
-              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
-                <span class="material-symbols-outlined text-text-secondary !text-[20px]">cloud</span>
-                Cloud & DevOps
-              </h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="skill-tag"><img src="https://api.iconify.design/logos/aws.svg" class="h-4 w-4 flex-shrink-0" alt="">AWS</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Git</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Linux</span>
+              <div class="size-9 rounded-lg bg-surface-dark border border-border-dark flex items-center justify-center mb-3">
+                <span class="material-symbols-outlined text-text-secondary !text-[18px]">cloud</span>
               </div>
+              <h4 class="text-foreground font-bold text-sm mb-1.5">Cloud & DevOps</h4>
+              <p class="text-text-secondary text-sm leading-relaxed">Azure, AWS, PostgreSQL, Git, Linux</p>
             </div>
 
             <!-- Hardware -->
             <div>
-              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
-                <span class="material-symbols-outlined text-text-secondary !text-[20px]">memory</span>
-                Hardware
-              </h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="skill-tag">VHDL</span>
-                <span class="skill-tag">FPGA</span>
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/arm/0091BD" class="h-4 w-4 flex-shrink-0" alt="">ARM Microcontrollers</span>
-                <span class="skill-tag">AVR Microcontrollers</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Arduino</span>
-                <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg" class="h-4 w-4 flex-shrink-0" alt="">Raspberry Pi</span>
+              <div class="size-9 rounded-lg bg-surface-dark border border-border-dark flex items-center justify-center mb-3">
+                <span class="material-symbols-outlined text-text-secondary !text-[18px]">memory</span>
               </div>
+              <h4 class="text-foreground font-bold text-sm mb-1.5">Hardware</h4>
+              <p class="text-text-secondary text-sm leading-relaxed">VHDL, FPGA, ARM & AVR Microcontrollers, Arduino, Raspberry Pi</p>
             </div>
 
             <!-- Human Languages -->
-            <div class="md:col-span-2">
-              <h4 class="text-foreground font-semibold mb-4 flex items-center gap-2">
-                <span class="material-symbols-outlined text-text-secondary !text-[20px]">language</span>
-                Human Languages
-              </h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="skill-tag">English (Native)</span>
-                <span class="skill-tag">Spanish (Advanced)</span>
-                <span class="skill-tag">Korean (Intermediate)</span>
-                <span class="skill-tag">Chinese (Beginner)</span>
+            <div>
+              <div class="size-9 rounded-lg bg-surface-dark border border-border-dark flex items-center justify-center mb-3">
+                <span class="material-symbols-outlined text-text-secondary !text-[18px]">language</span>
               </div>
+              <h4 class="text-foreground font-bold text-sm mb-1.5">Human Languages</h4>
+              <p class="text-text-secondary text-sm leading-relaxed">English (Native), Spanish (Advanced), Korean (Intermediate), Chinese (Beginner)</p>
             </div>
 
           </div>
         </div>
       </section>
 
-      <!-- ── Contact ────────────────────────────────────────────────────── -->
-      <section id="contact" class="reveal py-10 border-t border-border-dark">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="material-symbols-outlined text-primary !text-[28px]">mail</span>
-          <h2 class="text-foreground text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Contact</h2>
-        </div>
-        <p class="text-text-secondary mb-8 ml-10">Have a question or want to work together? I'd love to hear from you.</p>
-
-        <div class="bg-surface-dark rounded-xl border border-border-dark p-6 md:p-8">
-            <form id="contact-form" class="flex flex-col gap-5">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div class="flex flex-col gap-1.5">
-                  <label for="first-name" class="text-sm font-medium text-text-secondary">First Name <span class="text-primary">*</span></label>
-                  <input type="text" id="first-name" name="first_name" required
-                    class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
-                    placeholder="Jack">
-                </div>
-                <div class="flex flex-col gap-1.5">
-                  <label for="last-name" class="text-sm font-medium text-text-secondary">Last Name <span class="text-primary">*</span></label>
-                  <input type="text" id="last-name" name="last_name" required
-                    class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
-                    placeholder="Parrack">
-                </div>
-              </div>
-              <div class="flex flex-col gap-1.5">
-                <label for="contact-email" class="text-sm font-medium text-text-secondary">Email <span class="text-primary">*</span></label>
-                <input type="email" id="contact-email" name="email" required
-                  class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors"
-                  placeholder="you@example.com">
-              </div>
-              <div class="flex flex-col gap-1.5">
-                <label for="message" class="text-sm font-medium text-text-secondary">Message <span class="text-primary">*</span></label>
-                <textarea id="message" name="message" required rows="5"
-                  class="bg-background-dark border border-border-dark rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-text-secondary/60 focus:outline-none focus:border-primary transition-colors resize-none"
-                  placeholder="Tell me about your project or opportunity..."></textarea>
-              </div>
-              <button type="submit" id="submit-btn"
-                class="flex items-center justify-center gap-2 rounded-lg bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold h-11 px-6 tracking-[0.015em] disabled:opacity-60 disabled:cursor-not-allowed">
-                <span class="material-symbols-outlined !text-[18px]">send</span>
-                Send Message
-              </button>
-              <div id="form-status" class="hidden text-center text-sm py-2.5 px-4 rounded-lg font-medium"></div>
-            </form>
+      <!-- ── Contact CTA ───────────────────────────────────────────────── -->
+      <section class="reveal py-16 border-t border-border-dark">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <p class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-3">Contact</p>
+            <h2 class="text-foreground text-4xl md:text-5xl font-black leading-[1.05] tracking-[-0.03em]">Let's<br>talk.</h2>
+          </div>
+          <a href="contact.html"
+             class="inline-flex items-center gap-2 rounded-full bg-foreground text-background-dark font-semibold text-sm h-12 px-8 hover:opacity-90 transition-opacity w-fit">
+            Get in touch
+            <span class="material-symbols-outlined !text-[18px]">arrow_forward</span>
+          </a>
         </div>
       </section>
 
@@ -742,51 +567,39 @@
   </main>
 
   <!-- ── Footer ─────────────────────────────────────────────────────────── -->
-  <footer class="mt-auto border-t border-border-dark bg-surface-dark/50 px-5 py-12">
-    <div class="mx-auto max-w-[1200px] flex flex-col gap-5 items-center">
+  <footer class="border-t border-border-dark px-4 md:px-6 lg:px-10 py-12 mt-8">
+    <div class="mx-auto max-w-[1200px] grid grid-cols-2 md:grid-cols-4 gap-10">
 
-      <div class="flex items-center gap-2 text-foreground">
-        <div class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
-          <span class="material-symbols-outlined text-[20px]">terminal</span>
-        </div>
-        <span class="font-bold text-lg">Jack Parrack</span>
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1 flex flex-col gap-3">
+        <a href="#about" class="flex items-center gap-2 text-foreground w-fit">
+          <img src="images/icon.png" class="h-7 w-7 rounded-lg" alt="">
+          <span class="font-bold text-sm">Jack Parrack</span>
+        </a>
+        <p class="text-text-secondary text-xs leading-relaxed">Software Engineer. Computer Engineering graduate.</p>
+        <p class="text-text-secondary text-xs mt-2">© 2026 Jack Parrack</p>
       </div>
 
-      <!-- Contact links -->
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href="mailto:parrackjack@gmail.com"
-           class="flex items-center gap-2 px-4 py-2 rounded-full bg-background-dark border border-border-dark text-text-secondary hover:bg-primary hover:border-primary hover:text-white transition-all text-sm font-medium">
-          <span class="material-symbols-outlined text-[18px]">mail</span>
-          parrackjack@gmail.com
-        </a>
-        <a href="https://github.com/Rojoloco04/" target="_blank" rel="noopener noreferrer"
-           class="flex items-center gap-2 px-4 py-2 rounded-full bg-background-dark border border-border-dark text-text-secondary hover:bg-primary hover:border-primary hover:text-white transition-all text-sm font-medium">
-          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-          </svg>
-          Rojoloco04
-        </a>
-        <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer"
-           class="flex items-center gap-2 px-4 py-2 rounded-full bg-background-dark border border-border-dark text-text-secondary hover:bg-primary hover:border-primary hover:text-white transition-all text-sm font-medium">
-          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-          </svg>
-          Jackson Parrack
-        </a>
+      <!-- Navigate -->
+      <div class="flex flex-col gap-3">
+        <p class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Navigate</p>
+        <a href="#about" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">About</a>
+        <a href="#projects" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Projects</a>
+        <a href="#experience" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Experience</a>
+        <a href="#education" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Education</a>
+        <a href="#skills" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Skills</a>
       </div>
 
-      <!-- Quick nav -->
-      <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-text-secondary">
-        <a class="hover:text-foreground transition-colors" href="#about">About</a>
-        <a class="hover:text-foreground transition-colors" href="#projects">Projects</a>
-        <a class="hover:text-foreground transition-colors" href="#experience">Experience</a>
-        <a class="hover:text-foreground transition-colors" href="#activities">Activities</a>
-        <a class="hover:text-foreground transition-colors" href="#education">Education</a>
-        <a class="hover:text-foreground transition-colors" href="#skills">Skills</a>
-        <a class="hover:text-foreground transition-colors" href="#contact">Contact</a>
+      <!-- Connect -->
+      <div class="flex flex-col gap-3">
+        <p class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Connect</p>
+        <a href="contact.html" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Contact</a>
+        <a href="mailto:parrackjack@gmail.com" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Email</a>
+        <a href="https://github.com/Rojoloco04/" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">LinkedIn</a>
+        <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Resume</a>
       </div>
 
-      <p class="text-text-secondary text-sm opacity-50">© 2026 Jack Parrack. All rights reserved.</p>
     </div>
   </footer>
   <!-- Back-to-top button -->
