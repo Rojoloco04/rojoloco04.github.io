@@ -29,25 +29,32 @@ syncThemeUI();
 
 // ── Mobile menu ───────────────────────────────────────────────────────────────
 
+const siteHeader = document.querySelector("#site-header");
 const mobileMenuButton = document.querySelector("#mobile-menu-button");
 const mobileMenu = document.querySelector("#mobile-menu");
+const mobileBackdrop = document.querySelector("#mobile-backdrop");
 const menuIcon = mobileMenuButton?.querySelector(".material-symbols-outlined");
 
 function openMobileMenu() {
-  mobileMenu?.classList.remove("hidden");
+  mobileMenu?.classList.add("menu-open");
+  mobileBackdrop?.classList.add("menu-open");
+  siteHeader?.classList.add("menu-open");
   if (menuIcon) menuIcon.textContent = "close";
 }
 
 function closeMobileMenu() {
-  mobileMenu?.classList.add("hidden");
+  mobileMenu?.classList.remove("menu-open");
+  mobileBackdrop?.classList.remove("menu-open");
+  siteHeader?.classList.remove("menu-open");
   if (menuIcon) menuIcon.textContent = "menu";
 }
 
 mobileMenuButton?.addEventListener("click", () => {
-  mobileMenu?.classList.contains("hidden") ? openMobileMenu() : closeMobileMenu();
+  mobileMenu?.classList.contains("menu-open") ? closeMobileMenu() : openMobileMenu();
 });
 
-// Close the drawer when any mobile nav link is tapped
+// Close the drawer when the backdrop or any nav link is tapped
+mobileBackdrop?.addEventListener("click", closeMobileMenu);
 mobileMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
 });
@@ -189,7 +196,6 @@ if (heroTyped) {
 // Watches sections marked with data-bg="light". When one enters the viewport
 // the header gains .nav-over-light so links stay readable against a pale bg.
 
-const siteHeader = document.querySelector("#site-header");
 const lightBgSections = document.querySelectorAll("[data-bg='light']");
 
 if (siteHeader && lightBgSections.length) {

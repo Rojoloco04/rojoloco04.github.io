@@ -96,9 +96,11 @@ section {
 
 /* ── 6. Nav floating shadow ──────────────────────────────────────── */
 #site-header {
+  border-radius: 9999px; /* owned here so we can snap it without Tailwind interference */
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06),
     0 8px 32px rgba(0, 0, 0, 0.45);
+  transition: background-color 0.3s ease; /* no border-radius transition — change is instant */
 }
 
 html:not(.dark) #site-header {
@@ -106,6 +108,7 @@ html:not(.dark) #site-header {
     0 0 0 1px rgba(0, 0, 0, 0.05),
     0 4px 24px rgba(0, 0, 0, 0.08);
 }
+
 
 /* ── 7. Nav adaptive colour (over light sections) ───────────────── */
 /* Applied by JS when the nav scrolls over a section with data-bg="light" */
@@ -131,7 +134,57 @@ html:not(.dark) #site-header {
   color: #fff;
 }
 
-/* ── 7. Material Symbols alignment ──────────────────────────────── */
+/* When open, snap pill to box-top — top corners stay visually identical (9999px and 26px
+   both render as 26px on a ~52px tall element), bottom corners go flat instantly */
+#site-header.menu-open {
+  border-radius: 26px 26px 0 0;
+}
+
+/* ── Mobile drawer overlay ───────────────────────────────────── */
+#mobile-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#mobile-backdrop.menu-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#mobile-menu {
+  top: 64px;
+  border-radius: 0 0 26px 26px;
+  border-top: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+}
+
+#mobile-menu.menu-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ── 8. Hero gradient background ────────────────────────────────── */
+#about {
+  margin-top: -64px;  /* pull section up behind the sticky header */
+  padding-top: 64px;  /* push content back below the header */
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 50%, rgba(19, 91, 236, 0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 55% at 80% 15%, rgba(99, 102, 241, 0.1) 0%, transparent 60%);
+}
+
+html:not(.dark) #about {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% -5%, rgba(255, 255, 255, 0.85) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 85% 85%, rgba(196, 181, 253, 0.35) 0%, transparent 55%);
+}
+
+/* ── 9. Material Symbols alignment ──────────────────────────────── */
 .material-symbols-outlined {
   vertical-align: middle;
   line-height: 1;
