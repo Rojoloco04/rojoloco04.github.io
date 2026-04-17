@@ -190,3 +190,29 @@ html:not(.dark) #about {
   vertical-align: middle;
   line-height: 1;
 }
+
+/* ── 10. Skill rings ────────────────────────── */
+@property --ring-pct {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+.skill-ring {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  /* track layer (border colour) + conic fill layer */
+  background: conic-gradient(from 0deg, var(--ring-color) calc(var(--ring-pct) * 1%), rgb(var(--c-border)) calc(var(--ring-pct) * 1%));
+  /* donut mask: transparent centre + outer rim, ring body stays visible */
+  mask: radial-gradient(farthest-side, transparent 63%, black 64% 91%, transparent 92%);
+  transition: --ring-pct 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Level colours */
+.skill-ring.lvl-1 { --ring-color: #f59e0b; }               /* amber   — beginner     */
+.skill-ring.lvl-2 { --ring-color: #60a5fa; }               /* blue    — intermediate */
+.skill-ring.lvl-3 { --ring-color: rgb(var(--c-primary)); }   /* primary — proficient   */
+.skill-ring.lvl-4 { --ring-color: #10b981; }               /* emerald — expert       */
+

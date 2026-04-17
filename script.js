@@ -211,6 +211,59 @@ if (siteHeader && lightBgSections.length) {
   lightBgSections.forEach((s) => navColorObserver.observe(s));
 }
 
+// ── Skill rings ───────────────────────────────────────────────────────────────
+// Replaces each skill item's icon with a CSS conic-gradient ring that
+// fills clockwise based on proficiency level (1–4).
+
+(function () {
+
+  function makeRing(level) {
+    const div = document.createElement('div');
+    div.classList.add('skill-ring', `lvl-${level}`);
+    div.setAttribute('aria-hidden', 'true');
+    div.dataset.target = String((level / 4) * 100);
+    return div;
+  }
+
+  // Sort each skill list: highest level first, alphabetically within each level
+  document.querySelectorAll('ul:has(li.skill-item[data-level])').forEach(ul => {
+    const items = [...ul.querySelectorAll('li.skill-item[data-level]')];
+    const label = li => {
+      const clone = li.cloneNode(true);
+      clone.querySelector('.material-symbols-outlined')?.remove();
+      return clone.textContent.trim();
+    };
+    items.sort((a, b) => {
+      const lvlDiff = parseInt(b.dataset.level, 10) - parseInt(a.dataset.level, 10);
+      if (lvlDiff !== 0) return lvlDiff;
+      return label(a).localeCompare(label(b));
+    });
+    items.forEach(li => ul.appendChild(li));
+  });
+
+  document.querySelectorAll('li.skill-item[data-level]').forEach(li => {
+    const level = parseInt(li.dataset.level, 10);
+    if (level < 1 || level > 4) return;
+    const icon = li.querySelector('.material-symbols-outlined');
+    const ring = makeRing(level);
+    if (icon) icon.replaceWith(ring);
+    else li.prepend(ring);
+  });
+
+  const skillsSection = document.querySelector('#skills');
+  if (!skillsSection) return;
+
+  const ringObserver = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    document.querySelectorAll('.skill-ring').forEach(ring => {
+      ring.style.setProperty('--ring-pct', ring.dataset.target);
+    });
+    ringObserver.unobserve(skillsSection);
+  }, { threshold: 0.15 });
+
+  ringObserver.observe(skillsSection);
+})();
+
 // ── Contact form ──────────────────────────────────────────────────────────────
 // Submits the form data to Formspree and shows success / error feedback.
 
