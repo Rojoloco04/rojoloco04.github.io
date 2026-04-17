@@ -228,11 +228,7 @@ if (siteHeader && lightBgSections.length) {
   // Sort each skill list: highest level first, alphabetically within each level
   document.querySelectorAll('ul:has(li.skill-item[data-level])').forEach(ul => {
     const items = [...ul.querySelectorAll('li.skill-item[data-level]')];
-    const label = li => {
-      const clone = li.cloneNode(true);
-      clone.querySelector('.material-symbols-outlined')?.remove();
-      return clone.textContent.trim();
-    };
+    const label = li => li.textContent.trim();
     items.sort((a, b) => {
       const lvlDiff = parseInt(b.dataset.level, 10) - parseInt(a.dataset.level, 10);
       if (lvlDiff !== 0) return lvlDiff;
