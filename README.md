@@ -15,16 +15,6 @@ Personal portfolio website for Jackson Parrack, built with **HTML**, **Tailwind 
 | **Skills** | Languages, frameworks, cloud/DevOps, hardware, and human languages |
 | **Contact** | Separate page (`contact.html`) with contact form and social links |
 
-## Projects
-
-| Project | Description |
-|---|---|
-| **RAPID** | Capstone — FPGA-based laser/motor control system in VHDL and C |
-| **Vigilane** | AI-powered road hazard detection (YOLOv8 + React Native + Flask + Firebase) · HackSLU 2026 Honorable Mention |
-| **declare { Life }** | Life-planning app for goals, habits, and milestones · DevFest WashU 2026 2nd Place, Best Use of Featherless |
-| **Studium** | AI study planner — syncs with Canvas LMS, parses syllabi with Gemini AI, schedules study blocks into Google Calendar |
-| **Rojo's Mod** | Minecraft NeoForge mod adding a throwable Lightning Spear with custom entity behavior, 3D modeling, and sprite art |
-
 ## File Structure
 
 ```
@@ -43,7 +33,6 @@ images/         — Headshot, project screenshots, favicons, and organisation lo
 - **Scroll-reveal animations** — sections fade up into view as they enter the viewport (CSS `@keyframes fadeUp` + `IntersectionObserver`).
 - **Active nav highlighting** — the header link for the currently visible section is highlighted via `IntersectionObserver`.
 - **Responsive mobile menu** — hamburger drawer with auto-close on link tap or backdrop click.
-- **Back-to-top button** — appears after scrolling past the first viewport height.
 - **Contact form** — submits via Formspree with loading state and success/error feedback.
 - **Project gallery** — hover-reveal overlays on desktop, always-visible captions on mobile.
 - **Open Graph / Twitter cards** — meta tags for rich social previews.
