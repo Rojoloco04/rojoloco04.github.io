@@ -274,6 +274,9 @@
           </div>
         </a>
 
+        <!-- Middle row: Vigilane + mediCode -->
+        <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-1">
+
         <!-- Vigilane -->
         <a href="https://github.com/1Bananas1/Vigilane" target="_blank" rel="noopener noreferrer"
            class="group relative overflow-hidden h-[220px] md:h-[280px] block focus:outline-none bg-background-dark"
@@ -356,43 +359,7 @@
           </div>
         </a>
 
-        <!-- Studium -->
-        <a href="https://github.com/Rojoloco04/studium" target="_blank" rel="noopener noreferrer"
-           class="group relative overflow-hidden h-[220px] md:h-[280px] block focus:outline-none bg-background-dark"
-           aria-label="View Studium on GitHub">
-          <img src="images/studium.png" alt="Studium" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-          <!-- Desktop: hover overlay -->
-          <div class="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex-col justify-end p-5">
-            <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-              <div class="flex items-start justify-between gap-2">
-                <div>
-                  <h3 class="text-white text-base font-bold leading-tight">Studium</h3>
-                  <p class="text-white/60 text-xs font-medium mt-0.5">AI Study Planner</p>
-                </div>
-                <span class="material-symbols-outlined text-white !text-[18px] shrink-0">arrow_outward</span>
-              </div>
-              <p class="text-white/75 text-xs leading-relaxed">
-                Syncs with Canvas LMS, parses syllabi using Gemini AI, and schedules personalized study blocks into Google Calendar.
-              </p>
-              <div class="flex gap-1 flex-wrap mt-1">
-                <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Next.js</span>
-                <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">FastAPI</span>
-                <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Supabase</span>
-                <span class="px-2 py-0.5 rounded-md bg-white/15 text-white/80 text-xs font-medium border border-white/15">Gemini API</span>
-              </div>
-            </div>
-          </div>
-          <!-- Mobile: always-visible caption bar -->
-          <div class="flex md:hidden absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 px-4 pb-4 flex-col justify-end">
-            <div class="flex items-center justify-between gap-2">
-              <div>
-                <h3 class="text-white text-base font-bold leading-tight">Studium</h3>
-                <p class="text-white/60 text-xs font-medium mt-0.5">AI Study Planner</p>
-              </div>
-              <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
-            </div>
-          </div>
-        </a>
+        </div><!-- end middle row -->
 
         <!-- Bottom row: Rojo's Mod + The Blind Mice -->
         <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-1">
@@ -486,7 +453,7 @@
           <!-- Mastercard -->
           <div class="relative pl-6 py-6 last:border-b-0">
             <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1">
               <div class="flex items-start gap-3">
                 <img src="images/mastercard.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Mastercard">
                 <div>
@@ -495,43 +462,8 @@
                   <p class="text-text-secondary text-xs mt-0.5">O'Fallon, MO</p>
                 </div>
               </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2026 – Present</span>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Incoming Aug. 2026</span>
             </div>
-            <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
-              <li>Supported software development, testing, and deployment by following established procedures and seeking guidance and code reviews from senior engineers.</li>
-              <li>Built understanding of end-to-end system architecture within owned components, contributing feedback to improve code quality and maintainability.</li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="tech-tag">Java</span>
-              <span class="tech-tag">Spring Boot</span>
-              <span class="tech-tag">REST API</span>
-              <span class="tech-tag">Angular</span>
-              <span class="tech-tag">Android</span>
-              <span class="tech-tag">iOS</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">Hibernate</span>
-              <span class="tech-tag">Azure</span>
-            </div>
-          </div>
-
-          <!-- Tokyo International University -->
-          <div class="relative pl-6 py-6 last:border-b-0">
-            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
-              <div class="flex items-start gap-3">
-                <img src="images/tiu.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Tokyo International University">
-                <div>
-                  <h3 class="text-foreground text-base font-bold leading-snug">Quantum Computing Research Assistant</h3>
-                  <a href="https://www.tiu.ac.jp/en/" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">Tokyo International University<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Tokyo, Japan</p>
-                </div>
-              </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">May 2026 – Aug. 2026</span>
-            </div>
-            <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
-              <li>Participated in research on quantum algorithms and machine learning, particularly in the context of software engineering and blockchain.</li>
-              <li>Collaborated on research with Dr. Ozaydin and a small cohort of graduate students.</li>
-            </ul>
           </div>
 
           <!-- DataServ -->
@@ -543,15 +475,16 @@
                 <div>
                   <h3 class="text-foreground text-base font-bold leading-snug">DevOps Intern</h3>
                   <a href="https://www.dataserv.com" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">DataServ<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
+                  <p class="text-text-secondary text-xs mt-0.5">Remote</p>
                 </div>
               </div>
               <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">May 2025 – Aug. 2025</span>
             </div>
             <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
-              <li>Migrated 3,000+ SQL stored procedures across 71 client environments into Git using custom Python automation.</li>
-              <li>Redesigned and implemented 17 post-import SQL configurations across 7 clients.</li>
-              <li>Optimized large-scale data ingestion processes, including a lookup redesign for 21 clients.</li>
-              <li>Delivered project demonstrations to leadership.</li>
+              <li>Leveraged custom Python automation scripts to migrate 3,000+ SQL stored procedures across 71 client environments into Git, allowing for easier future version control.</li>
+              <li>Redesigned and implemented 17 post-import SQL configurations across 7 clients, replacing time-based jobs with event-driven triggers and validating reliability through full end-to-end testing.</li>
+              <li>Optimized large-scale data ingestion processes, including a lookup redesign for 21 clients and multiple enterprise scheduling upgrades, improving system stability and performance.</li>
+              <li>Delivered project demonstrations to leadership, communicated progress across teams, and collaborated on troubleshooting complex SQL and configuration issues in a fast-paced Agile environment.</li>
             </ul>
             <div class="flex flex-wrap gap-2 mt-4">
               <span class="tech-tag">Python</span>
@@ -584,7 +517,7 @@
                   <p class="text-text-secondary text-xs mt-0.5">Atlanta, GA</p>
                 </div>
               </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2026 – May 2029 (est.)</span>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2026 – 2028 (est.)</span>
             </div>
           </div>
 
@@ -595,9 +528,9 @@
               <div class="flex items-start gap-3">
                 <img src="images/slu.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Saint Louis University">
                 <div>
-                  <h3 class="text-foreground text-base font-bold leading-snug">B.S. Computer Engineering</h3>
+                  <h3 class="text-foreground text-base font-bold leading-snug">B.S. Computer Engineering, <em class="font-normal">Summa Cum Laude</em></h3>
                   <a href="https://www.slu.edu" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">Saint Louis University<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Minor: Computer Science · GPA: 3.92 / 4.0</p>
+                  <p class="text-text-secondary text-xs mt-0.5">Minor: Computer Science · GPA: 3.93 / 4.0</p>
                 </div>
               </div>
               <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2022 – May 2026</span>
@@ -608,31 +541,31 @@
               <ul class="flex flex-col gap-2">
                 <li class="flex items-start justify-between gap-2">
                   <span class="skill-item"><span class="material-symbols-outlined">trophy</span>Member · Tau Beta Pi Engineering Honor Society, Missouri Epsilon Chapter</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Apr. 2026 – Present</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Apr. 2026 – May 2026</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
                   <span class="skill-item"><span class="material-symbols-outlined">sports_esports</span>President &amp; Teams Coordinator · SLU Esports</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – May 2026</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
                   <span class="skill-item"><span class="material-symbols-outlined">electrical_services</span>Vice President · Institute of Electrical and Electronics Engineers (IEEE)</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2025 – Present</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2025 – May 2026</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
                   <span class="skill-item"><span class="material-symbols-outlined">school</span>First-Year Mentor · School of Science &amp; Engineering</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – May 2026</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
                   <span class="skill-item"><span class="material-symbols-outlined">flight</span>Study Abroad Peer Mentor</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – May 2026</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
                   <span class="skill-item"><span class="material-symbols-outlined">groups</span>Member · Vietnamese Student Association</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Jan. 2026 – Present</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Jan. 2026 – May 2026</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
                   <span class="skill-item"><span class="material-symbols-outlined">groups</span>Member · Korean Student Association</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – Present</span>
+                  <span class="text-text-secondary/50 text-xs whitespace-nowrap">Aug. 2024 – May 2026</span>
                 </li>
                 <li class="flex items-start justify-between gap-2">
                   <span class="skill-item"><span class="material-symbols-outlined">music_note</span>String Orchestra</span>
