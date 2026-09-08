@@ -60,33 +60,14 @@
 
   <!-- Custom component classes (processed by Tailwind CDN) -->
   <style type="text/tailwindcss">
-    .skill-tag {
-      @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background-dark border border-border-dark text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors cursor-default;
-    }
     .tech-tag {
       @apply px-2.5 py-1 rounded-md bg-primary/10 text-xs font-medium text-text-secondary border border-border-dark;
-    }
-    .timeline-line {
-      @apply w-px bg-border-dark grow my-2;
-    }
-    .timeline-icon {
-      @apply flex items-center justify-center size-10 rounded-full bg-surface-dark border border-border-dark text-primary shadow-lg z-10;
-    }
-    .card {
-      @apply bg-surface-dark p-6 rounded-xl border border-border-dark hover:border-primary/50 transition-colors shadow-sm;
-    }
-    .date-badge {
-      @apply mt-2 md:mt-0 px-3 py-1 rounded-full bg-background-dark border border-border-dark w-fit;
     }
     .skill-item {
       @apply flex items-center gap-2 text-text-secondary text-sm;
     }
     .skill-item > .material-symbols-outlined {
       @apply text-primary !text-[14px] shrink-0;
-    }
-    .sr-only {
-      @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
-      clip: rect(0, 0, 0, 0);
     }
   </style>
 
@@ -454,16 +435,31 @@
           <!-- Mastercard -->
           <div class="relative pl-6 py-6 last:border-b-0">
             <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
               <div class="flex items-start gap-3">
                 <img src="images/mastercard.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 flex-shrink-0 mt-0.5" alt="Mastercard">
                 <div>
                   <h3 class="text-foreground text-base font-bold leading-snug">Software Engineer I</h3>
                   <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">Mastercard · Launch Program<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">O'Fallon, MO</p>
+                  <p class="text-text-secondary text-xs mt-0.5">Hybrid · O'Fallon, MO</p>
                 </div>
               </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Incoming Aug. 2026</span>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2026 - Present</span>
+            </div>
+            <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
+              <li>Integrated an internal MCP platform across 6 teams, allowing for queries of Oracle databases and company knowledge using natural language and agentic interfaces such as GitHub Copilot.</li>
+              <li>Delivered a modernized clearing solution using Java Spring microservices deployed to Kubernetes, improving scalability while maintaining data transformation accuracy at a max throughput of 14M transactions/day.</li>
+              <li>Leveraged LLMs to interface with transaction databases to generate insights about transaction data, requiring strict guardrails and harnesses, and contributing to faster feedback cycles.</li>
+              <li>Utilized a transaction simulation application in Go to test functionality of systems end-to-end through the full payment lifecycle, improving test accuracy and reducing production defects.</li>
+              <li>Contributed to the integration of a modernized settlement solution, including a shift to cloud-native architecture.</li>
+              <li>Built Splunk dashboards to monitor services for failures, discrepancies, and latency spikes.</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Spring</span>
+              <span class="tech-tag">Kubernetes</span>
+              <span class="tech-tag">Go</span>
+              <span class="tech-tag">Splunk</span>
             </div>
           </div>
 
@@ -476,7 +472,7 @@
                 <div>
                   <h3 class="text-foreground text-base font-bold leading-snug">DevOps Intern</h3>
                   <a href="https://www.dataserv.com" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">DataServ<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Remote</p>
+                  <p class="text-text-secondary text-xs mt-0.5">Remote · St. Louis, MO</p>
                 </div>
               </div>
               <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">May 2025 - Aug. 2025</span>
@@ -515,10 +511,10 @@
                 <div>
                   <h3 class="text-foreground text-base font-bold leading-snug">M.S. Computer Science</h3>
                   <a href="https://www.gatech.edu" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">Georgia Institute of Technology<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Atlanta, GA</p>
+                  <p class="text-text-secondary text-xs mt-0.5">Computing Systems · Atlanta, GA</p>
                 </div>
               </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2026 - 2028 (est.)</span>
+              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2026 - Present</span>
             </div>
           </div>
 
@@ -620,10 +616,9 @@
                 <li class="skill-item" data-level="4">C++</li>
                 <li class="skill-item" data-level="3">Java</li>
                 <li class="skill-item" data-level="3">Python</li>
-                <li class="skill-item" data-level="1">TypeScript</li>
                 <li class="skill-item" data-level="1">JavaScript</li>
+                <li class="skill-item" data-level="1">Go</li>
                 <li class="skill-item" data-level="3">SQL</li>
-                <li class="skill-item" data-level="3">Assembly</li>
                 <li class="skill-item" data-level="2">HTML/CSS</li>
               </ul>
             </div>
@@ -635,14 +630,10 @@
               </div>
               <h3 class="text-foreground font-bold text-sm mb-2">Frameworks & Tools</h3>
               <ul class="space-y-1.5">
-                <li class="skill-item" data-level="1">Spring Boot</li>
-                <li class="skill-item" data-level="1">Angular</li>
-                <li class="skill-item" data-level="2">React Native</li>
-                <li class="skill-item" data-level="2">Expo</li>
-                <li class="skill-item" data-level="3">REST API</li>
-                <li class="skill-item" data-level="1">Hibernate</li>
-                <li class="skill-item" data-level="1">Spring JPA</li>
-                <li class="skill-item" data-level="4">Claude Code</li>
+                <li class="skill-item" data-level="2">Spring</li>
+                <li class="skill-item" data-level="4">Agentic Workflows</li>
+                <li class="skill-item" data-level="3">MCP</li>
+                <li class="skill-item" data-level="3">LLM Integration</li>
               </ul>
             </div>
 
@@ -653,11 +644,11 @@
               </div>
               <h3 class="text-foreground font-bold text-sm mb-2">Cloud & DevOps</h3>
               <ul class="space-y-1.5">
-                <li class="skill-item" data-level="1">Azure</li>
                 <li class="skill-item" data-level="2">AWS</li>
-                <li class="skill-item" data-level="2">PostgreSQL</li>
+                <li class="skill-item" data-level="1">Kubernetes</li>
+                <li class="skill-item" data-level="1">Splunk</li>
                 <li class="skill-item" data-level="4">Git</li>
-                <li class="skill-item" data-level="2">Linux</li>
+                <li class="skill-item" data-level="3">Linux</li>
               </ul>
             </div>
 

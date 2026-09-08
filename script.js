@@ -153,7 +153,7 @@ if (heroTyped) {
   let charIndex = 0;
   let isDeleting = false;
 
-  function typeHero() {
+  const typeHero = () => {
     // Pause when the tab is hidden to save battery
     if (document.hidden) {
       setTimeout(typeHero, 500);
@@ -182,33 +182,10 @@ if (heroTyped) {
     }
 
     setTimeout(typeHero, delay);
-  }
+  };
 
   // Short initial delay so the page can settle before typing starts
   setTimeout(typeHero, 600);
-}
-
-// ── Nav adaptive colour ───────────────────────────────────────────────────────
-// Watches sections marked with data-bg="light". When one enters the viewport
-// the header gains .nav-over-light so links stay readable against a pale bg.
-
-const lightBgSections = document.querySelectorAll("[data-bg='light']");
-
-if (siteHeader && lightBgSections.length) {
-  let lightCount = 0;
-
-  const navColorObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        lightCount += entry.isIntersecting ? 1 : -1;
-      });
-      lightCount = Math.max(0, lightCount);
-      siteHeader.classList.toggle("nav-over-light", lightCount > 0);
-    },
-    { rootMargin: "-64px 0px 0px 0px", threshold: 0 }
-  );
-
-  lightBgSections.forEach((s) => navColorObserver.observe(s));
 }
 
 // ── Skill rings ───────────────────────────────────────────────────────────────

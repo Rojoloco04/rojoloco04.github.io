@@ -10,7 +10,7 @@ Personal portfolio website for Jackson Parrack, built with **HTML**, **Tailwind 
 |---|---|
 | **About** | Hero intro with headshot, typewriter animation, and social links |
 | **Projects** | Featured software / hardware projects in a masonry image gallery |
-| **Experience** | Work and internship history (Mastercard, TIU, DataServ) |
+| **Experience** | Work and internship history (Mastercard, DataServ) |
 | **Education** | Academic background and extracurricular activities |
 | **Skills** | Languages, frameworks, cloud/DevOps, hardware, and human languages |
 | **Contact** | Separate page (`contact.html`) with contact form and social links |
@@ -20,9 +20,9 @@ Personal portfolio website for Jackson Parrack, built with **HTML**, **Tailwind 
 ```
 index.html      — Main page markup and Tailwind config
 contact.html    — Contact page with form (Formspree) and social links
-style.css       — CSS custom properties (light + dark themes), scrollbar, scroll-reveal animation
-script.js       — Theme toggle, mobile menu, nav highlighting, scroll-reveal, hero typewriter, contact form
-images/         — Headshot, project screenshots, favicons, and organisation logos
+style.css       — CSS custom properties (light + dark themes), scrollbar, scroll-reveal, skill rings
+script.js       — Theme toggle, mobile menu, nav highlighting, scroll-reveal, hero typewriter, skill rings, contact form
+images/         — Headshot, project screenshots, favicon, and organisation logos
 ```
 
 ## Features
@@ -33,6 +33,7 @@ images/         — Headshot, project screenshots, favicons, and organisation lo
 - **Scroll-reveal animations** — sections fade up into view as they enter the viewport (CSS `@keyframes fadeUp` + `IntersectionObserver`).
 - **Active nav highlighting** — the header link for the currently visible section is highlighted via `IntersectionObserver`.
 - **Responsive mobile menu** — hamburger drawer with auto-close on link tap or backdrop click.
+- **Skill proficiency rings** — each skill's `data-level` (1–4) renders as a conic-gradient ring that fills when the Skills section scrolls into view; lists are auto-sorted by level.
 - **Contact form** — submits via Formspree with loading state and success/error feedback.
 - **Project gallery** — hover-reveal overlays on desktop, always-visible captions on mobile.
 - **Open Graph / Twitter cards** — meta tags for rich social previews.
