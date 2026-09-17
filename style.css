@@ -6,7 +6,12 @@
  *   2. Base / reset helpers
  *   3. Custom scrollbar
  *   4. Scroll-reveal animation
- *   5. Material Symbols alignment fix
+ *   5. Hero typewriter cursor
+ *   6. Nav floating shadow
+ *   7. Mobile drawer overlay
+ *   8. Hero gradient background
+ *   9. Material Symbols alignment fix
+ *  10. Skill rings
  */
 
 /* ── 1. Theme CSS variables ──────────────────────────────────────── */
@@ -110,38 +115,13 @@ html:not(.dark) #site-header {
     0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
-
-/* ── 7. Nav adaptive colour (over light sections) ───────────────── */
-/* Applied by JS when the nav scrolls over a section with data-bg="light" */
-#site-header.nav-over-light {
-  background-color: rgba(255 255 255 / 0.75);
-}
-
-#site-header.nav-over-light .nav-link,
-#site-header.nav-over-light a:not([href="contact.html"]),
-#site-header.nav-over-light button {
-  color: rgb(71 85 105); /* slate-600 */
-}
-
-#site-header.nav-over-light .nav-link:hover,
-#site-header.nav-over-light a:not([href="contact.html"]):hover,
-#site-header.nav-over-light button:hover {
-  color: rgb(15 23 42); /* slate-900 */
-}
-
-#site-header.nav-over-light a[href="contact.html"] {
-  background-color: rgb(15 23 42);
-  border-color: rgb(15 23 42);
-  color: #fff;
-}
-
 /* When open, snap pill to box-top — top corners stay visually identical (9999px and 26px
    both render as 26px on a ~52px tall element), bottom corners go flat instantly */
 #site-header.menu-open {
   border-radius: 26px 26px 0 0;
 }
 
-/* ── Mobile drawer overlay ───────────────────────────────────── */
+/* ── 7. Mobile drawer overlay ────────────────────────────────────── */
 #mobile-backdrop {
   opacity: 0;
   pointer-events: none;
@@ -191,7 +171,7 @@ html:not(.dark) #about {
   line-height: 1;
 }
 
-/* ── 10. Skill rings ────────────────────────── */
+/* ── 10. Skill rings ─────────────────────────────────────────────── */
 @property --ring-pct {
   syntax: '<number>';
   inherits: false;
