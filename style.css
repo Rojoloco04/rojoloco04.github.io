@@ -7,11 +7,12 @@
  *   3. Custom scrollbar
  *   4. Scroll-reveal animation
  *   5. Hero typewriter cursor
- *   6. Nav floating shadow
- *   7. Mobile drawer overlay
+ *   6. Nav pill
+ *   7. Mobile drawer
  *   8. Hero gradient background
  *   9. Material Symbols alignment fix
  *  10. Skill rings
+ *  11. Reduced motion
  */
 
 /* ── 1. Theme CSS variables ──────────────────────────────────────── */
@@ -44,6 +45,12 @@ body {
   overflow-x: hidden;
   overflow-x: clip;
   scrollbar-gutter: stable;
+}
+
+/* Set while the mobile drawer is open. `scrollbar-gutter: stable` above keeps the
+   page from shifting sideways when the scrollbar disappears. */
+body.menu-open {
+  overflow: hidden;
 }
 
 /* Offset anchors so they clear the sticky header */
@@ -100,13 +107,20 @@ section {
   50% { opacity: 0; }
 }
 
-/* ── 6. Nav floating shadow ──────────────────────────────────────── */
+/* ── 6. Nav pill ────────────────────────────────────────────────── */
+/* The sticky <header> has a fixed height (h-[68px]) so the pill can grow taller than it
+   without pushing the page down. The pill is one element: the nav row plus the mobile
+   drawer, which sits in flow at zero height until opened (see section 7). */
 #site-header {
-  border-radius: 9999px; /* owned here so we can snap it without Tailwind interference */
+  /* 28px = half the 56px closed height, so this is a true pill when closed and the
+     corners simply stay put as it stretches into a card - nothing to snap or morph */
+  border-radius: 28px;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06),
     0 8px 32px rgba(0, 0, 0, 0.45);
-  transition: background-color 0.3s ease; /* no border-radius transition — change is instant */
+  /* quick so the surface is solid before the stretch has gone far, otherwise the page
+     shows through the half-grown card for a few frames */
+  transition: background-color 0.15s ease;
 }
 
 html:not(.dark) #site-header {
@@ -115,17 +129,16 @@ html:not(.dark) #site-header {
     0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* When open, snap pill to box-top — top corners stay visually identical (9999px and 26px
-   both render as 26px on a ~52px tall element), bottom corners go flat instantly */
+/* Solid while open so the links sit on a clean surface rather than a blur of the page */
 #site-header.menu-open {
-  border-radius: 26px 26px 0 0;
+  background-color: rgb(var(--c-surface));
 }
 
-/* ── 7. Mobile drawer overlay ────────────────────────────────────── */
+/* ── 7. Mobile drawer ────────────────────────────────────────────── */
 #mobile-backdrop {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 #mobile-backdrop.menu-open {
@@ -133,21 +146,41 @@ html:not(.dark) #site-header {
   pointer-events: auto;
 }
 
+/* Height animation via grid rows (0fr -> 1fr): the inner wrapper clips, so the card
+   stretches open and the links are revealed top-down instead of popping in. */
 #mobile-menu {
-  top: 64px;
-  border-radius: 0 0 26px 26px;
-  border-top: none;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+#mobile-menu > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Links fade and settle in step with the stretch; the clip above already stages
+   them top-down, so no extra delay is needed. */
+#mobile-menu nav {
   opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
+  transform: translateY(-6px);
   transition: opacity 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
 }
 
 #mobile-menu.menu-open {
+  grid-template-rows: 1fr;
+}
+
+#mobile-menu.menu-open nav {
   opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+  transform: none;
+  transition: opacity 0.2s ease, transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@media (min-width: 768px) {
+  #mobile-menu {
+    display: none;
+  }
 }
 
 /* ── 8. Hero gradient background ────────────────────────────────── */
@@ -191,8 +224,40 @@ html:not(.dark) #about {
 }
 
 /* Level colours */
-.skill-ring.lvl-1 { --ring-color: #f59e0b; }               /* amber   — beginner     */
-.skill-ring.lvl-2 { --ring-color: #60a5fa; }               /* blue    — intermediate */
-.skill-ring.lvl-3 { --ring-color: rgb(var(--c-primary)); }   /* primary — proficient   */
-.skill-ring.lvl-4 { --ring-color: #10b981; }               /* emerald — expert       */
+.skill-ring.lvl-1 { --ring-color: #f59e0b; }              /* amber   — beginner     */
+.skill-ring.lvl-2 { --ring-color: #60a5fa; }              /* blue    — intermediate */
+.skill-ring.lvl-3 { --ring-color: rgb(var(--c-primary)); } /* primary — proficient   */
+.skill-ring.lvl-4 { --ring-color: #10b981; }              /* emerald — expert       */
 
+/* ── 11. Reduced motion ──────────────────────────────────────────── */
+/* Honour the OS setting: drop the decorative motion but never the visibility,
+   so `.reveal` sections must still end up opaque. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.visible {
+    opacity: 1;
+    animation: none;
+  }
+
+  .hero-cursor {
+    animation: none;
+  }
+
+  .skill-ring {
+    transition: none;
+  }
+
+  .animate-bounce {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
