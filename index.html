@@ -8,6 +8,8 @@
   <title>Jack Parrack | Portfolio</title>
   <link rel="canonical" href="https://rojoloco04.github.io/" />
   <link rel="icon" type="image/png" href="images/icon.png" />
+  <meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
@@ -29,10 +31,10 @@
     })();
   </script>
 
-  <!-- Fonts -->
+  <!-- Fonts: IBM Plex Sans (text) and IBM Plex Mono (labels, meta) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
@@ -43,115 +45,86 @@
       theme: {
         extend: {
           colors: {
-            "primary":         "rgb(var(--c-primary) / <alpha-value>)",
-            "foreground":      "rgb(var(--c-text-hi) / <alpha-value>)",
-            "background-dark": "rgb(var(--c-base-bg) / <alpha-value>)",
-            "surface-dark":    "rgb(var(--c-surface) / <alpha-value>)",
-            "border-dark":     "rgb(var(--c-border) / <alpha-value>)",
-            "text-secondary":  "rgb(var(--c-text-lo) / <alpha-value>)",
+            "canvas":  "rgb(var(--c-canvas) / <alpha-value>)",
+            "surface": "rgb(var(--c-surface) / <alpha-value>)",
+            "fg":      "rgb(var(--c-fg) / <alpha-value>)",
+            "muted":   "rgb(var(--c-muted) / <alpha-value>)",
+            "line":    "rgb(var(--c-line) / <alpha-value>)",
+            "primary": "rgb(var(--c-primary) / <alpha-value>)",
           },
           fontFamily: {
-            "display": ["Google Sans", "sans-serif"],
+            "sans": ['"IBM Plex Sans"', "system-ui", "sans-serif"],
+            "mono": ['"IBM Plex Mono"', "ui-monospace", "monospace"],
           },
         },
       },
     };
   </script>
 
-  <!-- Custom component classes (processed by Tailwind CDN) -->
-  <style type="text/tailwindcss">
-    /* Tech chip on a themed surface (experience timeline) */
-    .tech-tag {
-      @apply px-2.5 py-1 rounded-md bg-primary/10 text-xs font-medium text-text-secondary border border-border-dark;
-    }
-    /* Tech chip on a project tile's dark scrim — always light-on-dark */
-    .project-tag {
-      @apply px-2 py-0.5 rounded-md bg-white/15 text-xs font-medium text-white/80 border border-white/15;
-    }
-    .skill-item {
-      @apply flex items-center gap-2 text-text-secondary text-sm;
-    }
-    .skill-item > .material-symbols-outlined {
-      @apply text-primary !text-[14px] shrink-0;
-    }
-  </style>
-
   <link rel="stylesheet" href="style.css" />
 
   <!-- Without JS the scroll-reveal observer never runs, so unhide the sections -->
   <noscript>
     <style>
-      .reveal { opacity: 1; }
+      .reveal { opacity: 1; transform: none; }
     </style>
   </noscript>
 </head>
 
-<body class="bg-background-dark text-foreground font-display antialiased">
+<body class="bg-canvas text-fg font-sans antialiased text-[15px]">
 <div class="relative flex min-h-screen w-full flex-col">
 
   <!-- ── Header ─────────────────────────────────────────────────────────── -->
-  <header class="sticky top-0 z-50 w-full h-[68px] pt-3 px-4 md:px-6 lg:px-10">
-    <div id="site-header" class="mx-auto max-w-[900px] bg-surface-dark/90 backdrop-blur-md transition-colors duration-300">
-      <div class="flex items-center justify-between px-4 py-3 md:px-5 relative">
+  <header id="site-header" class="sticky top-0 z-50 w-full">
+    <div class="mx-auto max-w-[1080px] px-5 md:px-8 h-14 flex items-center justify-between gap-6">
 
-        <!-- Logo -->
-        <a href="#about" class="flex items-center gap-2.5 text-foreground shrink-0" aria-label="Jack Parrack - home">
-          <img src="images/icon.png" alt="" class="h-7 w-7 rounded-lg">
-          <span class="text-sm font-bold leading-tight tracking-[-0.015em]">Jack Parrack</span>
-        </a>
+      <!-- Logo -->
+      <a href="#about" class="flex items-center gap-2.5 text-fg shrink-0" aria-label="Jack Parrack - home">
+        <img src="images/icon.png" alt="" class="h-6 w-6">
+        <span class="text-sm font-medium">Jack Parrack</span>
+      </a>
 
-        <!-- Desktop nav - centered absolutely -->
-        <nav class="hidden md:flex items-center gap-5 absolute left-1/2 -translate-x-1/2">
-          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#about">About</a>
-          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#projects">Projects</a>
-          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#experience">Experience</a>
-          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#education">Education</a>
-          <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium" href="#skills">Skills</a>
-        </nav>
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6" aria-label="Primary">
+        <a class="nav-link text-muted hover:text-fg transition-colors text-sm" href="#about">About</a>
+        <a class="nav-link text-muted hover:text-fg transition-colors text-sm" href="#projects">Projects</a>
+        <a class="nav-link text-muted hover:text-fg transition-colors text-sm" href="#experience">Experience</a>
+        <a class="nav-link text-muted hover:text-fg transition-colors text-sm" href="#education">Education</a>
+        <a class="nav-link text-muted hover:text-fg transition-colors text-sm" href="#skills">Skills</a>
+        <a class="nav-link text-muted hover:text-fg transition-colors text-sm" href="contact.html">Contact</a>
+        <button class="theme-btn flex items-center justify-center size-8 -mr-2 text-muted hover:text-fg transition-colors" aria-label="Toggle theme">
+          <span class="theme-icon material-symbols-outlined !text-[18px]">light_mode</span>
+        </button>
+      </nav>
 
-        <!-- Right actions -->
-        <div class="hidden md:flex items-center gap-3 shrink-0">
-          <button id="theme-toggle" aria-label="Toggle theme"
-             class="flex items-center justify-center size-8 rounded-full text-text-secondary hover:text-foreground transition-colors">
-            <span id="theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
-          </button>
-          <a href="contact.html"
-             class="flex items-center gap-2 rounded-full bg-surface-dark border border-border-dark hover:border-primary/50 transition-colors text-foreground text-xs font-medium h-8 px-4">
-            <span class="size-1.5 rounded-full bg-primary inline-block"></span>
-            Contact
-          </a>
-        </div>
-
-        <!-- Mobile actions -->
-        <div class="md:hidden flex items-center gap-1">
-          <button id="mobile-theme-toggle" aria-label="Toggle theme"
-             class="flex items-center justify-center size-8 rounded-lg text-text-secondary hover:text-foreground transition-colors">
-            <span id="mobile-theme-icon" class="material-symbols-outlined !text-[18px]">light_mode</span>
-          </button>
-          <button id="mobile-menu-button" class="flex items-center justify-center size-8 rounded-lg text-foreground" aria-label="Toggle menu"
-            aria-expanded="false" aria-controls="mobile-menu">
-            <span class="material-symbols-outlined !text-[20px]">menu</span>
-          </button>
-        </div>
+      <!-- Mobile actions -->
+      <div class="md:hidden flex items-center gap-1 -mr-2">
+        <button class="theme-btn flex items-center justify-center size-8 text-muted hover:text-fg transition-colors" aria-label="Toggle theme">
+          <span class="theme-icon material-symbols-outlined !text-[18px]">light_mode</span>
+        </button>
+        <button id="mobile-menu-button" class="flex items-center justify-center size-8 text-fg" aria-label="Toggle menu"
+          aria-expanded="false" aria-controls="mobile-menu">
+          <span class="material-symbols-outlined !text-[20px]">menu</span>
+        </button>
       </div>
+    </div>
 
-      <!-- Mobile menu drawer - the pill grows into a card around it (animation in style.css) -->
-      <div id="mobile-menu" inert>
-        <div>
-          <nav class="flex flex-col px-4 pt-1 pb-3">
-            <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-3 border-b border-border-dark/30" href="#about">About</a>
-            <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-3 border-b border-border-dark/30" href="#projects">Projects</a>
-            <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-3 border-b border-border-dark/30" href="#experience">Experience</a>
-            <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-3 border-b border-border-dark/30" href="#education">Education</a>
-            <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-3 border-b border-border-dark/30" href="#skills">Skills</a>
-            <a class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-3 border-b border-border-dark/30" href="contact.html">Contact</a>
-            <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
-               class="nav-link text-text-secondary hover:text-foreground transition-colors text-sm font-medium py-3 flex items-center justify-between">
-              Resume
-              <span class="material-symbols-outlined !text-[14px]">open_in_new</span>
-            </a>
-          </nav>
-        </div>
+    <!-- Mobile menu drawer - drops down under the bar (animation in style.css) -->
+    <div id="mobile-menu" inert>
+      <div>
+        <nav class="mx-auto max-w-[1080px] px-5 flex flex-col" aria-label="Primary">
+          <a class="nav-link text-muted hover:text-fg transition-colors text-sm py-3 border-b border-line" href="#about">About</a>
+          <a class="nav-link text-muted hover:text-fg transition-colors text-sm py-3 border-b border-line" href="#projects">Projects</a>
+          <a class="nav-link text-muted hover:text-fg transition-colors text-sm py-3 border-b border-line" href="#experience">Experience</a>
+          <a class="nav-link text-muted hover:text-fg transition-colors text-sm py-3 border-b border-line" href="#education">Education</a>
+          <a class="nav-link text-muted hover:text-fg transition-colors text-sm py-3 border-b border-line" href="#skills">Skills</a>
+          <a class="nav-link text-muted hover:text-fg transition-colors text-sm py-3 border-b border-line" href="contact.html">Contact</a>
+          <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
+             class="nav-link text-muted hover:text-fg transition-colors text-sm py-3 flex items-center justify-between">
+            Resume
+            <span class="material-symbols-outlined !text-[14px]">open_in_new</span>
+          </a>
+        </nav>
       </div>
     </div>
   </header>
@@ -164,538 +137,406 @@
   <main class="flex-1 flex flex-col">
 
     <!-- ── Hero / About ───────────────────────────────────────────────── -->
-    <section id="about" class="reveal relative flex items-center min-h-screen">
-      <div class="w-full mx-auto max-w-[1200px] px-4 md:px-10 pt-12 pb-24 md:py-0">
-        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+    <section id="about" class="relative" aria-label="About">
+      <div class="mx-auto max-w-[1080px] px-5 md:px-8 pt-14 pb-16 md:pt-28 md:pb-28">
+        <div class="hero-in flex flex-col md:flex-row md:items-center gap-12 md:gap-16">
 
-          <div class="flex flex-col gap-6 flex-1">
-
-            <h1 class="text-foreground font-black tracking-[-0.035em] flex flex-col gap-4">
-              <span class="text-[1.75rem] sm:text-3xl lg:text-5xl xl:text-6xl leading-none">Hi! I'm</span>
+          <div class="hero-text flex-1 min-w-0 w-full md:w-auto flex flex-col gap-6">
+            <h1 class="font-light tracking-[-0.015em] leading-[1.1] text-[2rem] sm:text-4xl md:text-[2.375rem] lg:text-[3.5rem] xl:text-6xl">
+              <span class="block">Hi! I'm</span>
               <!-- `whitespace-nowrap` keeps the typed line from reflowing mid-phrase, so every
-                   step is sized to fit the longest phrase in the space actually left over.
-                   From `md` up the headshot sits alongside and takes 256-288px of that width,
-                   which is why the type only grows again at `lg`/`xl`. -->
-              <span class="text-[1.75rem] sm:text-3xl lg:text-5xl xl:text-6xl leading-none whitespace-nowrap"><span id="hero-typed"></span><span class="hero-cursor" aria-hidden="true">|</span></span>
+                   step is sized to fit the longest phrase ("a hardware designer.") in the space
+                   actually left over. From `md` up the chip sits alongside and takes ~240px. -->
+              <span class="block whitespace-nowrap"><span id="hero-typed"></span><span class="hero-cursor" aria-hidden="true">|</span></span>
             </h1>
 
-            <p class="text-text-secondary text-base md:text-lg font-normal leading-relaxed max-w-[420px]">
+            <p class="text-muted text-base leading-relaxed max-w-[460px]">
               Software Engineer with hands-on experience in software development, hardware/circuit design, and embedded systems.
             </p>
 
-            <!-- Social links + Resume -->
-            <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center justify-center size-10 rounded-full border border-border-dark text-text-secondary hover:text-foreground hover:border-primary/50 transition-all"
-                 aria-label="LinkedIn">
-                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-                </svg>
-              </a>
-              <a href="https://github.com/rojoloco04" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center justify-center size-10 rounded-full border border-border-dark text-text-secondary hover:text-foreground hover:border-primary/50 transition-all"
-                 aria-label="GitHub">
-                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-                </svg>
-              </a>
-              <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer"
-                 class="flex items-center gap-1.5 justify-center rounded-full border border-border-dark hover:border-primary/50 transition-colors text-text-secondary hover:text-foreground text-sm font-medium h-10 px-5">
-                <span class="material-symbols-outlined !text-[14px]">open_in_new</span>
-                Resume
-              </a>
-            </div>
-
+            <p class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              <a class="lnk" href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a>
+              <a class="lnk" href="https://github.com/rojoloco04" target="_blank" rel="noopener noreferrer">GitHub<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a>
+              <a class="lnk" href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a>
+              <a class="lnk" href="mailto:parrackjack@gmail.com">Email</a>
+            </p>
           </div>
 
-          <!-- Headshot -->
-          <img src="images/headshot.jpg" alt="Jack Parrack"
-               class="size-48 md:size-64 lg:size-72 rounded-full object-cover border border-border-dark shrink-0 order-first md:order-last" />
+          <!-- Headshot as an IC package: pins on every side, a few traces routed out -->
+          <div class="chip self-center mt-14 md:self-auto md:mt-0 md:mr-8 lg:mr-14">
+            <img src="images/headshot.jpg" alt="Jack Parrack" width="240" height="240" fetchpriority="high" />
+            <svg viewBox="0 0 560 560" aria-hidden="true">
+              <!-- Pins: 8 per side, 14 long -->
+              <path d="M175 160v-14M205 160v-14M235 160v-14M265 160v-14M295 160v-14M325 160v-14M355 160v-14M385 160v-14" />
+              <path d="M175 400v14M205 400v14M235 400v14M265 400v14M295 400v14M325 400v14M355 400v14M385 400v14" />
+              <path d="M160 175h-14M160 205h-14M160 235h-14M160 265h-14M160 295h-14M160 325h-14M160 355h-14M160 385h-14" />
+              <path d="M400 175h14M400 205h14M400 235h14M400 265h14M400 295h14M400 325h14M400 355h14M400 385h14" />
+              <!-- Traces -->
+              <path d="M385 146V96H470L500 66H560" />
+              <path d="M414 205H486" />
+              <path d="M414 355H440L452 367V458L464 470H560" />
+              <path d="M175 414V452L163 464H60" />
+              <path d="M146 235H96L84 223H70" />
+              <path d="M205 146V96L193 84V0" />
+              <path d="M355 414V470L367 482V560" />
+              <path class="pulse" pathLength="1000" d="M385 146V96H470L500 66H560" />
+              <!-- Vias and the pin-1 marker -->
+              <circle class="via" cx="490" cy="205" r="3.5" />
+              <circle class="via" cx="56" cy="464" r="3.5" />
+              <circle class="via" cx="66" cy="223" r="3.5" />
+              <circle class="pin1" cx="150" cy="150" r="2.5" />
+            </svg>
+          </div>
 
         </div>
       </div>
-
-      <!-- Scroll prompt - bottom center of hero viewport -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-text-secondary/40 pointer-events-none select-none">
-        <span class="text-[10px] font-medium tracking-[0.2em] uppercase">scroll</span>
-        <span class="material-symbols-outlined !text-[18px] animate-bounce">keyboard_arrow_down</span>
-      </div>
-
     </section>
 
     <!-- ── Projects ───────────────────────────────────────────────────── -->
-    <section id="projects" class="reveal px-3 md:px-4 py-3" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" class="sr-only">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="mx-auto max-w-[1080px] px-5 md:px-8">
+        <div class="rule"></div>
+        <div class="reveal grid md:grid-cols-[220px_1fr] lg:grid-cols-[260px_1fr] gap-x-12 gap-y-8 py-14 md:py-20">
 
-        <!-- RAPID - full-width top tile -->
-        <a href="https://github.com/Rojoloco04/RAPID" target="_blank" rel="noopener noreferrer"
-           class="group relative overflow-hidden md:col-span-3 h-[220px] md:h-[360px] block focus:outline-none bg-background-dark"
-           aria-label="View RAPID on GitHub">
-          <img src="images/rapid.png" alt="RAPID" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-          <!-- Desktop: hover overlay -->
-          <div class="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex-col justify-end p-8">
-            <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-              <div class="flex items-start justify-between gap-2">
-                <div>
-                  <h3 class="text-white text-2xl font-bold leading-tight">RAPID</h3>
-                  <div class="flex items-center gap-1.5 mt-0.5">
-                    <span class="material-symbols-outlined text-yellow-400 !text-[12px]">trophy</span>
-                    <span class="text-yellow-400 text-xs font-semibold">ECE Capstone Design Award</span>
-                  </div>
-                </div>
-                <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
-              </div>
-              <p class="text-white/75 text-sm leading-relaxed max-w-2xl">
-                Laser-lithography system that writes photonic patterns onto a spinning disc. Built with VHDL on a Zynq FPGA, a custom UART pipeline in C, and a real-time Python GUI.
-              </p>
-              <div class="flex gap-1.5 flex-wrap mt-1">
-                <span class="project-tag">VHDL</span>
-                <span class="project-tag">C</span>
-                <span class="project-tag">Python</span>
-                <span class="project-tag">FPGA</span>
-                <span class="project-tag">UART</span>
-              </div>
-            </div>
+          <div class="md:sticky md:top-24 self-start">
+            <p id="projects-heading" class="label">Projects</p>
+            <p class="lead mt-3">Things I've built.</p>
           </div>
-          <!-- Mobile: always-visible caption bar -->
-          <div class="flex md:hidden absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 px-4 pb-4 flex-col justify-end">
-            <div class="flex items-center justify-between gap-2">
-              <div>
-                <h3 class="text-white text-base font-bold leading-tight">RAPID</h3>
-                <div class="flex items-center gap-1.5 mt-0.5">
-                  <span class="material-symbols-outlined text-yellow-400 !text-[12px]">trophy</span>
-                  <span class="text-yellow-400 text-xs font-semibold">ECE Capstone Design Award</span>
+
+          <div>
+
+            <!-- RAPID -->
+            <a href="https://github.com/Rojoloco04/RAPID" target="_blank" rel="noopener noreferrer"
+               class="project group grid sm:grid-cols-[180px_1fr] md:grid-cols-[200px_1fr] gap-5 md:gap-8 py-7 border-b border-line last:border-b-0" aria-label="View RAPID on GitHub">
+              <div class="thumb"><img src="images/rapid.png" alt="" loading="lazy" /></div>
+              <div class="min-w-0">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h3 class="project-title font-medium text-[17px]">RAPID</h3>
+                  <span class="meta shrink-0">GitHub <span class="material-symbols-outlined !text-[12px]">arrow_outward</span></span>
                 </div>
+                <p class="meta mt-1 !text-primary">ECE Capstone Design Award</p>
+                <p class="text-muted text-sm leading-relaxed mt-3">
+                  Laser-lithography system that writes photonic patterns onto a spinning disc. Built with VHDL on a Zynq FPGA, a custom UART pipeline in C, and a real-time Python GUI.
+                </p>
+                <p class="meta mt-3">VHDL · C · Python · FPGA · UART</p>
               </div>
-              <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
-            </div>
-          </div>
-        </a>
+            </a>
 
-        <!-- Middle row: Vigilane + mediCode -->
-        <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-1">
-
-          <!-- Vigilane -->
-          <a href="https://github.com/1Bananas1/Vigilane" target="_blank" rel="noopener noreferrer"
-             class="group relative overflow-hidden h-[220px] md:h-[360px] block focus:outline-none bg-background-dark"
-             aria-label="View Vigilane on GitHub">
-            <img src="images/vigilane.jpg" alt="Vigilane" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-            <!-- Desktop: hover overlay -->
-            <div class="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex-col justify-end p-8">
-              <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <div class="flex items-start justify-between gap-2">
-                  <div>
-                    <h3 class="text-white text-2xl font-bold leading-tight">Vigilane</h3>
-                    <div class="flex items-center gap-1.5 mt-0.5">
-                      <span class="material-symbols-outlined text-yellow-400 !text-[12px]">emoji_events</span>
-                      <span class="text-yellow-400 text-xs font-semibold">HackSLU 2026 · Honorable Mention</span>
-                    </div>
-                  </div>
-                  <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
+            <!-- Vigilane -->
+            <a href="https://github.com/1Bananas1/Vigilane" target="_blank" rel="noopener noreferrer"
+               class="project group grid sm:grid-cols-[180px_1fr] md:grid-cols-[200px_1fr] gap-5 md:gap-8 py-7 border-b border-line last:border-b-0" aria-label="View Vigilane on GitHub">
+              <div class="thumb"><img src="images/vigilane.jpg" alt="" loading="lazy" /></div>
+              <div class="min-w-0">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h3 class="project-title font-medium text-[17px]">Vigilane</h3>
+                  <span class="meta shrink-0">GitHub <span class="material-symbols-outlined !text-[12px]">arrow_outward</span></span>
                 </div>
-                <p class="text-white/75 text-sm leading-relaxed max-w-2xl">
+                <p class="meta mt-1 !text-primary">HackSLU 2026 · Honorable Mention</p>
+                <p class="text-muted text-sm leading-relaxed mt-3">
                   AI-powered road hazard detection using YOLOv8 with a React Native app and Flask REST API backed by Firebase.
                 </p>
-                <div class="flex gap-1.5 flex-wrap mt-1">
-                  <span class="project-tag">React Native</span>
-                  <span class="project-tag">YOLOv8</span>
-                  <span class="project-tag">Flask</span>
-                  <span class="project-tag">Firebase</span>
-                </div>
+                <p class="meta mt-3">React Native · YOLOv8 · Flask · Firebase</p>
               </div>
-            </div>
-            <!-- Mobile: always-visible caption bar -->
-            <div class="flex md:hidden absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 px-4 pb-4 flex-col justify-end">
-              <div class="flex items-center justify-between gap-2">
-                <div>
-                  <h3 class="text-white text-base font-bold leading-tight">Vigilane</h3>
-                  <div class="flex items-center gap-1.5 mt-0.5">
-                    <span class="material-symbols-outlined text-yellow-400 !text-[12px]">emoji_events</span>
-                    <span class="text-yellow-400 text-xs font-semibold">Honorable Mention</span>
-                  </div>
-                </div>
-                <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
-              </div>
-            </div>
-          </a>
+            </a>
 
-          <!-- mediCode -->
-          <a href="https://github.com/Rojoloco04/mediCode" target="_blank" rel="noopener noreferrer"
-             class="group relative overflow-hidden h-[220px] md:h-[360px] block focus:outline-none bg-background-dark"
-             aria-label="View mediCode on GitHub">
-            <img src="images/mediCode.png" alt="mediCode" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-            <!-- Desktop: hover overlay -->
-            <div class="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex-col justify-end p-8">
-              <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <div class="flex items-start justify-between gap-2">
-                  <div>
-                    <h3 class="text-white text-2xl font-bold leading-tight">mediCode</h3>
-                    <p class="text-white/60 text-xs font-medium mt-0.5">Medical ID in any language</p>
-                  </div>
-                  <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
+            <!-- mediCode -->
+            <a href="https://github.com/Rojoloco04/mediCode" target="_blank" rel="noopener noreferrer"
+               class="project group grid sm:grid-cols-[180px_1fr] md:grid-cols-[200px_1fr] gap-5 md:gap-8 py-7 border-b border-line last:border-b-0" aria-label="View mediCode on GitHub">
+              <div class="thumb"><img src="images/mediCode.png" alt="" loading="lazy" /></div>
+              <div class="min-w-0">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h3 class="project-title font-medium text-[17px]">mediCode</h3>
+                  <span class="meta shrink-0">GitHub <span class="material-symbols-outlined !text-[12px]">arrow_outward</span></span>
                 </div>
-                <p class="text-white/75 text-sm leading-relaxed max-w-2xl">
+                <p class="meta mt-1">Medical ID in any language</p>
+                <p class="text-muted text-sm leading-relaxed mt-3">
                   A medical profile app that generates a scannable QR code with your critical health info, readable by first responders in any language via AI translation.
                 </p>
-                <div class="flex gap-1.5 flex-wrap mt-1">
-                  <span class="project-tag">React</span>
-                  <span class="project-tag">Supabase</span>
-                  <span class="project-tag">Vercel</span>
-                  <span class="project-tag">ElevenLabs</span>
-                  <span class="project-tag">Tailwind</span>
-                </div>
+                <p class="meta mt-3">React · Supabase · Vercel · ElevenLabs · Tailwind</p>
               </div>
-            </div>
-            <!-- Mobile: always-visible caption bar -->
-            <div class="flex md:hidden absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 px-4 pb-4 flex-col justify-end">
-              <div class="flex items-center justify-between gap-2">
-                <div>
-                  <h3 class="text-white text-base font-bold leading-tight">mediCode</h3>
-                  <p class="text-white/60 text-xs font-medium mt-0.5">Medical ID in any language</p>
+            </a>
+
+            <!-- Rojo's Mod -->
+            <a href="https://github.com/Rojoloco04/rojosmod" target="_blank" rel="noopener noreferrer"
+               class="project group grid sm:grid-cols-[180px_1fr] md:grid-cols-[200px_1fr] gap-5 md:gap-8 py-7 border-b border-line last:border-b-0" aria-label="View Rojo's Mod on GitHub">
+              <div class="thumb"><img src="images/rojosmod.png" alt="" loading="lazy" /></div>
+              <div class="min-w-0">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h3 class="project-title font-medium text-[17px]">Rojo's Mod</h3>
+                  <span class="meta shrink-0">GitHub <span class="material-symbols-outlined !text-[12px]">arrow_outward</span></span>
                 </div>
-                <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
-              </div>
-            </div>
-          </a>
-
-        </div><!-- end middle row -->
-
-        <!-- Bottom row: Rojo's Mod + The Blind Mice -->
-        <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-1">
-
-          <!-- Rojo's Mod -->
-          <a href="https://github.com/Rojoloco04/rojosmod" target="_blank" rel="noopener noreferrer"
-             class="group relative overflow-hidden h-[220px] md:h-[360px] block focus:outline-none bg-background-dark"
-             aria-label="View Rojo's Mod on GitHub">
-            <img src="images/rojosmod.png" alt="Rojo's Mod" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-            <!-- Desktop: hover overlay -->
-            <div class="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex-col justify-end p-8">
-              <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <div class="flex items-start justify-between gap-2">
-                  <div>
-                    <h3 class="text-white text-2xl font-bold leading-tight">Rojo's Mod</h3>
-                    <p class="text-white/60 text-xs font-medium mt-0.5">Minecraft NeoForge Mod</p>
-                  </div>
-                  <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
-                </div>
-                <p class="text-white/75 text-sm leading-relaxed max-w-2xl">
+                <p class="meta mt-1">Minecraft NeoForge Mod</p>
+                <p class="text-muted text-sm leading-relaxed mt-3">
                   Minecraft mod adding a throwable Lightning Spear with custom entity behavior, 3D modeling, and 2D sprite art. Built with Java, NeoForge, and Gradle.
                 </p>
-                <div class="flex gap-1.5 flex-wrap mt-1">
-                  <span class="project-tag">Java</span>
-                  <span class="project-tag">NeoForge</span>
-                  <span class="project-tag">Gradle</span>
-                </div>
+                <p class="meta mt-3">Java · NeoForge · Gradle</p>
               </div>
-            </div>
-            <!-- Mobile: always-visible caption bar -->
-            <div class="flex md:hidden absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 px-4 pb-4 flex-col justify-end">
-              <div class="flex items-center justify-between gap-2">
-                <div>
-                  <h3 class="text-white text-base font-bold leading-tight">Rojo's Mod</h3>
-                  <p class="text-white/60 text-xs font-medium mt-0.5">Minecraft NeoForge Mod</p>
-                </div>
-                <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
-              </div>
-            </div>
-          </a>
+            </a>
 
-          <!-- The Blind Mice -->
-          <a href="https://github.com/Rojoloco04/TheBlindMice" target="_blank" rel="noopener noreferrer"
-             class="group relative overflow-hidden h-[220px] md:h-[360px] block focus:outline-none bg-background-dark"
-             aria-label="View The Blind Mice on GitHub">
-            <img src="images/blindmice.png" alt="The Blind Mice" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-            <!-- Desktop: hover overlay -->
-            <div class="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/65 transition-colors duration-300 flex-col justify-end p-8">
-              <div class="flex flex-col gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <div class="flex items-start justify-between gap-2">
-                  <div>
-                    <h3 class="text-white text-2xl font-bold leading-tight">The Blind Mice</h3>
-                    <p class="text-white/60 text-xs font-medium mt-0.5">2D Tile-Based Platformer</p>
-                  </div>
-                  <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
+            <!-- The Blind Mice -->
+            <a href="https://github.com/Rojoloco04/TheBlindMice" target="_blank" rel="noopener noreferrer"
+               class="project group grid sm:grid-cols-[180px_1fr] md:grid-cols-[200px_1fr] gap-5 md:gap-8 py-7 border-b border-line last:border-b-0" aria-label="View The Blind Mice on GitHub">
+              <div class="thumb"><img src="images/blindmice.png" alt="" loading="lazy" /></div>
+              <div class="min-w-0">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h3 class="project-title font-medium text-[17px]">The Blind Mice</h3>
+                  <span class="meta shrink-0">GitHub <span class="material-symbols-outlined !text-[12px]">arrow_outward</span></span>
                 </div>
-                <p class="text-white/75 text-sm leading-relaxed max-w-2xl">
+                <p class="meta mt-1">2D Tile-Based Platformer</p>
+                <p class="text-muted text-sm leading-relaxed mt-3">
                   Java platformer where players navigate as a mouse, collecting letter tiles to spell words that unlock temporary powers and overcome obstacles.
                 </p>
-                <div class="flex gap-1.5 flex-wrap mt-1">
-                  <span class="project-tag">Java</span>
-                  <span class="project-tag">Swing</span>
-                  <span class="project-tag">Gradle</span>
-                </div>
+                <p class="meta mt-3">Java · Swing · Gradle</p>
               </div>
-            </div>
-            <!-- Mobile: always-visible caption bar -->
-            <div class="flex md:hidden absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 px-4 pb-4 flex-col justify-end">
-              <div class="flex items-center justify-between gap-2">
-                <div>
-                  <h3 class="text-white text-base font-bold leading-tight">The Blind Mice</h3>
-                  <p class="text-white/60 text-xs font-medium mt-0.5">2D Tile-Based Platformer</p>
-                </div>
-                <span class="material-symbols-outlined text-white !text-[20px] shrink-0">arrow_outward</span>
-              </div>
-            </div>
-          </a>
+            </a>
 
+          </div>
         </div>
-
       </div>
     </section>
 
     <!-- ── Experience ─────────────────────────────────────────────────── -->
-    <section id="experience" class="reveal bg-surface-dark" aria-labelledby="experience-heading">
-      <div class="mx-auto max-w-[1200px] px-4 md:px-10 py-10">
-        <h2 id="experience-heading" class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-6">Experience</h2>
+    <section id="experience" aria-labelledby="experience-heading">
+      <div class="mx-auto max-w-[1080px] px-5 md:px-8">
+        <div class="rule"></div>
+        <div class="reveal grid md:grid-cols-[220px_1fr] lg:grid-cols-[260px_1fr] gap-x-12 gap-y-8 py-14 md:py-20">
 
-        <div class="flex flex-col border-l border-border-dark">
-
-          <!-- Mastercard -->
-          <div class="relative pl-6 py-6">
-            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
-              <div class="flex items-start gap-3">
-                <img src="images/mastercard.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 shrink-0 mt-0.5" alt="Mastercard">
-                <div>
-                  <h3 class="text-foreground text-base font-bold leading-snug">Software Engineer I</h3>
-                  <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">Mastercard · Launch Program<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Hybrid · O'Fallon, MO</p>
-                </div>
-              </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2026 - Present</span>
-            </div>
-            <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
-              <li>Building and scaling an internal MCP-based tool that gives 140+ employees natural language agentic access to company systems, letting teams query data directly rather than through engineers.</li>
-              <li>Leading design and planning of a pilot transaction-insights agent targeting enterprise-wide adoption, combining LLM tool orchestration, MCP-based database access, input guardrails, and conversation memory.</li>
-              <li>Developing a modernized clearing platform using Java Spring microservices on Kubernetes, replacing mainframe technology with services that scale horizontally to over 10M transactions/day.</li>
-              <li>Maintaining and extending a Go-based simulation tool that tests the full payment lifecycle end-to-end, keeping it current with evolving payment flows to catch regressions before production.</li>
-              <li>Evaluating high performance networking protocols (Homa, RDMA) with distinguished engineers in a research initiative targeting data center deployment and open source contribution.</li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="tech-tag">Java</span>
-              <span class="tech-tag">Spring</span>
-              <span class="tech-tag">Kubernetes</span>
-              <span class="tech-tag">Go</span>
-              <span class="tech-tag">MCP</span>
-            </div>
+          <div class="md:sticky md:top-24 self-start">
+            <p id="experience-heading" class="label">Experience</p>
+            <p class="lead mt-3">Where I've worked.</p>
           </div>
 
-          <!-- DataServ -->
-          <div class="relative pl-6 py-6">
-            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
-              <div class="flex items-start gap-3">
-                <img src="images/dataserv.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 shrink-0 mt-0.5" alt="DataServ">
-                <div>
-                  <h3 class="text-foreground text-base font-bold leading-snug">DevOps Intern</h3>
-                  <a href="https://www.dataserv.com" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">DataServ<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Remote · St. Louis, MO</p>
-                </div>
-              </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">May 2025 - Aug. 2025</span>
-            </div>
-            <ul class="list-disc list-outside ml-4 text-text-secondary text-sm leading-relaxed space-y-1.5">
-              <li>Wrote Python automation scripts to migrate 3,000+ SQL stored procedures across 71 client environments into Bitbucket, enabling code reviews and rollbacks for previously unversioned code.</li>
-              <li>Converted time-based jobs to event-driven triggers for 7 clients, contributing to a company-wide effort that cut client data turnaround from 24 hours to under 6.</li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">SQL</span>
-              <span class="tech-tag">Bitbucket</span>
-              <span class="tech-tag">DevOps</span>
-            </div>
-          </div>
+          <div>
 
+            <!-- Mastercard -->
+            <article class="grid sm:grid-cols-[176px_1fr] gap-x-8 gap-y-3 py-7 border-b border-line last:border-b-0">
+              <p class="meta sm:pt-1">Aug. 2026 – Present</p>
+              <div class="min-w-0">
+                <div class="flex items-start gap-3">
+                  <span class="logo mt-0.5"><img src="images/mastercard.png" alt="Mastercard" loading="lazy"></span>
+                  <div>
+                    <h3 class="font-medium text-[17px] leading-tight">Software Engineer I</h3>
+                    <p class="text-sm mt-1"><a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer" class="lnk">Mastercard · Launch Program<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a></p>
+                    <p class="meta mt-1">Hybrid · O'Fallon, MO</p>
+                  </div>
+                </div>
+                <ul class="bullets text-muted text-sm leading-relaxed space-y-2 mt-5">
+                  <li>Building and scaling an internal MCP-based tool that gives 140+ employees natural language agentic access to company systems, letting teams query data directly rather than through engineers.</li>
+                  <li>Leading design and planning of a pilot transaction-insights agent targeting enterprise-wide adoption, combining LLM tool orchestration, MCP-based database access, input guardrails, and conversation memory.</li>
+                  <li>Developing a modernized clearing platform using Java Spring microservices on Kubernetes, replacing mainframe technology with services that scale horizontally to over 10M transactions/day.</li>
+                  <li>Maintaining and extending a Go-based simulation tool that tests the full payment lifecycle end-to-end, keeping it current with evolving payment flows to catch regressions before production.</li>
+                  <li>Evaluating high performance networking protocols (Homa, RDMA) with distinguished engineers in a research initiative targeting data center deployment and open source contribution.</li>
+                </ul>
+                <p class="meta mt-5">Java · Spring · Kubernetes · Go · MCP</p>
+              </div>
+            </article>
+
+            <!-- DataServ -->
+            <article class="grid sm:grid-cols-[176px_1fr] gap-x-8 gap-y-3 py-7 border-b border-line last:border-b-0">
+              <p class="meta sm:pt-1">May 2025 – Aug. 2025</p>
+              <div class="min-w-0">
+                <div class="flex items-start gap-3">
+                  <span class="logo mt-0.5"><img src="images/dataserv.png" alt="DataServ" loading="lazy" class="lift"></span>
+                  <div>
+                    <h3 class="font-medium text-[17px] leading-tight">DevOps Intern</h3>
+                    <p class="text-sm mt-1"><a href="https://www.dataserv.com" target="_blank" rel="noopener noreferrer" class="lnk">DataServ<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a></p>
+                    <p class="meta mt-1">Remote · St. Louis, MO</p>
+                  </div>
+                </div>
+                <ul class="bullets text-muted text-sm leading-relaxed space-y-2 mt-5">
+                  <li>Wrote Python automation scripts to migrate 3,000+ SQL stored procedures across 71 client environments into Bitbucket, enabling code reviews and rollbacks for previously unversioned code.</li>
+                  <li>Converted time-based jobs to event-driven triggers for 7 clients, contributing to a company-wide effort that cut client data turnaround from 24 hours to under 6.</li>
+                </ul>
+                <p class="meta mt-5">Python · SQL · Bitbucket · DevOps</p>
+              </div>
+            </article>
+
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ── Education & Activities ───────────────────────────────────── -->
-    <section id="education" class="reveal" aria-labelledby="education-heading">
-      <div class="mx-auto max-w-[1200px] px-4 md:px-10 py-10">
-        <h2 id="education-heading" class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-6">Education & Activities</h2>
+    <section id="education" aria-labelledby="education-heading">
+      <div class="mx-auto max-w-[1080px] px-5 md:px-8">
+        <div class="rule"></div>
+        <div class="reveal grid md:grid-cols-[220px_1fr] lg:grid-cols-[260px_1fr] gap-x-12 gap-y-8 py-14 md:py-20">
 
-        <div class="flex flex-col border-l border-border-dark">
-
-          <!-- Georgia Tech -->
-          <div class="relative pl-6 py-6">
-            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-1">
-              <div class="flex items-start gap-3">
-                <img src="images/gatech.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 shrink-0 mt-0.5" alt="Georgia Tech">
-                <div>
-                  <h3 class="text-foreground text-base font-bold leading-snug">M.S. Computer Science</h3>
-                  <a href="https://www.gatech.edu" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">Georgia Institute of Technology<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Computing Systems · Atlanta, GA</p>
-                </div>
-              </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2026 - Expected May 2029</span>
-            </div>
+          <div class="md:sticky md:top-24 self-start">
+            <p id="education-heading" class="label">Education &amp; Activities</p>
+            <p class="lead mt-3">Where I've learned.</p>
           </div>
 
-          <!-- SLU -->
-          <div class="relative pl-6 py-6">
-            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
-              <div class="flex items-start gap-3">
-                <img src="images/slu.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 shrink-0 mt-0.5" alt="Saint Louis University">
-                <div>
-                  <h3 class="text-foreground text-base font-bold leading-snug">B.S. Computer Engineering</h3>
-                  <a href="https://www.slu.edu" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">Saint Louis University<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Summa Cum Laude · Minor: Computer Science · GPA: 3.93 / 4.0</p>
+          <div>
+
+            <!-- Georgia Tech -->
+            <article class="grid sm:grid-cols-[176px_1fr] gap-x-8 gap-y-3 py-7 border-b border-line last:border-b-0">
+              <p class="meta sm:pt-1">Aug. 2026 – May 2029</p>
+              <div class="min-w-0">
+                <div class="flex items-start gap-3">
+                  <span class="logo mt-0.5"><img src="images/gatech.png" alt="Georgia Tech" loading="lazy"></span>
+                  <div>
+                    <h3 class="font-medium text-[17px] leading-tight">M.S. Computer Science</h3>
+                    <p class="text-sm mt-1"><a href="https://www.gatech.edu" target="_blank" rel="noopener noreferrer" class="lnk">Georgia Institute of Technology<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a></p>
+                    <p class="meta mt-1">Computing Systems · Atlanta, GA · Expected May 2029</p>
+                  </div>
                 </div>
               </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Aug. 2022 - May 2026</span>
-            </div>
-            <!-- Activities -->
-            <div class="mt-2 md:ml-12 pt-3 border-t border-border-dark/40">
-              <p class="text-[10px] font-medium uppercase tracking-widest text-text-secondary/50 mb-2.5">Activities</p>
-              <ul class="flex flex-col gap-2">
-                <li class="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
-                  <span class="skill-item"><span class="material-symbols-outlined">trophy</span>Member · Tau Beta Pi Engineering Honor Society, Missouri Epsilon Chapter</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap pl-[22px] sm:pl-0">Apr. 2026 - May 2026</span>
-                </li>
-                <li class="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
-                  <span class="skill-item"><span class="material-symbols-outlined">sports_esports</span>President &amp; Teams Coordinator · SLU Esports</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap pl-[22px] sm:pl-0">Aug. 2024 - May 2026</span>
-                </li>
-                <li class="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
-                  <span class="skill-item"><span class="material-symbols-outlined">electrical_services</span>Vice President · IEEE Student Branch — grew membership from under 10 to 30+; captained 1st place team, 2026 IEEE Region 5 Cyber Challenge</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap pl-[22px] sm:pl-0">Aug. 2025 - May 2026</span>
-                </li>
-                <li class="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
-                  <span class="skill-item"><span class="material-symbols-outlined">school</span>First-Year Mentor · School of Science &amp; Engineering</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap pl-[22px] sm:pl-0">Aug. 2024 - May 2026</span>
-                </li>
-                <li class="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
-                  <span class="skill-item"><span class="material-symbols-outlined">flight</span>Study Abroad Peer Mentor</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap pl-[22px] sm:pl-0">Aug. 2024 - May 2026</span>
-                </li>
-                <li class="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
-                  <span class="skill-item"><span class="material-symbols-outlined">groups</span>Member · Vietnamese Student Association</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap pl-[22px] sm:pl-0">Jan. 2026 - May 2026</span>
-                </li>
-                <li class="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
-                  <span class="skill-item"><span class="material-symbols-outlined">groups</span>Member · Korean Student Association</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap pl-[22px] sm:pl-0">Aug. 2024 - May 2026</span>
-                </li>
-                <li class="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
-                  <span class="skill-item"><span class="material-symbols-outlined">music_note</span>String Orchestra</span>
-                  <span class="text-text-secondary/50 text-xs whitespace-nowrap pl-[22px] sm:pl-0">Spring 2023</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+            </article>
 
-          <!-- Sogang -->
-          <div class="relative pl-6 py-6">
-            <div class="absolute left-0 top-[2.1rem] size-2 rounded-full bg-border-dark -translate-x-1/2 ring-2 ring-background-dark"></div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1">
-              <div class="flex items-start gap-3">
-                <img src="images/sogang.png" class="h-9 w-9 rounded-lg object-contain bg-white p-1 shrink-0 mt-0.5" alt="Sogang University">
-                <div>
-                  <h3 class="text-foreground text-base font-bold leading-snug">Exchange Program</h3>
-                  <a href="https://www.sogang.ac.kr/en/home" target="_blank" rel="noopener noreferrer" class="text-primary text-sm font-medium mt-0.5 inline-flex items-center gap-1 hover:opacity-75 transition-opacity">Sogang University<span class="material-symbols-outlined !text-[12px]">open_in_new</span></a>
-                  <p class="text-text-secondary text-xs mt-0.5">Seoul, South Korea</p>
+            <!-- SLU -->
+            <article class="grid sm:grid-cols-[176px_1fr] gap-x-8 gap-y-3 py-7 border-b border-line last:border-b-0">
+              <p class="meta sm:pt-1">Aug. 2022 – May 2026</p>
+              <div class="min-w-0">
+                <div class="flex items-start gap-3">
+                  <span class="logo mt-0.5"><img src="images/slu.png" alt="Saint Louis University" loading="lazy"></span>
+                  <div>
+                    <h3 class="font-medium text-[17px] leading-tight">B.S. Computer Engineering</h3>
+                    <p class="text-sm mt-1"><a href="https://www.slu.edu" target="_blank" rel="noopener noreferrer" class="lnk">Saint Louis University<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a></p>
+                    <p class="meta mt-1">Summa Cum Laude · Minor: Computer Science · GPA: 3.93 / 4.0</p>
+                  </div>
+                </div>
+
+                <!-- Activities -->
+                <p class="label mt-7 mb-3">Activities</p>
+                <ul class="text-sm">
+                  <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-6 py-2 border-t border-line">
+                    <span>Member · Tau Beta Pi Engineering Honor Society, Missouri Epsilon Chapter</span>
+                    <span class="meta shrink-0">Apr. 2026 – May 2026</span>
+                  </li>
+                  <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-6 py-2 border-t border-line">
+                    <span>President &amp; Teams Coordinator · SLU Esports</span>
+                    <span class="meta shrink-0">Aug. 2024 – May 2026</span>
+                  </li>
+                  <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-6 py-2 border-t border-line">
+                    <span>Vice President · IEEE Student Branch</span>
+                    <span class="meta shrink-0">Aug. 2025 – May 2026</span>
+                  </li>
+                  <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-6 py-2 border-t border-line">
+                    <span>First-Year Mentor · School of Science &amp; Engineering</span>
+                    <span class="meta shrink-0">Aug. 2024 – May 2026</span>
+                  </li>
+                  <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-6 py-2 border-t border-line">
+                    <span>Study Abroad Peer Mentor</span>
+                    <span class="meta shrink-0">Aug. 2024 – May 2026</span>
+                  </li>
+                  <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-6 py-2 border-t border-line">
+                    <span>Member · Vietnamese Student Association</span>
+                    <span class="meta shrink-0">Jan. 2026 – May 2026</span>
+                  </li>
+                  <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-6 py-2 border-t border-line">
+                    <span>Member · Korean Student Association</span>
+                    <span class="meta shrink-0">Aug. 2024 – May 2026</span>
+                  </li>
+                  <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-6 py-2 border-t border-line">
+                    <span>String Orchestra</span>
+                    <span class="meta shrink-0">Spring 2023</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Sogang -->
+            <article class="grid sm:grid-cols-[176px_1fr] gap-x-8 gap-y-3 py-7 border-b border-line last:border-b-0">
+              <p class="meta sm:pt-1">Feb. 2024 – Jun. 2024</p>
+              <div class="min-w-0">
+                <div class="flex items-start gap-3">
+                  <span class="logo mt-0.5"><img src="images/sogang.png" alt="Sogang University" loading="lazy"></span>
+                  <div>
+                    <h3 class="font-medium text-[17px] leading-tight">Exchange Program</h3>
+                    <p class="text-sm mt-1"><a href="https://www.sogang.ac.kr/en/home" target="_blank" rel="noopener noreferrer" class="lnk">Sogang University<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a></p>
+                    <p class="meta mt-1">Seoul, South Korea</p>
+                  </div>
                 </div>
               </div>
-              <span class="text-text-secondary text-xs font-medium whitespace-nowrap mt-1 md:mt-0 pl-12 md:pl-0">Feb. 2024 - Jun. 2024</span>
-            </div>
-          </div>
+            </article>
 
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ── Skills ─────────────────────────────────────────────────────── -->
-    <section id="skills" class="reveal bg-surface-dark" aria-labelledby="skills-heading">
-      <div class="mx-auto max-w-[1200px] px-4 md:px-10 py-10">
-        <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="mx-auto max-w-[1080px] px-5 md:px-8">
+        <div class="rule"></div>
+        <div class="reveal grid md:grid-cols-[220px_1fr] lg:grid-cols-[260px_1fr] gap-x-12 gap-y-8 py-14 md:py-20">
 
-          <!-- Left: heading -->
-          <div class="md:w-56 lg:w-72 shrink-0">
-            <p class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-3">Skills</p>
-            <h2 id="skills-heading" class="text-foreground text-4xl md:text-5xl font-black leading-[1.05] tracking-[-0.03em]">What can I<br>do for you?</h2>
+          <div class="md:sticky md:top-24 self-start">
+            <p id="skills-heading" class="label">Skills</p>
+            <p class="lead mt-3">What can I<br>do for you?</p>
+            <p class="meta mt-5 max-w-[220px] leading-relaxed">Four squares: I could teach it. One: still learning.</p>
           </div>
 
-          <!-- Right: category grid -->
-          <div class="flex-1 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="grid sm:grid-cols-2 gap-x-12 gap-y-10">
 
-            <!-- Programming Languages -->
             <div>
-              <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
-                <span class="material-symbols-outlined text-text-secondary !text-[18px]">code</span>
-              </div>
-              <h3 class="text-foreground font-bold text-sm mb-2">Programming Languages</h3>
-              <ul class="space-y-1.5">
-                <li class="skill-item" data-level="3">C</li>
-                <li class="skill-item" data-level="4">C++</li>
-                <li class="skill-item" data-level="2">Python</li>
-                <li class="skill-item" data-level="3">Java</li>
-                <li class="skill-item" data-level="1">Go</li>
-                <li class="skill-item" data-level="2">SQL</li>
+              <p class="label pb-2 border-b border-line">Programming Languages</p>
+              <ul>
+                <li class="skill-row" data-level="3">C</li>
+                <li class="skill-row" data-level="4">C++</li>
+                <li class="skill-row" data-level="2">Python</li>
+                <li class="skill-row" data-level="3">Java</li>
+                <li class="skill-row" data-level="1">Go</li>
+                <li class="skill-row" data-level="2">SQL</li>
               </ul>
             </div>
 
-            <!-- Tools/Platforms -->
             <div>
-              <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
-                <span class="material-symbols-outlined text-text-secondary !text-[18px]">layers</span>
-              </div>
-              <h3 class="text-foreground font-bold text-sm mb-2">Tools/Platforms</h3>
-              <ul class="space-y-1.5">
-                <li class="skill-item" data-level="2">Spring</li>
-                <li class="skill-item" data-level="1">Kubernetes</li>
-                <li class="skill-item" data-level="2">Docker</li>
-                <li class="skill-item" data-level="3">MCP</li>
-                <li class="skill-item" data-level="4">Git</li>
-                <li class="skill-item" data-level="3">Linux</li>
+              <p class="label pb-2 border-b border-line">Tools &amp; Platforms</p>
+              <ul>
+                <li class="skill-row" data-level="2">Spring</li>
+                <li class="skill-row" data-level="1">Kubernetes</li>
+                <li class="skill-row" data-level="2">Docker</li>
+                <li class="skill-row" data-level="3">MCP</li>
+                <li class="skill-row" data-level="4">Git</li>
+                <li class="skill-row" data-level="3">Linux</li>
               </ul>
             </div>
 
-            <!-- Hardware -->
             <div>
-              <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
-                <span class="material-symbols-outlined text-text-secondary !text-[18px]">memory</span>
-              </div>
-              <h3 class="text-foreground font-bold text-sm mb-2">Hardware</h3>
-              <ul class="space-y-1.5">
-                <li class="skill-item" data-level="4">VHDL</li>
-                <li class="skill-item" data-level="4">FPGA</li>
-                <li class="skill-item" data-level="3">ARM &amp; AVR Microcontrollers</li>
+              <p class="label pb-2 border-b border-line">Hardware</p>
+              <ul>
+                <li class="skill-row" data-level="4">VHDL</li>
+                <li class="skill-row" data-level="4">FPGA</li>
+                <li class="skill-row" data-level="3">ARM &amp; AVR Microcontrollers</li>
               </ul>
             </div>
 
-            <!-- Spoken Languages -->
             <div>
-              <div class="size-9 rounded-lg bg-background-dark border border-border-dark flex items-center justify-center mb-3">
-                <span class="material-symbols-outlined text-text-secondary !text-[18px]">language</span>
-              </div>
-              <h3 class="text-foreground font-bold text-sm mb-2">Spoken Languages</h3>
-              <ul class="space-y-1.5">
-                <li class="skill-item" data-level="3">Spanish</li>
-                <li class="skill-item" data-level="2">Korean</li>
+              <p class="label pb-2 border-b border-line">Spoken Languages</p>
+              <ul>
+                <li class="skill-row" data-level="3">Spanish</li>
+                <li class="skill-row" data-level="2">Korean</li>
               </ul>
             </div>
 
-          </div><!-- end grid -->
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── Contact CTA ───────────────────────────────────────────────── -->
-    <section class="reveal" aria-labelledby="cta-heading">
-      <div class="mx-auto max-w-[1200px] px-4 md:px-10 py-16">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div>
-            <p class="text-text-secondary text-xs font-medium uppercase tracking-widest mb-3">Contact</p>
-            <h2 id="cta-heading" class="text-foreground text-4xl md:text-5xl font-black leading-[1.05] tracking-[-0.03em]">Let's<br>talk.</h2>
+    <!-- ── Contact ────────────────────────────────────────────────────── -->
+    <section aria-labelledby="contact-heading">
+      <div class="mx-auto max-w-[1080px] px-5 md:px-8">
+        <div class="rule"></div>
+        <div class="reveal grid md:grid-cols-[220px_1fr] lg:grid-cols-[260px_1fr] gap-x-12 gap-y-8 py-14 md:py-20">
+
+          <div class="self-start">
+            <p id="contact-heading" class="label">Contact</p>
+            <p class="lead mt-3">Let's talk.</p>
           </div>
-          <a href="contact.html"
-             class="inline-flex items-center gap-2 rounded-full bg-foreground text-background-dark font-semibold text-sm h-12 px-8 hover:opacity-90 transition-opacity w-fit">
-            Get in touch
-            <span class="material-symbols-outlined !text-[18px]">arrow_forward</span>
-          </a>
+
+          <div class="max-w-[520px]">
+            <p class="text-muted leading-relaxed">
+              Have an opportunity, a project, or just want to connect? Send a message through the form, or email me directly.
+            </p>
+            <p class="flex flex-wrap gap-x-6 gap-y-2 mt-6 text-sm">
+              <a class="lnk" href="contact.html">Contact form<span class="material-symbols-outlined !text-[12px]">arrow_outward</span></a>
+              <a class="lnk" href="mailto:parrackjack@gmail.com">parrackjack@gmail.com</a>
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -703,39 +544,16 @@
   </main>
 
   <!-- ── Footer ─────────────────────────────────────────────────────────── -->
-  <footer class="bg-surface-dark px-4 md:px-6 lg:px-10 py-12">
-    <div class="mx-auto max-w-[1200px] grid grid-cols-2 md:grid-cols-4 gap-10">
-
-      <!-- Brand -->
-      <div class="col-span-2 md:col-span-1 flex flex-col gap-3">
-        <a href="#about" class="flex items-center gap-2 text-foreground w-fit">
-          <img src="images/icon.png" class="h-7 w-7 rounded-lg" alt="">
-          <span class="font-bold text-sm">Jack Parrack</span>
-        </a>
-        <p class="text-text-secondary text-xs leading-relaxed">Full-Stack Software Engineer.</p>
-        <p class="text-text-secondary text-xs mt-2">© 2026 Jack Parrack</p>
-      </div>
-
-      <!-- Navigate -->
-      <div class="flex flex-col gap-3">
-        <p class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Navigate</p>
-        <a href="#about" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">About</a>
-        <a href="#projects" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Projects</a>
-        <a href="#experience" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Experience</a>
-        <a href="#education" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Education</a>
-        <a href="#skills" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Skills</a>
-      </div>
-
-      <!-- Connect -->
-      <div class="flex flex-col gap-3">
-        <p class="text-text-secondary text-[10px] font-medium uppercase tracking-widest">Connect</p>
-        <a href="contact.html" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Contact</a>
-        <a href="mailto:parrackjack@gmail.com" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Email</a>
-        <a href="https://github.com/Rojoloco04/" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">GitHub</a>
-        <a href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">LinkedIn</a>
-        <a href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer" class="text-foreground font-semibold text-sm hover:text-primary transition-colors">Resume</a>
-      </div>
-
+  <footer class="px-5 md:px-8">
+    <div class="mx-auto max-w-[1080px] border-t border-line py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <p class="meta">© 2026 Jack Parrack</p>
+      <p class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+        <a class="lnk" href="https://github.com/Rojoloco04/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="lnk" href="https://www.linkedin.com/in/jackson-parrack/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="lnk" href="JacksonParrack_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="lnk" href="mailto:parrackjack@gmail.com">Email</a>
+      </p>
+      <p class="meta">St. Louis, MO · <span id="local-time">--:--</span></p>
     </div>
   </footer>
 </div>

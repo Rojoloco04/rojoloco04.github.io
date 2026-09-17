@@ -2,38 +2,41 @@
  * style.css — Custom styles complementing Tailwind CSS
  *
  * Layout:
- *   1. Theme CSS custom properties (light + dark)
+ *   1. Theme tokens (light + dark)
  *   2. Base / reset helpers
- *   3. Custom scrollbar
- *   4. Scroll-reveal animation
- *   5. Hero typewriter cursor
- *   6. Nav pill
- *   7. Mobile drawer
- *   8. Hero gradient background
- *   9. Material Symbols alignment fix
- *  10. Skill rings
- *  11. Reduced motion
+ *   3. Scrollbar
+ *   4. Header bar
+ *   5. Mobile drawer
+ *   6. Hero (fade-in, chip headshot, typewriter cursor)
+ *   7. Page structure (rules, margin labels, leads, links, logos)
+ *   8. Projects
+ *   9. Experience / education rows
+ *  10. Skill meters
+ *  11. Contact form
+ *  12. Scroll-reveal
+ *  13. Material Symbols alignment
+ *  14. Reduced motion
  */
 
-/* ── 1. Theme CSS variables ──────────────────────────────────────── */
+/* ── 1. Theme tokens ─────────────────────────────────────────────── */
 :root {
-  /* Light-mode palette (baby blue) */
-  --c-base-bg: 219 234 254;  /* #dbeafe  blue-100  */
-  --c-surface:  255 255 255; /* #ffffff  white     */
-  --c-border:   191 219 254; /* #bfdbfe  blue-200  */
-  --c-text-hi:  15 23 42;    /* #0f172a  slate-900 */
-  --c-text-lo:  71 85 105;   /* #475569  slate-600 */
-  --c-primary:  37 99 235;   /* #2563eb  blue-600  */
+  /* Light: warm paper, ink, one blue */
+  --c-canvas:  250 250 248;  /* #fafaf8 */
+  --c-surface: 255 255 255;  /* #ffffff */
+  --c-fg:      21 23 28;     /* #15171c */
+  --c-muted:   107 114 128;  /* #6b7280 */
+  --c-line:    227 228 232;  /* #e3e4e8 */
+  --c-primary: 43 95 217;    /* #2b5fd9 */
 }
 
 html.dark {
-  /* Dark-mode palette */
-  --c-base-bg: 16 22 34;     /* #101622 */
-  --c-surface:  26 35 50;    /* #1a2332 */
-  --c-border:   35 47 72;    /* #232f48 */
-  --c-text-hi:  255 255 255; /* white   */
-  --c-text-lo:  146 164 201; /* #92a4c9 */
-  --c-primary:  19 91 236;   /* #135bec */
+  /* Dark: near-black cool grey, one blue */
+  --c-canvas:  11 13 18;     /* #0b0d12 */
+  --c-surface: 17 20 27;     /* #11141b */
+  --c-fg:      232 234 240;  /* #e8eaf0 */
+  --c-muted:   139 147 167;  /* #8b93a7 */
+  --c-line:    35 39 47;     /* #23272f */
+  --c-primary: 92 148 255;   /* #5c94ff */
 }
 
 /* ── 2. Base ─────────────────────────────────────────────────────── */
@@ -45,6 +48,8 @@ body {
   overflow-x: hidden;
   overflow-x: clip;
   scrollbar-gutter: stable;
+  background: rgb(var(--c-canvas));
+  color: rgb(var(--c-fg));
 }
 
 /* Set while the mobile drawer is open. `scrollbar-gutter: stable` above keeps the
@@ -55,7 +60,16 @@ body.menu-open {
 
 /* Offset anchors so they clear the sticky header */
 section {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 72px;
+}
+
+::selection {
+  background: rgb(var(--c-primary) / 0.25);
+}
+
+:focus-visible {
+  outline: 1px solid rgb(var(--c-primary));
+  outline-offset: 3px;
 }
 
 /* ── 3. Custom scrollbar (Webkit) ────────────────────────────────── */
@@ -64,77 +78,34 @@ section {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(var(--c-base-bg));
+  background: rgb(var(--c-canvas));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--c-border));
-  border-radius: 3px;
+  background: rgb(var(--c-line));
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--c-primary));
+  background: rgb(var(--c-muted));
 }
 
-/* ── 4. Scroll-reveal animation ──────────────────────────────────── */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.reveal {
-  opacity: 0;
-}
-
-.reveal.visible {
-  animation: fadeUp 0.6s ease-out forwards;
-}
-
-/* ── 5. Hero typewriter cursor ───────────────────────────────────── */
-.hero-cursor {
-  display: inline-block;
-  margin-left: 1px;
-  animation: blink-cursor 0.7s step-end infinite;
-}
-
-@keyframes blink-cursor {
-  50% { opacity: 0; }
-}
-
-/* ── 6. Nav pill ────────────────────────────────────────────────── */
-/* The sticky <header> has a fixed height (h-[68px]) so the pill can grow taller than it
-   without pushing the page down. The pill is one element: the nav row plus the mobile
-   drawer, which sits in flow at zero height until opened (see section 7). */
+/* ── 4. Header bar ───────────────────────────────────────────────── */
+/* A plain sticky bar with the page's hairline under it. The mobile drawer hangs
+   below the bar (absolutely positioned) so opening it never pushes the page down. */
 #site-header {
-  /* 28px = half the 56px closed height, so this is a true pill when closed and the
-     corners simply stay put as it stretches into a card - nothing to snap or morph */
-  border-radius: 28px;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 8px 32px rgba(0, 0, 0, 0.45);
-  /* quick so the surface is solid before the stretch has gone far, otherwise the page
-     shows through the half-grown card for a few frames */
+  background: rgb(var(--c-canvas) / 0.85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgb(var(--c-line));
   transition: background-color 0.15s ease;
-}
-
-html:not(.dark) #site-header {
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.05),
-    0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 /* Solid while open so the links sit on a clean surface rather than a blur of the page */
 #site-header.menu-open {
-  background-color: rgb(var(--c-surface));
+  background-color: rgb(var(--c-canvas));
 }
 
-/* ── 7. Mobile drawer ────────────────────────────────────────────── */
+/* ── 5. Mobile drawer ────────────────────────────────────────────── */
 #mobile-backdrop {
   opacity: 0;
   pointer-events: none;
@@ -146,11 +117,16 @@ html:not(.dark) #site-header {
   pointer-events: auto;
 }
 
-/* Height animation via grid rows (0fr -> 1fr): the inner wrapper clips, so the card
+/* Height animation via grid rows (0fr -> 1fr): the inner wrapper clips, so the drawer
    stretches open and the links are revealed top-down instead of popping in. */
 #mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   display: grid;
   grid-template-rows: 0fr;
+  background: rgb(var(--c-canvas));
   transition: grid-template-rows 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
@@ -169,6 +145,7 @@ html:not(.dark) #site-header {
 
 #mobile-menu.menu-open {
   grid-template-rows: 1fr;
+  border-bottom: 1px solid rgb(var(--c-line));
 }
 
 #mobile-menu.menu-open nav {
@@ -183,76 +160,398 @@ html:not(.dark) #site-header {
   }
 }
 
-/* ── 8. Hero gradient background ────────────────────────────────── */
+/* ── 6. Hero ─────────────────────────────────────────────────────── */
 #about {
-  margin-top: -64px;  /* pull section up behind the sticky header */
-  padding-top: 64px;  /* push content back below the header */
-  background:
-    radial-gradient(ellipse 70% 60% at 20% 50%, rgba(19, 91, 236, 0.13) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 55% at 80% 15%, rgba(99, 102, 241, 0.1) 0%, transparent 60%);
+  overflow: hidden;   /* the chip's traces run off the edges */
 }
 
-html:not(.dark) #about {
-  background:
-    radial-gradient(ellipse 70% 55% at 50% -5%, rgba(255, 255, 255, 0.85) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 40% at 85% 85%, rgba(196, 181, 253, 0.35) 0%, transparent 55%);
+.hero-in {
+  animation: fade-in 0.8s ease both;
 }
 
-/* ── 9. Material Symbols alignment ──────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+/* Headshot drawn as an IC package: a square photo with pin stubs on all four sides,
+   and a few traces routed out to vias. The SVG is 7/3 the size of the photo and centred
+   on it, so `--s` is the only knob; `vector-effect` keeps the lines 1px at any size. */
+.chip {
+  --s: 240px;
+  position: relative;
+  width: var(--s);
+  height: var(--s);
+  flex-shrink: 0;
+}
+
+.chip img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid rgb(var(--c-line));
+  background: rgb(var(--c-surface));
+}
+
+.chip svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--s) * 7 / 3);
+  height: calc(var(--s) * 7 / 3);
+  transform: translate(-50%, -50%);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.chip path {
+  fill: none;
+  stroke: rgb(var(--c-fg) / 0.3);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.chip .via {
+  fill: rgb(var(--c-canvas));
+  stroke: rgb(var(--c-fg) / 0.4);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Pin-1 marker, the one dot of colour */
+.chip .pin1 {
+  fill: rgb(var(--c-primary));
+}
+
+/* A single light pulse travelling along one trace (pathLength="1000" on the path) */
+.chip .pulse {
+  stroke: rgb(var(--c-primary));
+  stroke-width: 1.5;
+  stroke-dasharray: 36 964;
+  stroke-dashoffset: 1000;
+  animation: pulse-run 7s linear infinite 1.2s;
+}
+
+@keyframes pulse-run {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 767px) {
+  .chip {
+    --s: 140px;
+  }
+}
+
+.hero-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: rgb(var(--c-primary));
+  font-weight: 300;
+  animation: blink-cursor 0.9s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  50% { opacity: 0; }
+}
+
+/* ── 7. Page structure ───────────────────────────────────────────── */
+/* Hairline between sections, starting with a small via */
+.rule {
+  position: relative;
+  height: 1px;
+  background: rgb(var(--c-line));
+}
+
+.rule::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgb(var(--c-canvas));
+  border: 1px solid rgb(var(--c-fg) / 0.4);
+}
+
+/* Small mono label in the left margin */
+.label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--c-muted));
+}
+
+/* One quiet sentence under the label */
+.lead {
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: rgb(var(--c-fg));
+}
+
+@media (min-width: 768px) {
+  .lead {
+    font-size: 1.75rem;
+  }
+}
+
+/* Text link: underline in the line colour, blue on hover */
+.lnk {
+  color: rgb(var(--c-fg));
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgb(var(--c-fg) / 0.3);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+.lnk:hover {
+  color: rgb(var(--c-primary));
+  text-decoration-color: rgb(var(--c-primary));
+}
+
+.lnk .material-symbols-outlined {
+  margin-left: 2px;
+  opacity: 0.6;
+}
+
+/* Meta line: mono, muted, items separated by middle dots */
+.meta {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: rgb(var(--c-muted));
+}
+
+/* Organisation logo: transparent PNG drawn directly on the page in its own colours.
+   The slot is a little wider than tall so wordmarks get room; logos sit at its left edge. */
+.logo {
+  display: block;
+  width: 40px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Logos drawn in dark ink get lifted on the dark canvas so they stay legible */
+html.dark .logo img.lift {
+  filter: brightness(1.7);
+}
+
+/* ── 8. Projects ─────────────────────────────────────────────────── */
+.project {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Screenshots are shown in greyscale so the mixed captures sit quietly together;
+   colour returns on hover (and is always on where there is no hover). */
+.thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid rgb(var(--c-line));
+  background: rgb(var(--c-surface));
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(1);
+  opacity: 0.85;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.project-title {
+  transition: color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .project:hover .thumb img {
+    filter: none;
+    opacity: 1;
+  }
+
+  .project:hover .project-title {
+    color: rgb(var(--c-primary));
+  }
+}
+
+@media (hover: none) {
+  .thumb img {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+/* ── 9. Experience / education rows ─────────────────────────────── */
+.bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 8px;
+  height: 1px;
+  background: rgb(var(--c-muted));
+}
+
+/* ── 10. Skill meters ────────────────────────────────────────────── */
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgb(var(--c-line));
+  font-size: 0.9rem;
+}
+
+.skill-row:last-child {
+  border-bottom: 0;
+}
+
+/* Four small squares; filled count == level */
+.meter {
+  display: inline-flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.meter i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: rgb(var(--c-line));
+}
+
+.meter i.f {
+  background: rgb(var(--c-fg));
+}
+
+/* ── 11. Contact form ────────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--c-muted));
+}
+
+/* Underline-only inputs: the page's hairline language, no boxes */
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.6rem 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgb(var(--c-line));
+  border-radius: 0;
+  color: rgb(var(--c-fg));
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgb(var(--c-muted) / 0.5);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: rgb(var(--c-fg));
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.25rem;
+  height: 44px;
+  background: rgb(var(--c-fg));
+  color: rgb(var(--c-canvas));
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 2px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  background: rgb(var(--c-primary));
+  color: #fff;
+}
+
+/* ── 12. Scroll-reveal ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── 13. Material Symbols alignment ──────────────────────────────── */
 .material-symbols-outlined {
   vertical-align: middle;
   line-height: 1;
 }
 
-/* ── 10. Skill rings ─────────────────────────────────────────────── */
-@property --ring-pct {
-  syntax: '<number>';
-  inherits: false;
-  initial-value: 0;
-}
-
-.skill-ring {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  /* track layer (border colour) + conic fill layer */
-  background: conic-gradient(from 0deg, var(--ring-color) calc(var(--ring-pct) * 1%), rgb(var(--c-border)) calc(var(--ring-pct) * 1%));
-  /* donut mask: transparent centre + outer rim, ring body stays visible */
-  mask: radial-gradient(farthest-side, transparent 63%, black 64% 91%, transparent 92%);
-  transition: --ring-pct 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Level colours */
-.skill-ring.lvl-1 { --ring-color: #f59e0b; }              /* amber   — beginner     */
-.skill-ring.lvl-2 { --ring-color: #60a5fa; }              /* blue    — intermediate */
-.skill-ring.lvl-3 { --ring-color: rgb(var(--c-primary)); } /* primary — proficient   */
-.skill-ring.lvl-4 { --ring-color: #10b981; }              /* emerald — expert       */
-
-/* ── 11. Reduced motion ──────────────────────────────────────────── */
-/* Honour the OS setting: drop the decorative motion but never the visibility,
-   so `.reveal` sections must still end up opaque. */
+/* ── 14. Reduced motion ──────────────────────────────────────────── */
+/* Honour the OS setting: drop the decorative motion but never the visibility. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
   .reveal,
-  .reveal.visible {
+  .reveal.visible,
+  .hero-in {
     opacity: 1;
+    transform: none;
     animation: none;
+    transition: none;
   }
 
   .hero-cursor {
     animation: none;
   }
 
-  .skill-ring {
-    transition: none;
-  }
-
-  .animate-bounce {
-    animation: none;
+  .chip .pulse {
+    display: none;
   }
 
   *,

@@ -7,8 +7,9 @@
  *   3. Active nav highlighting
  *   4. Scroll-reveal
  *   5. Hero typewriter
- *   6. Skill rings
- *   7. Contact form
+ *   6. Skill meters
+ *   7. Local time
+ *   8. Contact form
  *
  * Both pages load this file, so every lookup is optional — a selector that only
  * exists on one page simply yields null on the other.
@@ -28,18 +29,17 @@ function setTheme(dark) {
   syncThemeUI();
 }
 
-/** Keep every theme-toggle icon / label in sync with the current mode. */
+/** Keep every theme-toggle icon in sync with the current mode. */
 function syncThemeUI() {
   const dark = isDark();
-  const icon = document.querySelector("#theme-icon");
-  if (icon) icon.textContent = dark ? "light_mode" : "dark_mode";
-
-  const mobileIcon = document.querySelector("#mobile-theme-icon");
-  if (mobileIcon) mobileIcon.textContent = dark ? "light_mode" : "dark_mode";
+  document.querySelectorAll(".theme-icon").forEach((icon) => {
+    icon.textContent = dark ? "light_mode" : "dark_mode";
+  });
 }
 
-document.querySelector("#theme-toggle")?.addEventListener("click", () => setTheme(!isDark()));
-document.querySelector("#mobile-theme-toggle")?.addEventListener("click", () => setTheme(!isDark()));
+document.querySelectorAll(".theme-btn").forEach((btn) => {
+  btn.addEventListener("click", () => setTheme(!isDark()));
+});
 
 syncThemeUI();
 
@@ -103,7 +103,7 @@ desktopQuery.addEventListener("change", (e) => {
 });
 
 // ── 3. Active nav highlighting ────────────────────────────────────────────────
-// Uses IntersectionObserver so the header nav underlines the section currently
+// Uses IntersectionObserver so the header nav marks the section currently
 // visible in the viewport.
 
 const allNavLinks = document.querySelectorAll(".nav-link");
@@ -112,8 +112,8 @@ const sections = document.querySelectorAll("section[id]");
 function setActiveLink(sectionId) {
   allNavLinks.forEach((link) => {
     const isActive = link.getAttribute("href") === `#${sectionId}`;
-    link.classList.toggle("text-foreground", isActive);
-    link.classList.toggle("text-text-secondary", !isActive);
+    link.classList.toggle("text-fg", isActive);
+    link.classList.toggle("text-muted", !isActive);
   });
 }
 
@@ -155,8 +155,7 @@ syncFromHash();
 window.addEventListener("hashchange", syncFromHash);
 
 // ── 4. Scroll-reveal ──────────────────────────────────────────────────────────
-// Sections with the `.reveal` class fade up into view when they enter the
-// viewport, powered by a separate IntersectionObserver.
+// `.reveal` blocks fade up a few pixels when they enter the viewport.
 
 const revealElements = document.querySelectorAll(".reveal");
 
@@ -169,7 +168,7 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.1 }
+  { threshold: 0.05 }
 );
 
 revealElements.forEach((el) => revealObserver.observe(el));
@@ -193,7 +192,7 @@ const PAUSE_FIRST_PHRASE_MS = 2500;
 const PAUSE_PHRASE_MS = 1800;
 const PAUSE_BETWEEN_PHRASES_MS = 350;
 const HIDDEN_TAB_POLL_MS = 500;
-const INITIAL_DELAY_MS = 600;
+const INITIAL_DELAY_MS = 700;
 
 const heroTyped = document.querySelector("#hero-typed");
 
@@ -237,23 +236,16 @@ if (heroTyped) {
   setTimeout(typeHero, INITIAL_DELAY_MS);
 }
 
-// ── 6. Skill rings ────────────────────────────────────────────────────────────
-// Replaces each skill item's icon with a CSS conic-gradient ring that
-// fills clockwise based on proficiency level (1–4).
+// ── 6. Skill meters ───────────────────────────────────────────────────────────
+// Each `.skill-row[data-level]` (1-4) gets a four-square meter with `level`
+// squares filled. Lists are sorted highest level first, alphabetically within
+// a level.
 
 const MAX_SKILL_LEVEL = 4;
+const LEVEL_LABELS = ["", "Beginner", "Intermediate", "Proficient", "Expert"];
 
-function makeSkillRing(level) {
-  const ring = document.createElement("div");
-  ring.classList.add("skill-ring", `lvl-${level}`);
-  ring.setAttribute("aria-hidden", "true");
-  ring.dataset.target = String((level / MAX_SKILL_LEVEL) * 100);
-  return ring;
-}
-
-// Sort each skill list: highest level first, alphabetically within each level
-document.querySelectorAll("ul:has(li.skill-item[data-level])").forEach((ul) => {
-  const items = [...ul.querySelectorAll("li.skill-item[data-level]")];
+document.querySelectorAll("ul:has(.skill-row[data-level])").forEach((ul) => {
+  const items = [...ul.querySelectorAll(".skill-row[data-level]")];
   const label = (li) => li.textContent.trim();
   items.sort((a, b) => {
     const levelDiff = parseInt(b.dataset.level, 10) - parseInt(a.dataset.level, 10);
@@ -263,34 +255,47 @@ document.querySelectorAll("ul:has(li.skill-item[data-level])").forEach((ul) => {
   items.forEach((li) => ul.appendChild(li));
 });
 
-document.querySelectorAll("li.skill-item[data-level]").forEach((li) => {
+document.querySelectorAll(".skill-row[data-level]").forEach((li) => {
   const level = parseInt(li.dataset.level, 10);
   if (!(level >= 1 && level <= MAX_SKILL_LEVEL)) return;
-  const icon = li.querySelector(".material-symbols-outlined");
-  const ring = makeSkillRing(level);
-  if (icon) icon.replaceWith(ring);
-  else li.prepend(ring);
+
+  const name = document.createElement("span");
+  name.textContent = li.textContent.trim();
+  li.textContent = "";
+  li.append(name);
+
+  const meter = document.createElement("span");
+  meter.className = "meter";
+  meter.setAttribute("role", "img");
+  meter.setAttribute("aria-label", `${LEVEL_LABELS[level]} (${level} of ${MAX_SKILL_LEVEL})`);
+  meter.title = LEVEL_LABELS[level];
+  for (let i = 0; i < MAX_SKILL_LEVEL; i++) {
+    const seg = document.createElement("i");
+    if (i < level) seg.className = "f";
+    meter.append(seg);
+  }
+  li.append(meter);
 });
 
-// Hold the rings at 0% until the section scrolls in, then let CSS animate the fill
-const skillsSection = document.querySelector("#skills");
+// ── 7. Local time ─────────────────────────────────────────────────────────────
+// Footer clock in St. Louis time, refreshed every 30s.
 
-if (skillsSection) {
-  const ringObserver = new IntersectionObserver(
-    (entries) => {
-      if (!entries[0].isIntersecting) return;
-      document.querySelectorAll(".skill-ring").forEach((ring) => {
-        ring.style.setProperty("--ring-pct", ring.dataset.target);
-      });
-      ringObserver.unobserve(skillsSection);
-    },
-    { threshold: 0.15 }
-  );
+const localTime = document.querySelector("#local-time");
 
-  ringObserver.observe(skillsSection);
+if (localTime) {
+  const fmt = new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "America/Chicago",
+  });
+  const tick = () => {
+    localTime.textContent = fmt.format(new Date());
+  };
+  tick();
+  setInterval(tick, 30_000);
 }
 
-// ── 7. Contact form ───────────────────────────────────────────────────────────
+// ── 8. Contact form ───────────────────────────────────────────────────────────
 // Submits the form data to Formspree and shows success / error feedback.
 // The form also carries a plain `action`/`method`, so it still works without JS.
 
@@ -298,9 +303,9 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqedgvzp";
 
 // Tinted backgrounds/borders read correctly in both themes; only the text colour
 // needs a per-theme value to stay legible.
-const STATUS_BASE_CLASSES = "text-center text-sm py-2.5 px-4 rounded-lg font-medium border";
-const STATUS_SUCCESS_CLASSES = "bg-green-500/15 border-green-500/40 text-green-700 dark:text-green-400";
-const STATUS_ERROR_CLASSES = "bg-red-500/15 border-red-500/40 text-red-700 dark:text-red-400";
+const STATUS_BASE_CLASSES = "text-sm py-2.5 px-4 font-medium border";
+const STATUS_SUCCESS_CLASSES = "bg-green-500/10 border-green-500/40 text-green-700 dark:text-green-400";
+const STATUS_ERROR_CLASSES = "bg-red-500/10 border-red-500/40 text-red-700 dark:text-red-400";
 
 const contactForm = document.querySelector("#contact-form");
 const submitBtn = document.querySelector("#submit-btn");
