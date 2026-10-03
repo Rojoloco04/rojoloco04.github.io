@@ -1,0 +1,68 @@
+% The source of truth for the resume, and for every resume fact on the site.
+% Edit content here, never in index.html or the PDF: `qm resume publish`
+% builds JacksonParrack_Resume.pdf, regenerates the site's resume sections and
+% pushes all three in one commit. What the site adds beyond this lives in
+% site.toml. Layout is in resume.cls; only its macros are allowed here.
+\documentclass{resume}
+\hypersetup{pdftitle={Jackson Parrack - Resume},pdfauthor={Jackson Parrack}}
+
+\begin{document}
+
+\header{Jackson Parrack}{%
+  +1 (636) 697-6605 \sep
+  \link{mailto:parrackjack@gmail.com}{parrackjack@gmail.com} \sep
+  \link{https://www.linkedin.com/in/jackson-parrack/}{linkedin.com/in/jackson-parrack/} \sep
+  \link{https://rojoloco04.github.io}{rojoloco04.github.io}}
+
+\section{Education}
+\school{gatech}{Georgia Institute of Technology}{Atlanta, GA}{Expected May 2029}
+  {Master of Science in Computer Science (part-time), Computing Systems}{}
+\school{slu}{Saint Louis University}{St. Louis, MO}{Aug. 2022 - May 2026}
+  {Bachelor of Science in Computer Engineering, Minor in Computer Science}{GPA: 3.93/4.0}
+\school{sogang}{Sogang University}{Seoul, South Korea}{Feb. 2024 - Jun. 2024}
+  {Exchange Program}{}
+
+\section{Experience}
+\job{mastercard}{Mastercard}{O'Fallon, MO}{Software Engineer I}{Aug. 2026 - Present}
+\begin{bullets}
+  \item Building and scaling an internal MCP-based tool that gives 140+ employees natural language agentic access to company systems, letting teams query data directly rather than through engineers.
+  \item Leading design and planning of a pilot transaction-insights agent targeting enterprise-wide adoption, combining LLM tool orchestration, MCP-based database access, input guardrails, and conversation memory.
+  \item Developing a modernized clearing platform using Java Spring microservices on Kubernetes, replacing mainframe technology with services that scale horizontally to over 10M transactions/day.
+  \item Maintaining and extending a Go-based simulation tool that tests the full payment lifecycle end-to-end, keeping it current with evolving payment flows to catch regressions before production.
+  \item Evaluating high performance networking protocols (Homa, RDMA) with distinguished engineers in a research initiative targeting data center deployment and open source contribution.
+\end{bullets}
+\job{dataserv}{DataServ}{St. Louis, MO}{DevOps Intern}{May 2025 - Aug. 2025}
+\begin{bullets}
+  \item Wrote Python automation scripts to migrate 3,000+ SQL stored procedures across 71 client environments into Bitbucket, enabling code reviews and rollbacks for previously unversioned code.
+  \item Converted time-based jobs to event-driven triggers for 7 clients, contributing to a company-wide effort that cut client data turnaround from 24 hours to under 6.
+\end{bullets}
+
+\section{Projects}
+\project{rapid}{Rapid Photonic Innovation Device (RAPID)}{ECE Capstone Design Award Winner}
+  {\link{https://github.com/Rojoloco04/RAPID}{GitHub}}{Aug. 2025 - Apr. 2026}
+  {Converted a Blu-ray drive into a \textasciitilde\$500 FPGA-controlled laser lithography system with \textasciitilde0.1mm resolution}
+\begin{bullets}
+  \item Owned all software and supported FPGA integration on a 4-person team, spanning embedded C and Python.
+  \item Built bare-metal C firmware on a Zynq SoC for motor and laser control, syncing laser timing to disc rotation.
+  \item Designed a custom UART protocol with error checking and flow control to stream patterns from the PC.
+  \item Built a real-time Python GUI for live pattern visualization, manual control, and system telemetry.
+\end{bullets}
+
+\section{Leadership}
+\role{ieee}{IEEE Student Branch}{Vice President}{Aug. 2025 - May 2026}
+\begin{bullets}
+  \item Revived a dormant student chapter, growing membership from under 10 to 30+ through outreach and events.
+  \item Captained the team that won 1\textsuperscript{st} place at the 2026 IEEE Region 5 Cyber Challenge.
+\end{bullets}
+\role{esports}{SLU Esports}{President and Teams Coordinator}{Aug. 2024 - May 2026}
+\begin{bullets}
+  \item Grew membership to 70+ and coordinated competitive rosters across 10+ titles.
+\end{bullets}
+
+\section{Skills}
+\skills{Programming Languages}{C, C++, Python, Java, Go, SQL}
+\skills{Tools/Platforms}{Spring, Kubernetes, Docker, MCP, Git, Linux}
+\skills{Hardware}{VHDL, FPGA, ARM \& AVR Microcontrollers}
+\skills{Spoken Languages}{Spanish (Advanced), Korean (Intermediate)}
+
+\end{document}

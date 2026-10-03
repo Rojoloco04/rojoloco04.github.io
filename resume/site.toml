@@ -1,0 +1,136 @@
+# What the site shows beyond resume.tex. resume.tex is the source of truth for
+# every resume fact (titles, orgs, places, dates, bullets, skills); this file
+# adds logos, links, blurbs, tags, activities and skill levels, keyed by the
+# resume entry's id. Never restate a resume fact here in your own words: quote
+# it with a placeholder ({org}, {location}, {role}, {dates}, {degree}, {note},
+# {school}, {name}, {award}, {summary}, {title}), so it can't drift.
+#
+# Entries with their own words here (heading, meta, blurb, tags...) are
+# re-reviewed whenever the resume's version of them changes; reviewed.json
+# (written by `qm resume publish`) records what each was last checked against.
+# `qm resume publish` regenerates the marked sections of index.html from this
+# file and resume.tex; edits made inside those sections by hand are overwritten.
+
+[site]
+index = "index.html"
+pdf = "JacksonParrack_Resume.pdf"
+
+# --- Experience (every \job, in resume order) ---
+
+[entries.mastercard]
+logo = "images/mastercard.png"
+url = "https://www.mastercard.com"
+org_label = "{org} · Launch Program"
+meta = "Hybrid · {location}"
+tags = ["Java", "Spring", "Kubernetes", "Go", "MCP"]
+
+[entries.dataserv]
+logo = "images/dataserv.png"
+logo_class = "lift"
+url = "https://www.dataserv.com"
+meta = "Remote · {location}"
+tags = ["Python", "SQL", "Bitbucket", "DevOps"]
+
+# --- Education & activities (every \school, in resume order) ---
+
+[entries.gatech]
+logo = "images/gatech.png"
+logo_alt = "Georgia Tech"
+url = "https://www.gatech.edu"
+heading = "M.S. Computer Science"
+dates = "Aug. 2026 – May 2029"
+meta = "Computing Systems · {location} · {dates}"
+
+[entries.slu]
+logo = "images/slu.png"
+url = "https://www.slu.edu"
+heading = "B.S. Computer Engineering"
+meta = "Summa Cum Laude · Minor: Computer Science · {note}"
+# A resume \role is listed by id (its title, org and dates come from the resume).
+activities = [
+  { text = "Member · Tau Beta Pi Engineering Honor Society, Missouri Epsilon Chapter", dates = "Apr. 2026 – May 2026" },
+  { role = "esports" },
+  { role = "ieee" },
+  { text = "First-Year Mentor · School of Science & Engineering", dates = "Aug. 2024 – May 2026" },
+  { text = "Study Abroad Peer Mentor", dates = "Aug. 2024 – May 2026" },
+  { text = "Member · Vietnamese Student Association", dates = "Jan. 2026 – May 2026" },
+  { text = "Member · Korean Student Association", dates = "Aug. 2024 – May 2026" },
+  { text = "String Orchestra", dates = "Spring 2023" },
+]
+
+[entries.sogang]
+logo = "images/sogang.png"
+logo_alt = "Sogang University"
+url = "https://www.sogang.ac.kr/en/home"
+
+# --- Projects: resume projects plus site-only ones, in this order ---
+
+[projects]
+order = ["rapid", "vigilane", "medicode", "rojosmod", "blindmice"]
+
+[entries.rapid]
+thumb = "images/rapid.png"
+title = "RAPID"
+blurb = "Laser-lithography system that writes photonic patterns onto a spinning disc. Built with VHDL on a Zynq FPGA, a custom UART pipeline in C, and a real-time Python GUI."
+tags = ["VHDL", "C", "Python", "FPGA", "UART"]
+
+[entries.vigilane]
+site_only = true
+title = "Vigilane"
+url = "https://github.com/1Bananas1/Vigilane"
+thumb = "images/vigilane.jpg"
+award = "HackSLU 2026 · Honorable Mention"
+blurb = "AI-powered road hazard detection using YOLOv8 with a React Native app and Flask REST API backed by Firebase."
+tags = ["React Native", "YOLOv8", "Flask", "Firebase"]
+
+[entries.medicode]
+site_only = true
+title = "mediCode"
+url = "https://github.com/Rojoloco04/mediCode"
+thumb = "images/mediCode.png"
+tagline = "Medical ID in any language"
+blurb = "A medical profile app that generates a scannable QR code with your critical health info, readable by first responders in any language via AI translation."
+tags = ["React", "Supabase", "Vercel", "ElevenLabs", "Tailwind"]
+
+[entries.rojosmod]
+site_only = true
+title = "Rojo's Mod"
+url = "https://github.com/Rojoloco04/rojosmod"
+thumb = "images/rojosmod.png"
+tagline = "Minecraft NeoForge Mod"
+blurb = "Minecraft mod adding a throwable Lightning Spear with custom entity behavior, 3D modeling, and 2D sprite art. Built with Java, NeoForge, and Gradle."
+tags = ["Java", "NeoForge", "Gradle"]
+
+[entries.blindmice]
+site_only = true
+title = "The Blind Mice"
+url = "https://github.com/Rojoloco04/TheBlindMice"
+thumb = "images/blindmice.png"
+tagline = "2D Tile-Based Platformer"
+blurb = "Java platformer where players navigate as a mouse, collecting letter tiles to spell words that unlock temporary powers and overcome obstacles."
+tags = ["Java", "Swing", "Gradle"]
+
+# --- Skills: names come from resume.tex; the site adds a label and a level ---
+
+[skills.labels]
+"Tools/Platforms" = "Tools & Platforms"
+
+# 4: could teach it. 1: still learning. Every resume skill needs one.
+[skills.levels]
+"C" = 3
+"C++" = 4
+"Python" = 2
+"Java" = 3
+"Go" = 1
+"SQL" = 2
+"Spring" = 2
+"Kubernetes" = 1
+"Docker" = 2
+"MCP" = 3
+"Git" = 4
+"Linux" = 3
+"VHDL" = 4
+"FPGA" = 4
+"ARM & AVR Microcontrollers" = 3
+"Spanish" = 3
+"Korean" = 2
