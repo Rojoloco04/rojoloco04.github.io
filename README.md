@@ -18,7 +18,8 @@ Personal portfolio website for Jackson Parrack, built with **HTML**, **Tailwind 
 ## File Structure
 
 ```
-index.html      — Main page markup and Tailwind config
+index.html      — Main page markup and Tailwind config (resume sections generated from resume/)
+resume/         — resume.tex (source of truth), resume.cls (layout), site.toml (site-only extras)
 contact.html    — Contact page with form (Formspree) and direct channels
 style.css       — Theme tokens (light + dark), header pill, chip headshot, page structure, meters, form
 script.js       — Theme toggle, mobile menu, nav highlighting, scroll-reveal, typewriter, skill meters,
@@ -80,7 +81,19 @@ Text uses the default Tailwind scale plus a few arbitrary values:
 
 ## Resume
 
-The resume PDF (`JacksonParrack_Resume.pdf`) is hosted in the root of this repository and linked directly from the site.
+`resume/resume.tex` is the source of truth for the resume and for every resume fact on the site
+(titles, places, dates, bullets, skills). `JacksonParrack_Resume.pdf` at the root is built from it,
+and the Projects, Experience, Education and Skills sections of `index.html` are generated from it
+between `<!-- resume:... -->` markers: edit `resume.tex`, never those sections or the PDF.
+
+The site may show less than the resume or more, never different words. What it adds (logos, links,
+project blurbs, tags, activities, skill levels) lives in `resume/site.toml`, keyed by each entry's
+id. When a resume entry changes, its site text there has to be re-checked before publishing
+(`resume/reviewed.json` records what each was last checked against), so it can't go stale.
+
+`qm resume publish` (in [Quartermaster](https://github.com/Rojoloco04/Quartermaster)) builds the
+PDF, regenerates the sections and commits all of it in one commit; `qm resume` checks everything
+is in sync. Layout is in `resume/resume.cls` (one page, ATS-readable text).
 
 ## Tech Stack
 
