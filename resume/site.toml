@@ -22,7 +22,7 @@ logo = "images/mastercard.png"
 url = "https://www.mastercard.com"
 org_label = "{org} · Launch Program"
 meta = "Hybrid · {location}"
-tags = ["Java", "Spring", "Kubernetes", "Go", "MCP"]
+tags = ["Python", "MCP", "Java", "Spring", "Kubernetes", "Go"]
 
 [entries.dataserv]
 logo = "images/dataserv.png"
@@ -126,6 +126,8 @@ tags = ["Java", "Swing", "Gradle"]
 "Spring" = 2
 "Kubernetes" = 1
 "Docker" = 2
+"Jenkins" = 1
+"Splunk" = 2
 "MCP" = 3
 "Git" = 4
 "Linux" = 3
