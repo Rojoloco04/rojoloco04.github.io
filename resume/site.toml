@@ -51,11 +51,9 @@ activities = [
   { text = "Member · Tau Beta Pi Engineering Honor Society, Missouri Epsilon Chapter", dates = "Apr. 2026 – May 2026" },
   { role = "esports" },
   { role = "ieee" },
+  { text = "Teaching Assistant · Electrical & Computer Engineering", dates = "Jan. 2026 – May 2026" },
   { text = "First-Year Mentor · School of Science & Engineering", dates = "Aug. 2024 – May 2026" },
   { text = "Study Abroad Peer Mentor", dates = "Aug. 2024 – May 2026" },
-  { text = "Member · Vietnamese Student Association", dates = "Jan. 2026 – May 2026" },
-  { text = "Member · Korean Student Association", dates = "Aug. 2024 – May 2026" },
-  { text = "String Orchestra", dates = "Spring 2023" },
 ]
 
 [entries.sogang]
